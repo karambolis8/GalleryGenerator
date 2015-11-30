@@ -1,1 +1,0 @@
-# GalleryGenerator
