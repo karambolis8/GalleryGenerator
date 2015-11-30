@@ -44,7 +44,8 @@ namespace GalleryGenerator
          * 
          * css, js, ico trzeba robic relative ../../ <- obliczac to z nesting na podstawie ilosci path.separatorow
          * 
-         * jesli kopiowac oryginalne obrazki to trzeba tez kopiowac wszystkie pliki, nawet te nie listowane, bo wtedy np htm nie beda dzialaly
+         * jesli kopiowac oryginalne obrazki to trzeba tez kopiowac wszystkie pliki, 
+         * nawet te nie listowane, bo wtedy np htm nie beda dzialaly
          * 
         */
     }
