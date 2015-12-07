@@ -18,6 +18,8 @@ namespace Common
         public static string CssDir { get; private set; }
         public static string JsDir { get; private set; }
         public static string IcoDir { get; private set; }
+        public static string MediumDir { get; private set; }
+        public static string ThumbDir { get; private set; }
         public static string CopyrightYear { get; private set; }
         public static int DefaultMediumWidth { get; private set; }
         public static int DefaultMediumHeight { get; private set; }
@@ -34,6 +36,8 @@ namespace Common
             CssDir = ConfigurationManager.AppSettings["cssDir"];
             JsDir = ConfigurationManager.AppSettings["jsDir"];
             IcoDir = ConfigurationManager.AppSettings["icoDir"];
+            MediumDir = ConfigurationManager.AppSettings["mediumDir"];
+            ThumbDir = ConfigurationManager.AppSettings["thumbDir"];
 
             CopyrightYear = ConfigurationManager.AppSettings["copyrightYear"];
 

@@ -30,8 +30,8 @@ namespace GalleryGeneratorEngine
             if (!Directory.Exists(this.options.OutputDirectory))
                 Directory.CreateDirectory(this.options.OutputDirectory);
 
-            AssureRelativeDirectoryExists(this.options.MediumImgDir);
-            AssureRelativeDirectoryExists(this.options.ThumbImgDir);
+            AssureRelativeDirectoryExists(Configuration.MediumDir);
+            AssureRelativeDirectoryExists(Configuration.ThumbDir);
             AssureRelativeDirectoryExists(Configuration.CssDir);
             AssureRelativeDirectoryExists(Configuration.JsDir);
             AssureRelativeDirectoryExists(Configuration.IcoDir);

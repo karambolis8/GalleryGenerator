@@ -64,13 +64,13 @@ namespace GalleryGeneratorEngine
 
             string nesting = this.GetNesting(directoryInfo);
 
-            string mediumDirWithNesting = Path.Combine(this.options.MediumImgDir, nesting);
+            string mediumDirWithNesting = Path.Combine(this.options.OutputDirectory, Configuration.MediumDir, nesting);
             if (!Directory.Exists(mediumDirWithNesting))
             {
                 Directory.CreateDirectory(mediumDirWithNesting);
             }
 
-            string thumbDirWithNesting = Path.Combine(this.options.ThumbImgDir, nesting);
+            string thumbDirWithNesting = Path.Combine(this.options.OutputDirectory, Configuration.ThumbDir, nesting);
             if (!Directory.Exists(thumbDirWithNesting))
             {
                 Directory.CreateDirectory(thumbDirWithNesting);
@@ -86,10 +86,28 @@ namespace GalleryGeneratorEngine
             return nesting.Replace(this.options.InputDirectory, string.Empty).Trim(Path.DirectorySeparatorChar);
         }
 
+        private string GetReverseNesting(string nesting)
+        {
+            if (nesting == string.Empty)
+                return string.Empty;
+
+            if (!nesting.Contains(Path.DirectorySeparatorChar))
+                return "..";
+
+            int level = nesting.Count(c => c == Path.DirectorySeparatorChar);
+            var reverseNesting = new StringBuilder(".." + Path.DirectorySeparatorChar);
+            for (int i = 0; i < level; i++)
+            {
+                reverseNesting.Append("..");
+                reverseNesting.Append(Path.DirectorySeparatorChar);
+            }
+            return reverseNesting.ToString().Trim(Path.DirectorySeparatorChar);
+        }
+
         private void GenerateThumbnails(IEnumerable<FileInfo> images, string nesting)
         {
-            string mediumWithNesting = Path.Combine(this.options.MediumImgDir, nesting);
-            string thumbWithNesting = Path.Combine(this.options.ThumbImgDir, nesting);
+            string mediumWithNesting = Path.Combine(this.options.OutputDirectory, Configuration.MediumDir, nesting);
+            string thumbWithNesting = Path.Combine(this.options.OutputDirectory, Configuration.ThumbDir, nesting);
 
             foreach (FileInfo image in images)
             {
@@ -110,9 +128,13 @@ namespace GalleryGeneratorEngine
 
             var menu = nesting == string.Empty ? this.GenerateMenuRoot(directoryInfo) : this.GenerateMenu(directoryInfo, nesting);
             string gallery = images.Any() ? this.GenerateGallery(images, nesting) : string.Empty;
-            var filesTable = otherFiles.Any() ? this.GenerateFilesTable(otherFiles) : string.Empty;
+            var filesTable = otherFiles.Any() ? this.GenerateFilesTable(otherFiles, nesting) : string.Empty;
 
             string pageContent = string.Empty;
+
+            string reverseNesting = this.GetReverseNesting(nesting);
+            string cssPath = Path.Combine(reverseNesting, Configuration.CssDir).GetBrowserPath();
+            string jsPath = Path.Combine(reverseNesting, Configuration.JsDir).GetBrowserPath();
 
             var pageFormatSb = new StringBuilder(Configuration.PageFormat);
             pageContent = pageFormatSb
@@ -120,8 +142,8 @@ namespace GalleryGeneratorEngine
                 .Replace(GALLERY_NAME, this.options.GalleryName)
                 .Replace(PAGE_NAME, pageName)
                 .Replace(GALLERY, gallery)
-                .Replace(CSS_DIRECTORY, Configuration.CssDir.GetBrowserPath())
-                .Replace(JS_DIRECTORY, Configuration.JsDir.GetBrowserPath())
+                .Replace(CSS_DIRECTORY, cssPath)
+                .Replace(JS_DIRECTORY, jsPath)
                 .Replace(MENU, menu)
                 .Replace(FILES_TABLE, filesTable)
                 .ToString();
@@ -134,14 +156,17 @@ namespace GalleryGeneratorEngine
             }
         }
 
-        private string GenerateFilesTable(IEnumerable<FileInfo> otherFiles)
+        private string GenerateFilesTable(IEnumerable<FileInfo> otherFiles, string nesting)
         {
             var sb = new StringBuilder();
+
+            string reverseNesting = this.GetReverseNesting(nesting);
+            string icoWithNesting = Path.Combine(reverseNesting, Configuration.IcoDir);
 
             var i = 0;
             foreach (var file in otherFiles)
             {
-                string icon = Path.Combine(Configuration.IcoDir, Configuration.GetFileIcon(file.Extension));
+                string icon = Path.Combine(icoWithNesting, Configuration.GetFileIcon(file.Extension));
                 var row = new StringBuilder(Configuration.FilesTableRowTemplate)
                     .Replace(FILE_IMG_LINK, icon.GetBrowserPath())
                     .Replace(FILE_LINK, file.FullName.GetAbsoluteBrowserPath())
@@ -164,8 +189,9 @@ namespace GalleryGeneratorEngine
 
         private string GenerateGallery(IEnumerable<FileInfo> images, string nesting)
         {
-            string mediumWithNesting = Path.Combine(this.options.MediumImgDir, nesting);
-            string thumbWithNesting = Path.Combine(this.options.ThumbImgDir, nesting);
+            string reverseNesting = this.GetReverseNesting(nesting);
+            string mediumWithNesting = Path.Combine(reverseNesting, Configuration.MediumDir, nesting);
+            string thumbWithNesting = Path.Combine(reverseNesting, Configuration.ThumbDir, nesting);
 
             var galleryItems = new StringBuilder();
             foreach (var image in images)
@@ -181,12 +207,9 @@ namespace GalleryGeneratorEngine
             var parent = directoryInfo.Parent;
             List<DirectoryInfo> siblings = parent.GetDirectories().OrderBy(d => d.Name).ToList();
 
-            var lastDirSeparator = nesting.LastIndexOf(Path.DirectorySeparatorChar);
-            string parentNesting = string.Empty;
-            if(nesting.Length > 0)
-                parentNesting = nesting.Remove(lastDirSeparator >= 0 ? lastDirSeparator : 0);
+            string reverseNesting = this.GetReverseNesting(nesting);
 
-            string rootLink = this.options.GalleryName + ".html";
+            string rootLink = Path.Combine(reverseNesting, this.options.GalleryName + ".html");
             rootLink = rootLink.GetBrowserPath();
             
             string parentLink;
@@ -194,7 +217,7 @@ namespace GalleryGeneratorEngine
             
             if(nesting.Contains(Path.DirectorySeparatorChar))
             {
-                parentLink = Path.Combine(parentNesting, parent.Name + ".html");
+                parentLink = Path.Combine("..", parent.Name + ".html");
                 parentLink = parentLink.GetBrowserPath();
                 parentName = parent.Name;
             }
@@ -205,29 +228,38 @@ namespace GalleryGeneratorEngine
             }
 
             var siblingList = new StringBuilder();
-            foreach (var sibling in siblings)
+
+            if(siblings.Any())
             {
-                var itemLink = Path.Combine(parentNesting, sibling.Name, sibling.Name + ".html");
-                itemLink = itemLink.GetBrowserPath();
-                var item = new StringBuilder(Configuration.SiblingMenuTemplate)
-                    .Replace(ITEM_NAME, sibling.Name)
-                    .Replace(ITEM_LINK, itemLink);
+                var lastDirSeparator = nesting.LastIndexOf(Path.DirectorySeparatorChar);
+                string parentNesting = string.Empty;
+                if (nesting.Length > 0)
+                    parentNesting = nesting.Remove(lastDirSeparator >= 0 ? lastDirSeparator : 0);
 
-                if (sibling.Name == directoryInfo.Name)
+                foreach (var sibling in siblings)
                 {
-                    var submenu = this.GetSubmenu(sibling, nesting);
-                    item
-                        .Replace(ACTIVE, " class=\"active\"")
-                        .Replace(SUBMENU, submenu);
-                }
-                else
-                {
-                    item
-                        .Replace(ACTIVE, string.Empty)
-                        .Replace(SUBMENU, string.Empty);
-                }
+                    var itemLink = Path.Combine("..", sibling.Name, sibling.Name + ".html");
+                    itemLink = itemLink.GetBrowserPath();
+                    var item = new StringBuilder(Configuration.SiblingMenuTemplate)
+                        .Replace(ITEM_NAME, sibling.Name)
+                        .Replace(ITEM_LINK, itemLink);
 
-                siblingList.AppendLine(item.ToString());
+                    if (sibling.Name == directoryInfo.Name)
+                    {
+                        var submenu = this.GetSubmenu(sibling, parentNesting);
+                        item
+                            .Replace(ACTIVE, " class=\"active\"")
+                            .Replace(SUBMENU, submenu);
+                    }
+                    else
+                    {
+                        item
+                            .Replace(ACTIVE, string.Empty)
+                            .Replace(SUBMENU, string.Empty);
+                    }
+
+                    siblingList.AppendLine(item.ToString());
+                }
             }
 
             var menu = new StringBuilder(Configuration.RootMenuTemplate)
@@ -275,13 +307,14 @@ namespace GalleryGeneratorEngine
             if (children.Length < 1)
                 return string.Empty;
 
-            var sb = new StringBuilder();
+            string reverseNesting = this.GetReverseNesting(nesting);
 
+            var sb = new StringBuilder();
             sb.AppendLine("<ul>");
 
             foreach (var child in children)
             {
-                var itemLink = Path.Combine(nesting, child.Name, child.Name + ".html");
+                var itemLink = Path.Combine(reverseNesting, child.Name, child.Name + ".html");
                 itemLink = itemLink.GetBrowserPath();
                 var childBuilder = new StringBuilder(Configuration.SiblingMenuTemplate)
                     .Replace(ACTIVE, string.Empty)

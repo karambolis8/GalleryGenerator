@@ -22,24 +22,6 @@ namespace Common
         }
 
         /// <summary>
-        /// Output base directory for medium thumbnails.
-        /// </summary>
-        public string MediumImgDir
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Output base directory for small thumbnails
-        /// </summary>
-        public string ThumbImgDir
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// Defines width of small thumbnails
         /// </summary>
         public int ThumbX

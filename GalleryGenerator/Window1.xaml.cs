@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Configuration;
 using System.Windows;
 using Common;
+using Configuration = Common.Configuration;
 
 namespace GalleryGenerator
 {
@@ -15,11 +17,9 @@ namespace GalleryGenerator
             
             var options = new UserOptions()
             {
-                GalleryName = "test",
-                InputDirectory = @"G:\modele\dokumentacja\A-10 Thunderbolt II",
-                OutputDirectory = @"C:\test_galerii",
-                MediumImgDir = "medium",
-                ThumbImgDir = "thumb",
+                GalleryName = ConfigurationManager.AppSettings["galleryName"],
+                InputDirectory = ConfigurationManager.AppSettings["inputDirectory"],
+                OutputDirectory = ConfigurationManager.AppSettings["outputDirectory"],
                 PreserveMediumAspectRatio = Configuration.DefaultPreserveMediumAspectRatio,
                 CopyOriginalFiles = Configuration.DefaultCopyOriginalFiles,
                 MediumX = Configuration.DefaultMediumWidth,

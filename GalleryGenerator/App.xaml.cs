@@ -34,18 +34,16 @@ namespace GalleryGenerator
          * 
          * zrobic tryb dogenerowywania podfolderow (z nadpisywaniem plikow lub nie) 
          * i tryb generowania calosci (wtedy bazowy plik ma inna nazwe i nie ma siblings w menu)
-         *
-         * chyba nie bedzie dzialalo jak bedzie sie przenosilo galerie - linki sa za mocne
-         * 
-         * foldery obrazkow nie konfigurowane - tylko z xmla
-         * usunac this.options.MediumImgDir, this.options.ThumbImgDir i przeniesc do Configuration
-         * usunac tez pozostale rzeczy wejsciowe zahardkodowane przynajmniej tymczasowo bez wpisow w Configuration 
-         * zebym mogl se uruchamiac na drugim kompie
-         * 
-         * css, js, ico trzeba robic relative ../../ <- obliczac to z nesting na podstawie ilosci path.separatorow
          * 
          * jesli kopiowac oryginalne obrazki to trzeba tez kopiowac wszystkie pliki, 
          * nawet te nie listowane, bo wtedy np htm nie beda dzialaly
+         * 
+         * poprzegladac obliczanie nestingu i reverseNestingu. moze da sie cos zrefactorowac, moze cos jest niepotrzebne
+         * 
+         * automatyczne wypelnianie nazwy galerii z ostatniego folderu wybranej sciezki
+         * 
+         * nie dziala menu w su-27/su-33/walkaround/rozne
+         * w smialusie tez niektore obrazki nie dzialaja
          * 
         */
     }
