@@ -44,6 +44,9 @@ namespace GalleryGenerator
          * 
          * nie dziala menu w su-27/su-33/walkaround/rozne
          * w smialusie tez niektore obrazki nie dzialaja
+         *
+         * zrobić jakies takie logiki zeby zamiast ifologii z roznymi opcjami wkleic w konstruktorze odpowiednie logiki
+         * zeby potem juz nie ifowac. przesledzic kod, moze to ma sens i pomoze np z sciezkami relatywnymi bo teraz jest rzezba
          * 
         */
     }
