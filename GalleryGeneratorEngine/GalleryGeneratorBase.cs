@@ -100,11 +100,11 @@ namespace GalleryGeneratorEngine
         private void CopyGalleryFiles(string inputDir, string outputDir)
         {
             var appDir = Directory.GetCurrentDirectory();
-            var inputInfo = new DirectoryInfo(Path.Combine(appDir, "Gallerific", inputDir));
+            var inputInfo = new DirectoryInfo(Path.Combine(appDir, Path.Combine("Gallerific", inputDir)));
 
             foreach (var fileInfo in inputInfo.GetFiles())
             {
-                File.Copy(fileInfo.FullName, Path.Combine(this.options.OutputDirectory, outputDir, fileInfo.Name), true);
+                File.Copy(fileInfo.FullName, Path.Combine(this.options.OutputDirectory, Path.Combine(outputDir, fileInfo.Name)), true);
             }
         }
     }

@@ -64,13 +64,13 @@ namespace GalleryGeneratorEngine
 
             string nesting = this.GetNesting(directoryInfo);
 
-            string mediumDirWithNesting = Path.Combine(this.options.OutputDirectory, Configuration.MediumDir, nesting);
+            string mediumDirWithNesting = Path.Combine(this.options.OutputDirectory, Path.Combine(Configuration.MediumDir, nesting));
             if (!Directory.Exists(mediumDirWithNesting))
             {
                 Directory.CreateDirectory(mediumDirWithNesting);
             }
 
-            string thumbDirWithNesting = Path.Combine(this.options.OutputDirectory, Configuration.ThumbDir, nesting);
+            string thumbDirWithNesting = Path.Combine(this.options.OutputDirectory, Path.Combine(Configuration.ThumbDir, nesting));
             if (!Directory.Exists(thumbDirWithNesting))
             {
                 Directory.CreateDirectory(thumbDirWithNesting);
@@ -106,8 +106,8 @@ namespace GalleryGeneratorEngine
 
         private void GenerateThumbnails(IEnumerable<FileInfo> images, string nesting)
         {
-            string mediumWithNesting = Path.Combine(this.options.OutputDirectory, Configuration.MediumDir, nesting);
-            string thumbWithNesting = Path.Combine(this.options.OutputDirectory, Configuration.ThumbDir, nesting);
+            string mediumWithNesting = Path.Combine(this.options.OutputDirectory, Path.Combine(Configuration.MediumDir, nesting));
+            string thumbWithNesting = Path.Combine(this.options.OutputDirectory, Path.Combine(Configuration.ThumbDir, nesting));
 
             foreach (FileInfo image in images)
             {
@@ -116,7 +116,7 @@ namespace GalleryGeneratorEngine
 
                 if (this.options.CopyOriginalFiles)
                 {
-                    string destPath = Path.Combine(this.options.OriginalImgDir, nesting, image.Name);
+                    string destPath = Path.Combine(this.options.OriginalImgDir, Path.Combine(nesting, image.Name));
                     File.Copy(image.FullName, destPath);
                 }
             }
@@ -149,7 +149,7 @@ namespace GalleryGeneratorEngine
                 .ToString();
 
             AssureRelativeDirectoryExists(nesting);
-            string pagePath = nesting == string.Empty ? Path.Combine(this.options.OutputDirectory, this.options.GalleryName + ".html") : Path.Combine(this.options.OutputDirectory, nesting, pageName + ".html");
+            string pagePath = nesting == string.Empty ? Path.Combine(this.options.OutputDirectory, this.options.GalleryName + ".html") : Path.Combine(this.options.OutputDirectory, Path.Combine(nesting, pageName + ".html"));
             using (var sw = new StreamWriter(pagePath, false, Encoding.UTF8))
             {
                 sw.Write(pageContent);
@@ -190,8 +190,8 @@ namespace GalleryGeneratorEngine
         private string GenerateGallery(IEnumerable<FileInfo> images, string nesting)
         {
             string reverseNesting = this.GetReverseNesting(nesting);
-            string mediumWithNesting = Path.Combine(reverseNesting, Configuration.MediumDir, nesting);
-            string thumbWithNesting = Path.Combine(reverseNesting, Configuration.ThumbDir, nesting);
+            string mediumWithNesting = Path.Combine(reverseNesting, Path.Combine(Configuration.MediumDir, nesting));
+            string thumbWithNesting = Path.Combine(reverseNesting, Path.Combine(Configuration.ThumbDir, nesting));
 
             var galleryItems = new StringBuilder();
             foreach (var image in images)
@@ -238,7 +238,7 @@ namespace GalleryGeneratorEngine
 
                 foreach (var sibling in siblings)
                 {
-                    var itemLink = Path.Combine("..", sibling.Name, sibling.Name + ".html");
+                    var itemLink = Path.Combine("..", Path.Combine(sibling.Name, sibling.Name + ".html"));
                     itemLink = itemLink.GetBrowserPath();
                     var item = new StringBuilder(Configuration.SiblingMenuTemplate)
                         .Replace(ITEM_NAME, sibling.Name)
@@ -314,7 +314,7 @@ namespace GalleryGeneratorEngine
 
             foreach (var child in children)
             {
-                var itemLink = Path.Combine(reverseNesting, child.Name, child.Name + ".html");
+                var itemLink = Path.Combine(reverseNesting, Path.Combine(child.Name, child.Name + ".html"));
                 itemLink = itemLink.GetBrowserPath();
                 var childBuilder = new StringBuilder(Configuration.SiblingMenuTemplate)
                     .Replace(ACTIVE, string.Empty)
