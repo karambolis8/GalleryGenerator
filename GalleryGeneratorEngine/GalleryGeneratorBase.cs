@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Common;
 using System.IO;
 
@@ -10,9 +11,13 @@ namespace GalleryGeneratorEngine
     {
         protected UserOptions options;
 
+        protected IList<string> ignoredFormats;
+
         protected GalleryGeneratorBase(UserOptions options)
         {
             this.options = options;
+
+            this.ignoredFormats = new List<string>();
         }
 
         public event Action<int> ReportProgressEvent;
@@ -79,12 +84,24 @@ namespace GalleryGeneratorEngine
                 catch (UnauthorizedAccessException e)
                 {
                     Console.WriteLine(e.Message);
-                    continue;
+                    //continue;
                 }
                 catch (DirectoryNotFoundException e)
                 {
                     Console.WriteLine(e.Message);
-                    continue;
+                    //continue;
+                }
+            }
+
+            if (this.ignoredFormats.Any())
+            {
+                string logFile = Path.Combine(this.options.OutputDirectory, "ignoredExtensions.txt");
+                using (var sw = new StreamWriter(logFile, false, Encoding.UTF8))
+                {
+                    foreach (var ignoredFormat in ignoredFormats)
+                    {
+                        sw.WriteLine(ignoredFormat);
+                    }
                 }
             }
         }

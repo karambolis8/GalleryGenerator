@@ -166,7 +166,17 @@ namespace GalleryGeneratorEngine
             var i = 0;
             foreach (var file in otherFiles)
             {
-                string icon = Path.Combine(icoWithNesting, Configuration.GetFileIcon(file.Extension));
+                string icon = Configuration.GetFileIcon(file.Extension);
+
+                if (icon == null)
+                {
+                    icon = Configuration.GetDefaultIcon();
+                    this.ignoredFormats.Add(file.Extension);
+                }
+
+                icon = Path.Combine(icoWithNesting, icon);
+
+
                 var row = new StringBuilder(Configuration.FilesTableRowTemplate)
                     .Replace(FILE_IMG_LINK, icon.GetBrowserPath())
                     .Replace(FILE_LINK, file.FullName.GetAbsoluteBrowserPath())
@@ -231,11 +241,6 @@ namespace GalleryGeneratorEngine
 
             if(siblings.Any())
             {
-                var lastDirSeparator = nesting.LastIndexOf(Path.DirectorySeparatorChar);
-                string parentNesting = string.Empty;
-                if (nesting.Length > 0)
-                    parentNesting = nesting.Remove(lastDirSeparator >= 0 ? lastDirSeparator : 0);
-
                 foreach (var sibling in siblings)
                 {
                     var itemLink = Path.Combine("..", Path.Combine(sibling.Name, sibling.Name + ".html"));
@@ -246,7 +251,7 @@ namespace GalleryGeneratorEngine
 
                     if (sibling.Name == directoryInfo.Name)
                     {
-                        var submenu = this.GetSubmenu(sibling, parentNesting);
+                        var submenu = this.GetSubmenu(sibling);
                         item
                             .Replace(ACTIVE, " class=\"active\"")
                             .Replace(SUBMENU, submenu);
@@ -283,7 +288,7 @@ namespace GalleryGeneratorEngine
                 .Replace(ITEM_NAME, this.options.GalleryName)
                 .Replace(ITEM_LINK, rootLink);
 
-            var submenu = this.GetSubmenu(directoryInfo, string.Empty);
+            var submenu = this.GetSubmenu(directoryInfo);
             item
                 .Replace(ACTIVE, " class=\"active\"")
                 .Replace(SUBMENU, submenu);
@@ -301,20 +306,18 @@ namespace GalleryGeneratorEngine
             return menu;
         }
 
-        private string GetSubmenu(DirectoryInfo activeSibling, string nesting)
+        private string GetSubmenu(DirectoryInfo activeSibling)
         {
             var children = activeSibling.GetDirectories();
             if (children.Length < 1)
                 return string.Empty;
-
-            string reverseNesting = this.GetReverseNesting(nesting);
 
             var sb = new StringBuilder();
             sb.AppendLine("<ul>");
 
             foreach (var child in children)
             {
-                var itemLink = Path.Combine(reverseNesting, Path.Combine(child.Name, child.Name + ".html"));
+                var itemLink = Path.Combine(child.Name, child.Name + ".html");
                 itemLink = itemLink.GetBrowserPath();
                 var childBuilder = new StringBuilder(Configuration.SiblingMenuTemplate)
                     .Replace(ACTIVE, string.Empty)

@@ -38,12 +38,9 @@ namespace GalleryGenerator
          * jesli kopiowac oryginalne obrazki to trzeba tez kopiowac wszystkie pliki, 
          * nawet te nie listowane, bo wtedy np htm nie beda dzialaly
          * 
-         * poprzegladac obliczanie nestingu i reverseNestingu. moze da sie cos zrefactorowac, moze cos jest niepotrzebne
-         * 
          * automatyczne wypelnianie nazwy galerii z ostatniego folderu wybranej sciezki
          * 
-         * nie dziala menu w su-27/su-33/walkaround/rozne
-         * w smialusie tez niektore obrazki nie dzialaja
+         * w smialusie niektore obrazki nie dzialaja
          *
          * zrobić jakies takie logiki zeby zamiast ifologii z roznymi opcjami wkleic w konstruktorze odpowiednie logiki
          * zeby potem juz nie ifowac. przesledzic kod, moze to ma sens i pomoze np z sciezkami relatywnymi bo teraz jest rzezba

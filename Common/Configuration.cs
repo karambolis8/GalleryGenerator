@@ -115,11 +115,12 @@ namespace Common
         public static string GetFileIcon(string extension)
         {
             extension = extension.Replace(".", string.Empty);
-            string ico = ConfigurationManager.AppSettings["ico-" + extension];
+            return ConfigurationManager.AppSettings["ico-" + extension];
+        }
 
-            if(ico == null)
-                return ConfigurationManager.AppSettings["ico-default"];
-            return ico;
+        public static string GetDefaultIcon()
+        {
+            return ConfigurationManager.AppSettings["ico-default"];
         }
     }
 }
