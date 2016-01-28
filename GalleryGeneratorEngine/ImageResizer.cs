@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Drawing;
+using log4net;
 
 namespace GalleryGeneratorEngine
 {
     static class ImageResizer
     {
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(ImageResizer));
+
         public static void ResizeImage(this FileInfo image, int maxWidth, int maxHeight, string destDir, bool preserveAspectRatio = false)
         {
             try
@@ -43,7 +47,7 @@ namespace GalleryGeneratorEngine
             }
             catch (Exception e)
             {
-                ;
+                Logger.Error("ImageResizer", e);
             }
         }
     }

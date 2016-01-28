@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using Common;
 using System.IO;
+using log4net;
 
 namespace GalleryGeneratorEngine
 {
     public abstract class GalleryGeneratorBase
     {
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(GalleryGeneratorBase));
+
         protected UserOptions options;
 
         protected IList<string> ignoredFormats;
@@ -63,13 +66,13 @@ namespace GalleryGeneratorEngine
                     subDirs = Directory.GetDirectories(currentDir).OrderBy(d => d).ToArray();
                 }
                 catch (UnauthorizedAccessException e)
-                {                    
-                    Console.WriteLine(e.Message);
+                {
+                    Logger.Error("GalleryGeneratorBase", e);
                     continue;
                 }
                 catch (DirectoryNotFoundException e)
                 {
-                    Console.WriteLine(e.Message);
+                    Logger.Error("GalleryGeneratorBase", e);
                     continue;
                 }
 
@@ -83,26 +86,26 @@ namespace GalleryGeneratorEngine
                 }
                 catch (UnauthorizedAccessException e)
                 {
-                    Console.WriteLine(e.Message);
+                    Logger.Error("GalleryGeneratorBase", e);
                     //continue;
                 }
                 catch (DirectoryNotFoundException e)
                 {
-                    Console.WriteLine(e.Message);
+                    Logger.Error("GalleryGeneratorBase", e);
                     //continue;
                 }
             }
 
             if (this.ignoredFormats.Any())
             {
-                string logFile = Path.Combine(this.options.OutputDirectory, "ignoredExtensions.txt");
-                using (var sw = new StreamWriter(logFile, false, Encoding.UTF8))
+                foreach (var ignoredFormat in ignoredFormats)
                 {
-                    foreach (var ignoredFormat in ignoredFormats)
-                    {
-                        sw.WriteLine(ignoredFormat);
-                    }
+                    Logger.Info("Ignored format: " + ignoredFormat);
                 }
+            }
+            else
+            {
+                Logger.Info("No ignored formats");
             }
         }
 

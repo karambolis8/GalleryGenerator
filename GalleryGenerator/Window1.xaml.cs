@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Windows;
 using Common;
+using log4net;
 using Configuration = Common.Configuration;
 
 namespace GalleryGenerator
@@ -11,6 +12,8 @@ namespace GalleryGenerator
     /// </summary>
     public partial class Window1 : Window
     {
+        private static readonly ILog Logger = LogManager.GetLogger(typeof (Window1));
+
         public Window1()
         {
             InitializeComponent();
@@ -36,7 +39,7 @@ namespace GalleryGenerator
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Logger.Error("General exception", e);
             }
         }
     }
