@@ -4,6 +4,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Drawing;
+using System.Text;
 using log4net;
 
 namespace GalleryGeneratorEngine
@@ -47,7 +48,10 @@ namespace GalleryGeneratorEngine
             }
             catch (Exception e)
             {
-                Logger.Error("ImageResizer", e);
+                var sb = new StringBuilder();
+                sb.AppendLine("File resize error: ");
+                sb.Append(image.FullName);
+                Logger.Error(sb.ToString(), e);
             }
         }
     }

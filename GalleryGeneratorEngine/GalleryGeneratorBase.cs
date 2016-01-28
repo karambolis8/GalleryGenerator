@@ -14,13 +14,13 @@ namespace GalleryGeneratorEngine
 
         protected UserOptions options;
 
-        protected IList<string> ignoredFormats;
+        protected IList<string> unknownFormats;
 
         protected GalleryGeneratorBase(UserOptions options)
         {
             this.options = options;
 
-            this.ignoredFormats = new List<string>();
+            this.unknownFormats = new List<string>();
         }
 
         public event Action<int> ReportProgressEvent;
@@ -35,6 +35,8 @@ namespace GalleryGeneratorEngine
 
         public void StartTask()
         {
+            Logger.Info("Application started");
+
             if (!Directory.Exists(this.options.OutputDirectory))
                 Directory.CreateDirectory(this.options.OutputDirectory);
 
@@ -43,10 +45,14 @@ namespace GalleryGeneratorEngine
             AssureRelativeDirectoryExists(Configuration.CssDir);
             AssureRelativeDirectoryExists(Configuration.JsDir);
             AssureRelativeDirectoryExists(Configuration.IcoDir);
+            
+            Logger.Info("Created output directories");
 
             CopyGalleryFiles("css", Configuration.CssDir);
             CopyGalleryFiles("js", Configuration.JsDir);
             CopyGalleryFiles("ico", Configuration.IcoDir);
+
+            Logger.Info("Copied Gallerific files");
 
             var dirs = new Stack<string>(20);
 
@@ -55,9 +61,13 @@ namespace GalleryGeneratorEngine
 
             dirs.Push(options.InputDirectory);
 
+            Logger.Info("Started processing directory tree");
+
             while(dirs.Any())
             {
                 string currentDir = dirs.Pop();
+                
+                Logger.Info("Current directory: " + currentDir);
 
                 string[] subDirs;
 
@@ -96,17 +106,19 @@ namespace GalleryGeneratorEngine
                 }
             }
 
-            if (this.ignoredFormats.Any())
+            if (this.unknownFormats.Any())
             {
-                foreach (var ignoredFormat in ignoredFormats)
+                foreach (var unknownFormat in unknownFormats)
                 {
-                    Logger.Info("Ignored format: " + ignoredFormat);
+                    Logger.Info("Ignored format: " + unknownFormat);
                 }
             }
             else
             {
-                Logger.Info("No ignored formats");
+                Logger.Info("No unknown formats");
             }
+
+            Logger.Info("Application pending");
         }
 
         protected void AssureRelativeDirectoryExists(string relativePath)

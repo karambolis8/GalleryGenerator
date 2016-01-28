@@ -171,7 +171,7 @@ namespace GalleryGeneratorEngine
                 if (icon == null)
                 {
                     icon = Configuration.GetDefaultIcon();
-                    this.ignoredFormats.Add(file.Extension);
+                    this.unknownFormats.Add(file.Extension);
                 }
 
                 icon = Path.Combine(icoWithNesting, icon);
