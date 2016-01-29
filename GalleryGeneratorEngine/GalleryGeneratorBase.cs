@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using Common;
 using System.IO;
@@ -10,17 +11,21 @@ namespace GalleryGeneratorEngine
 {
     public abstract class GalleryGeneratorBase
     {
-        private static readonly ILog Logger = LogManager.GetLogger(typeof(GalleryGeneratorBase));
+        protected static readonly ILog Logger = LogManager.GetLogger(typeof(GalleryGeneratorBase));
 
         protected UserOptions options;
 
-        protected IList<string> unknownFormats;
+        protected IDictionary<string, int> ignoredFormats;
+
+        protected IList<string> failedFiles;
 
         protected GalleryGeneratorBase(UserOptions options)
         {
             this.options = options;
 
-            this.unknownFormats = new List<string>();
+            this.ignoredFormats = new Dictionary<string, int>();
+
+            this.failedFiles = new List<string>();
         }
 
         public event Action<int> ReportProgressEvent;
@@ -106,18 +111,8 @@ namespace GalleryGeneratorEngine
                 }
             }
 
-            if (this.unknownFormats.Any())
-            {
-                foreach (var unknownFormat in unknownFormats)
-                {
-                    Logger.Info("Ignored format: " + unknownFormat);
-                }
-            }
-            else
-            {
-                Logger.Info("No unknown formats");
-            }
-
+            this.WriteToLogList(this.ignoredFormats.Select(p => p.Key).ToList(), "Unknown formats:");
+            this.WriteToLogList(this.failedFiles, "Failed files:");
             Logger.Info("Application pending");
         }
 
@@ -127,6 +122,22 @@ namespace GalleryGeneratorEngine
 
             if (!Directory.Exists(dir))
                 Directory.CreateDirectory(dir);
+        }
+
+        private void WriteToLogList(IList<string> list, string title)
+        {
+            if (list.Any())
+            {
+                var sb = new StringBuilder();
+                sb.AppendLine(title);
+                foreach (var listItem in list)
+                {
+                    sb.Append("\t");
+                    sb.AppendLine(listItem);
+                }
+                sb.Remove(sb.Length - 1, 1);
+                Logger.Info(sb);
+            }
         }
 
         private void CopyGalleryFiles(string inputDir, string outputDir)

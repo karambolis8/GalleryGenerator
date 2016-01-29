@@ -26,8 +26,6 @@ namespace GalleryGenerator
          * brakuje zliczania progressu i statystyk
          * ma byc progressbar - kazdy plik to jedna jednostka, foldery sie nie licza, czyli najpierw odpalam "obliczanie czasu"
          * moze byc listowanie co jest obecnie obrabiane - mozna wymyslic logi jakies  
-         * podczas generowania zbierac statystyki zeby potem wyswietlnic podsumowanie 
-         * i moze np liste zignorowanych formatow, liste plikow ktore rzucily bledem
          * 
          * do ustawień w aplikacji zrobić dymki z tłumaczeniami
          * 
@@ -45,6 +43,13 @@ namespace GalleryGenerator
          *
          * zrobić jakies takie logiki zeby zamiast ifologii z roznymi opcjami wkleic w konstruktorze odpowiednie logiki
          * zeby potem juz nie ifowac. przesledzic kod, moze to ma sens i pomoze np z sciezkami relatywnymi bo teraz jest rzezba
+         * 
+         * 
+         * 
+         * 
+         * 
+         * 
+         * zamienic unknown na Ignored, poprawic zeby sie to logowalo i zrefactorowac GalleryGeneratorEngine#61 - nie listuje tu plikow ktorych nie znam tak na prawde wiec one nie beda sie logowaly
          * 
         */
     }

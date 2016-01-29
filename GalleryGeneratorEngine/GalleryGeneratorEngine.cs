@@ -62,6 +62,20 @@ namespace GalleryGeneratorEngine
                 .Where(f => Configuration.FileExtensions.Contains(f.Extension.ToLower()))
                 .ToArray();
 
+            var ignoredFormats = files
+                .Select(f => f.Extension.ToLower())
+                .Where(f =>
+                        !Configuration.FileExtensions.Contains(f) &&
+                        !Configuration.ImageExtensions.Contains(f));
+
+            foreach (var ext in ignoredFormats)
+            {
+                if (this.ignoredFormats.ContainsKey(ext))
+                    this.ignoredFormats[ext] = this.ignoredFormats[ext] + 1;
+                else
+                    this.ignoredFormats.Add(ext, 1);
+            }
+
             string nesting = this.GetNesting(directoryInfo);
 
             string mediumDirWithNesting = Path.Combine(this.options.OutputDirectory, Path.Combine(Configuration.MediumDir, nesting));
@@ -111,8 +125,21 @@ namespace GalleryGeneratorEngine
 
             foreach (FileInfo image in images)
             {
-                image.ResizeImage(this.options.MediumX, this.options.MediumY, mediumWithNesting, this.options.PreserveMediumAspectRatio);
-                image.ResizeImage(this.options.ThumbX, this.options.ThumbY, thumbWithNesting);
+                try
+                {
+                    image.ResizeImage(this.options.MediumX, this.options.MediumY, mediumWithNesting,
+                        this.options.PreserveMediumAspectRatio);
+                    image.ResizeImage(this.options.ThumbX, this.options.ThumbY, thumbWithNesting);
+                }
+                catch (Exception e)
+                {
+                    var sb = new StringBuilder();
+                    sb.AppendLine("File resize error: ");
+                    sb.Append(image.FullName);
+                    Logger.Error(sb.ToString(), e);
+
+                    this.failedFiles.Add(image.FullName);
+                }
 
                 if (this.options.CopyOriginalFiles)
                 {
@@ -168,10 +195,9 @@ namespace GalleryGeneratorEngine
             {
                 string icon = Configuration.GetFileIcon(file.Extension);
 
-                if (icon == null)
+                if (string.IsNullOrEmpty(icon))
                 {
                     icon = Configuration.GetDefaultIcon();
-                    this.unknownFormats.Add(file.Extension);
                 }
 
                 icon = Path.Combine(icoWithNesting, icon);
