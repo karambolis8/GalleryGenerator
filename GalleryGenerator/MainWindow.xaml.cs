@@ -12,9 +12,6 @@ using MessageBoxOptions = System.Windows.MessageBoxOptions;
 
 namespace GalleryGenerator
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private static readonly ILog Logger = LogManager.GetLogger(typeof (MainWindow));
