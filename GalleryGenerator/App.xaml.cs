@@ -29,15 +29,13 @@ namespace GalleryGenerator
          * 
          * do ustawień w aplikacji zrobić dymki z tłumaczeniami
          * 
-         * zrobic submenu na akkordionie i z ikonka jakiegos plusika czy cos
-         * 
          * zrobic tryb dogenerowywania podfolderow (z nadpisywaniem plikow lub nie) 
          * i tryb generowania calosci (wtedy bazowy plik ma inna nazwe i nie ma siblings w menu)
          * 
          * jesli kopiowac oryginalne obrazki to trzeba tez kopiowac wszystkie pliki, 
          * nawet te nie listowane, bo wtedy np htm nie beda dzialaly
          * 
-         * automatyczne wypelnianie nazwy galerii z ostatniego folderu wybranej sciezki
+         * automatyczne wypelnianie nazwy galerii z ostatniego folderu wybranej sciezki - w interfejsie. ale pod warunkiem ze nazwa galerii jest pusta
          * 
          * zrobić jakies takie logiki zeby zamiast ifologii z roznymi opcjami wkleic w konstruktorze odpowiednie logiki
          * zeby potem juz nie ifowac. przesledzic kod, moze to ma sens i pomoze np z sciezkami relatywnymi bo teraz jest rzezba
