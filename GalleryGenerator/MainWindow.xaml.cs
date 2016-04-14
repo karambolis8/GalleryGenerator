@@ -34,6 +34,7 @@ namespace GalleryGenerator
             {
                 worker.DoWork += DoWork;
                 worker.RunWorkerCompleted += WorkerCompleted;
+                worker.WorkerSupportsCancellation = true;
                 worker.ProgressChanged += ProgressChanged;
                 worker.WorkerReportsProgress = true;
                 worker.RunWorkerAsync();
@@ -46,13 +47,17 @@ namespace GalleryGenerator
 
         private void ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            //WorkerProgressBar. e.ProgressPercentage
+            WorkerProgressBar.Value = e.ProgressPercentage;
         }
 
         private void WorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            //occurs when finished work, error occurred, or was canceled
+            // https://msdn.microsoft.com/pl-pl/library/system.componentmodel.backgroundworker.runworkercompleted(v=vs.110).aspx
             StopButton.IsEnabled = false;
             RunButton.IsEnabled = true;
+            //reset progress bar
+            //set proper label and colour and message
         }
 
         private void DoWork(object sender, DoWorkEventArgs doWorkEventArgs)
@@ -73,11 +78,14 @@ namespace GalleryGenerator
                 ThumbY = Configuration.DefaultThumbHeight
             };
 
+            // reporting progress bar: http://www.wpf-tutorial.com/misc-controls/the-progressbar-control/
+            //first step is indetermine, then we can report progress by percentage
+            //also we can display some text in progress bar
             var generator = new GalleryGeneratorEngine.GalleryGeneratorEngine(options);
 
             try
             {
-                generator.StartTask();
+                generator.StartTask(); // create events to subscribe to in generator and in window to communicate both ways (first way reporting finished subtasks and reporting progress, second way handling cancelation)
             }
             catch (Exception e)
             {
