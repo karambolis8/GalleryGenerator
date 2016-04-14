@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Configuration;
 using System.IO;
 using System.Windows;
@@ -18,6 +19,8 @@ namespace GalleryGenerator
     {
         private static readonly ILog Logger = LogManager.GetLogger(typeof (MainWindow));
 
+        private readonly BackgroundWorker worker = new BackgroundWorker();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,43 +32,56 @@ namespace GalleryGenerator
         {
             if (ValidateInput())
             {
-                StopButton.IsEnabled = true;
-                RunButton.IsEnabled = false;
-
-                var options = new UserOptions()
-                {
-                    GalleryName = GalleryNameTextBox.Text,
-                    InputDirectory = InputDirTextBox.Text,
-                    OutputDirectory = OutputDirTextBox.Text,
-                    PreserveMediumAspectRatio = Configuration.DefaultPreserveMediumAspectRatio,
-                    CopyOriginalFiles = Configuration.DefaultCopyOriginalFiles,
-                    MediumX = Configuration.DefaultMediumWidth,
-                    MediumY = Configuration.DefaultMediumHeight,
-                    ThumbX = Configuration.DefaultThumbWidth,
-                    ThumbY = Configuration.DefaultThumbHeight
-                };
-
-                var generator = new GalleryGeneratorEngine.GalleryGeneratorEngine(options);
-
-                try
-                {
-                    generator.StartTask();
-                }
-                catch (Exception e)
-                {
-                    Logger.Error("General exception", e);
-                }
-                finally
-                {
-                    StopButton.IsEnabled = false;
-                    RunButton.IsEnabled = true;
-
-                    MessageBox.Show("Gallery generated!", "Gallery generation", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
-                }
+                worker.DoWork += DoWork;
+                worker.RunWorkerCompleted += WorkerCompleted;
+                worker.ProgressChanged += ProgressChanged;
+                worker.WorkerReportsProgress = true;
+                worker.RunWorkerAsync();
             }
             else
             {
                 MessageBox.Show("You have to fill all fields.", "Input validation", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
+            }
+        }
+
+        private void ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            //WorkerProgressBar. e.ProgressPercentage
+        }
+
+        private void WorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            StopButton.IsEnabled = false;
+            RunButton.IsEnabled = true;
+        }
+
+        private void DoWork(object sender, DoWorkEventArgs doWorkEventArgs)
+        {
+            StopButton.IsEnabled = true;
+            RunButton.IsEnabled = false;
+
+            var options = new UserOptions()
+            {
+                GalleryName = GalleryNameTextBox.Text,
+                InputDirectory = InputDirTextBox.Text,
+                OutputDirectory = OutputDirTextBox.Text,
+                PreserveMediumAspectRatio = Configuration.DefaultPreserveMediumAspectRatio,
+                CopyOriginalFiles = Configuration.DefaultCopyOriginalFiles,
+                MediumX = Configuration.DefaultMediumWidth,
+                MediumY = Configuration.DefaultMediumHeight,
+                ThumbX = Configuration.DefaultThumbWidth,
+                ThumbY = Configuration.DefaultThumbHeight
+            };
+
+            var generator = new GalleryGeneratorEngine.GalleryGeneratorEngine(options);
+
+            try
+            {
+                generator.StartTask();
+            }
+            catch (Exception e)
+            {
+                Logger.Error("General exception", e);
             }
         }
 
@@ -108,6 +124,8 @@ namespace GalleryGenerator
 
         private void StopButton_OnClick(object sender, RoutedEventArgs e)
         {
+            this.worker.CancelAsync();
+            this.StopButton.IsEnabled = false;
         }
     }
 }
