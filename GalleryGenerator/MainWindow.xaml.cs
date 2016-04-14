@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using Common;
 using log4net;
 using Configuration = Common.Configuration;
+using MessageBox = System.Windows.MessageBox;
+using MessageBoxOptions = System.Windows.MessageBoxOptions;
 
 namespace GalleryGenerator
 {
@@ -19,17 +21,22 @@ namespace GalleryGenerator
         public MainWindow()
         {
             InitializeComponent();
+
+            this.Title = string.Format("{0} v{1}", this.Title, ConfigurationManager.AppSettings["appVersion"]);
         }
 
         private void RunButton_OnClick(object sender, RoutedEventArgs _)
         {
             if (ValidateInput())
             {
+                StopButton.IsEnabled = true;
+                RunButton.IsEnabled = false;
+
                 var options = new UserOptions()
                 {
-                    GalleryName = ConfigurationManager.AppSettings["galleryName"],
-                    InputDirectory = ConfigurationManager.AppSettings["inputDirectory"],
-                    OutputDirectory = ConfigurationManager.AppSettings["outputDirectory"],
+                    GalleryName = GalleryNameTextBox.Text,
+                    InputDirectory = InputDirTextBox.Text,
+                    OutputDirectory = OutputDirTextBox.Text,
                     PreserveMediumAspectRatio = Configuration.DefaultPreserveMediumAspectRatio,
                     CopyOriginalFiles = Configuration.DefaultCopyOriginalFiles,
                     MediumX = Configuration.DefaultMediumWidth,
@@ -48,6 +55,17 @@ namespace GalleryGenerator
                 {
                     Logger.Error("General exception", e);
                 }
+                finally
+                {
+                    StopButton.IsEnabled = false;
+                    RunButton.IsEnabled = true;
+
+                    MessageBox.Show("Gallery generated!", "Gallery generation", MessageBoxButton.OK, MessageBoxImage.Information, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
+                }
+            }
+            else
+            {
+                MessageBox.Show("You have to fill all fields.", "Input validation", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
             }
         }
 
@@ -74,6 +92,22 @@ namespace GalleryGenerator
                     GalleryNameTextBox.Text = di.Name;
                 }
             }
+        }
+
+        private void BrowseOutputButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new FolderBrowserDialog();
+            DialogResult result = dialog.ShowDialog();
+
+            if (result == System.Windows.Forms.DialogResult.OK || result == System.Windows.Forms.DialogResult.Yes)
+            {
+                string outputDir = dialog.SelectedPath;
+                OutputDirTextBox.Text = outputDir;
+            }
+        }
+
+        private void StopButton_OnClick(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

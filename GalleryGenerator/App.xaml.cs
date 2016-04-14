@@ -16,7 +16,9 @@ namespace GalleryGenerator
         //i ma property ktore sam sprawdza i ktore mozna ustawic na cancel czy cos - doczytac jakie zdazenia moga sie dziac
         //i w ten sposob bedzie loose coupled a w aplikacji okienkowej bedzie mozna to opakowac i podlaczyc
 
-         * 
+         *
+         * zamienić message boxy na jakiś kolorowy label na apce. 
+         *
          * po skonczeniu upublicznic aplikacje
          * 
          * trzeba tez dac mozliwosc zapisywania ustawien uzytkownika (formaty, szerokosci)
