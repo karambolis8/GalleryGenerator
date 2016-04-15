@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Forms;
 using Common;
+using GalleryGenerator.Resources.Translations;
 using GalleryGeneratorEngine;
 using log4net;
 using Configuration = Common.Configuration;
@@ -32,12 +33,13 @@ namespace GalleryGenerator
             {
                 StopButton.IsEnabled = true;
                 RunButton.IsEnabled = false;
+                EnableInputs(false);
 
                 var options = GetUserOptionsFromUI();
-
+                
                 if (EstimateWorkTimeCheckBox.IsChecked.HasValue && EstimateWorkTimeCheckBox.IsChecked.Value)
                 {
-                    ProgressTextBlock.Text = "Estmating work time...";
+                    ProgressTextBlock.Text = Translations.EstimatingWorkTime;
                     WorkerProgressBar.IsIndeterminate = true;
                     worker.DoWork += DoCountingWork;
                     worker.RunWorkerCompleted += CountingWorkCompleted;
@@ -46,13 +48,23 @@ namespace GalleryGenerator
                 }
                 else
                 {
-                    SetAndRunMaoinJobInWorker(options, false);
+                    SetAndRunMainJobInWorker(options, false);
                 }
             }
             else
             {
                 MessageBox.Show("You have to fill all fields.", "Input validation", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
             }
+        }
+
+        private void EnableInputs(bool enable)
+        {
+            GalleryNameTextBox.IsEnabled = enable;
+            InputDirTextBox.IsEnabled = enable;
+            BrowseInputButton.IsEnabled = enable;
+            OutputDirTextBox.IsEnabled = enable;
+            BrowseOutputButton.IsEnabled = enable;
+            EstimateWorkTimeCheckBox.IsEnabled = enable;
         }
 
         private UserOptions GetUserOptionsFromUI()
@@ -71,7 +83,7 @@ namespace GalleryGenerator
             };
         }
 
-        private void SetAndRunMaoinJobInWorker(UserOptions options, bool workCounted)
+        private void SetAndRunMainJobInWorker(UserOptions options, bool workCounted)
         {
             ProgressTextBlock.Text = string.Empty;
             worker.DoWork += DoWork;
@@ -98,7 +110,7 @@ namespace GalleryGenerator
             
             UserOptions options = GetUserOptionsFromUI();
             options.WorkSize = (long)e.Result;
-            SetAndRunMaoinJobInWorker(options, options.WorkSize > 0);
+            SetAndRunMainJobInWorker(options, options.WorkSize > 0);
         }
 
         private void DoWork(object sender, DoWorkEventArgs doWorkEventArgs)
@@ -132,11 +144,13 @@ namespace GalleryGenerator
             RunButton.IsEnabled = true;
             WorkerProgressBar.IsIndeterminate = false;
             WorkerProgressBar.Value = 100;
-            ProgressTextBlock.Text = "Completed!";
+            ProgressTextBlock.Text = Translations.Completed;
             
             worker.DoWork -= DoWork;
             worker.RunWorkerCompleted -= WorkerCompleted;
             worker.ProgressChanged -= ProgressChanged;
+
+            EnableInputs(true);
         }
 
         private void ProgressChanged(object sender, ProgressChangedEventArgs e)
