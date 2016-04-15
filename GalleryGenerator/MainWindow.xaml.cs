@@ -9,8 +9,6 @@ using GalleryGenerator.Resources.Translations;
 using GalleryGeneratorEngine;
 using log4net;
 using Configuration = Common.Configuration;
-using MessageBox = System.Windows.MessageBox;
-using MessageBoxOptions = System.Windows.MessageBoxOptions;
 
 namespace GalleryGenerator
 {
@@ -53,7 +51,8 @@ namespace GalleryGenerator
             }
             else
             {
-                MessageBox.Show("You have to fill all fields.", "Input validation", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
+                //replace with control highlighting
+                System.Windows.MessageBox.Show("You have to fill all fields.", "Input validation", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.OK, System.Windows.MessageBoxOptions.DefaultDesktopOnly);
             }
         }
 
