@@ -62,13 +62,13 @@ namespace GalleryGeneratorEngine
                 .Where(f => Configuration.FileExtensions.Contains(f.Extension.ToLower()))
                 .ToArray();
 
-            var ignoredFormats = files
+            var ignoredExts = files
                 .Select(f => f.Extension.ToLower())
                 .Where(f =>
                         !Configuration.FileExtensions.Contains(f) &&
                         !Configuration.ImageExtensions.Contains(f));
 
-            foreach (var ext in ignoredFormats)
+            foreach (var ext in ignoredExts)
             {
                 if (this.ignoredFormats.ContainsKey(ext))
                     this.ignoredFormats[ext] = this.ignoredFormats[ext] + 1;
