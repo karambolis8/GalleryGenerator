@@ -92,5 +92,11 @@ namespace Common
             get;
             set;
         }
+
+        public long WorkSize
+        {
+            get;
+            set;
+        }
     }
 }

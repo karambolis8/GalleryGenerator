@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Forms;
 using Common;
+using GalleryGeneratorEngine;
 using log4net;
 using Configuration = Common.Configuration;
 using MessageBox = System.Windows.MessageBox;
@@ -29,12 +30,24 @@ namespace GalleryGenerator
         {
             if (ValidateInput())
             {
-                worker.DoWork += DoWork;
-                worker.RunWorkerCompleted += WorkerCompleted;
-                worker.WorkerSupportsCancellation = true;
-                worker.ProgressChanged += ProgressChanged;
-                worker.WorkerReportsProgress = true;
-                worker.RunWorkerAsync();
+                StopButton.IsEnabled = true;
+                RunButton.IsEnabled = false;
+
+                var options = GetUserOptionsFromUI();
+
+                if (EstimateWorkTimeCheckBox.IsChecked.HasValue && EstimateWorkTimeCheckBox.IsChecked.Value)
+                {
+                    ProgressTextBlock.Text = "Estmating work time...";
+                    WorkerProgressBar.IsIndeterminate = true;
+                    worker.DoWork += DoCountingWork;
+                    worker.RunWorkerCompleted += CountingWorkCompleted;
+                    worker.WorkerReportsProgress = false;
+                    worker.RunWorkerAsync(options);
+                }
+                else
+                {
+                    SetAndRunMaoinJobInWorker(options, false);
+                }
             }
             else
             {
@@ -42,27 +55,9 @@ namespace GalleryGenerator
             }
         }
 
-        private void ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private UserOptions GetUserOptionsFromUI()
         {
-            WorkerProgressBar.Value = e.ProgressPercentage;
-        }
-
-        private void WorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            //occurs when finished work, error occurred, or was canceled
-            // https://msdn.microsoft.com/pl-pl/library/system.componentmodel.backgroundworker.runworkercompleted(v=vs.110).aspx
-            StopButton.IsEnabled = false;
-            RunButton.IsEnabled = true;
-            //reset progress bar
-            //set proper label and colour and message
-        }
-
-        private void DoWork(object sender, DoWorkEventArgs doWorkEventArgs)
-        {
-            StopButton.IsEnabled = true;
-            RunButton.IsEnabled = false;
-
-            var options = new UserOptions()
+            return new UserOptions()
             {
                 GalleryName = GalleryNameTextBox.Text,
                 InputDirectory = InputDirTextBox.Text,
@@ -74,20 +69,82 @@ namespace GalleryGenerator
                 ThumbX = Configuration.DefaultThumbWidth,
                 ThumbY = Configuration.DefaultThumbHeight
             };
+        }
 
-            // reporting progress bar: http://www.wpf-tutorial.com/misc-controls/the-progressbar-control/
-            //first step is indetermine, then we can report progress by percentage
-            //also we can display some text in progress bar
+        private void SetAndRunMaoinJobInWorker(UserOptions options, bool workCounted)
+        {
+            ProgressTextBlock.Text = string.Empty;
+            worker.DoWork += DoWork;
+            worker.RunWorkerCompleted += WorkerCompleted;
+            worker.WorkerSupportsCancellation = true;
+            worker.WorkerReportsProgress = true;
+            worker.ProgressChanged += ProgressChanged;
+            WorkerProgressBar.IsIndeterminate = !workCounted;
+            worker.RunWorkerAsync(options);
+        }
+
+        private void DoCountingWork(object sender, DoWorkEventArgs doWorkEventArgs)
+        {
+            var options = (UserOptions)doWorkEventArgs.Argument;
+            var counter = new ImageCounter(options);
+            doWorkEventArgs.Result = counter.CountImages();
+        }
+
+        private void CountingWorkCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            WorkerProgressBar.IsIndeterminate = false;
+            worker.DoWork -= DoCountingWork;
+            worker.RunWorkerCompleted -= CountingWorkCompleted;
+            
+            UserOptions options = GetUserOptionsFromUI();
+            options.WorkSize = (long)e.Result;
+            SetAndRunMaoinJobInWorker(options, options.WorkSize > 0);
+        }
+
+        private void DoWork(object sender, DoWorkEventArgs doWorkEventArgs)
+        {
+            var options = (UserOptions)doWorkEventArgs.Argument;
+            
             var generator = new GalleryGeneratorEngine.GalleryGeneratorEngine(options);
+
+            var senderWorker = (BackgroundWorker) sender;
+            long counter = 0;
+            generator.ProcessingFileEvent += file =>
+            {
+                var p = (double)counter/(double)options.WorkSize;
+                senderWorker.ReportProgress((int)(p*100), file);
+                counter++;
+            };
 
             try
             {
-                generator.StartTask(); // create events to subscribe to in generator and in window to communicate both ways (first way reporting finished subtasks and reporting progress, second way handling cancelation)
+                generator.StartTask();
             }
             catch (Exception e)
             {
                 Logger.Error("General exception", e);
             }
+        }
+
+        private void WorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            StopButton.IsEnabled = false;
+            RunButton.IsEnabled = true;
+            WorkerProgressBar.IsIndeterminate = false;
+            WorkerProgressBar.Value = 100;
+            ProgressTextBlock.Text = "Completed!";
+            
+            worker.DoWork -= DoWork;
+            worker.RunWorkerCompleted -= WorkerCompleted;
+            worker.ProgressChanged -= ProgressChanged;
+        }
+
+        private void ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            WorkerProgressBar.Value = e.ProgressPercentage;
+            var fi = e.UserState as FileInfo;
+            if (fi != null)
+                ProgressTextBlock.Text = fi.Name;
         }
 
         private bool ValidateInput()
@@ -129,7 +186,8 @@ namespace GalleryGenerator
 
         private void StopButton_OnClick(object sender, RoutedEventArgs e)
         {
-            this.worker.CancelAsync();
+            if(this.worker.WorkerSupportsCancellation)
+                this.worker.CancelAsync();
             this.StopButton.IsEnabled = false;
         }
     }

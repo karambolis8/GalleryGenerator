@@ -52,6 +52,8 @@ namespace GalleryGeneratorEngine
 
         protected override void ProcessFiles(DirectoryInfo directoryInfo)
         {
+            ReportProcessingDirectory(directoryInfo);
+
             var files = directoryInfo.GetFiles();
 
             var images = files
@@ -125,6 +127,8 @@ namespace GalleryGeneratorEngine
 
             foreach (FileInfo image in images)
             {
+                ReportProcessingFile(image);
+
                 try
                 {
                     image.ResizeImage(this.options.MediumX, this.options.MediumY, mediumWithNesting,

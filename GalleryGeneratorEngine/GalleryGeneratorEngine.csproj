@@ -96,6 +96,7 @@
   <ItemGroup>
     <Compile Include="GalleryGeneratorBase.cs" />
     <Compile Include="GalleryGeneratorEngine.cs" />
+    <Compile Include="ImageCounter.cs" />
     <Compile Include="ImageResizer.cs" />
     <Compile Include="PathUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

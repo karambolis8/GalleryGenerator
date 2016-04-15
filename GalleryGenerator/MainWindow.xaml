@@ -3,8 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Gallery Generator" 
     Icon="Resources/MainIcon.ico"
-    Height="120" 
-    Width="400" 
+    Height="139" 
+    Width="396" 
     ResizeMode="NoResize">
     <Grid>
         <StackPanel x:Name="MainStack">
@@ -12,7 +12,7 @@
                 <TextBlock x:Name="GalleryNameLabel"  Text="Gallery Name" Width="100"/>
                 <TextBox x:Name="GalleryNameTextBox" HorizontalAlignment="Left" Width="290" />
             </StackPanel>
-            
+
             <StackPanel x:Name="InputDirStack" Orientation="Horizontal">
                 <TextBlock x:Name="InputDirLabel" Text="Input directory" Width="100"/>
                 <TextBox x:Name="InputDirTextBox" HorizontalAlignment="Left" Width="215" />
@@ -24,13 +24,20 @@
                 <TextBox x:Name="OutputDirTextBox" HorizontalAlignment="Left" Width="215" />
                 <Button x:Name="BrowseOutputButton" Content="Browse" HorizontalAlignment="Right" Width="75" Click="BrowseOutputButton_Click"/>
             </StackPanel>
-            
-            <StackPanel x:Name="WorkerStackPanel" Orientation="Horizontal">
-                <TextBlock x:Name="ProgressLabel" Width="100" Text="Progress" />
-                <ProgressBar x:Name="WorkerProgressBar" Width="140"/>
-                <Button x:Name="RunButton" Content="Run" Width="75" HorizontalAlignment="Right" Click="RunButton_OnClick" />
+
+            <Grid x:Name="WorkerButtonsGrid">
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="RunButton" Content="Run" Width="75" HorizontalAlignment="Left" Click="RunButton_OnClick" />
+                    <CheckBox x:Name="EstimateWorkTimeCheckBox" HorizontalAlignment="Left" IsChecked="True">Estimate work time</CheckBox>
+                </StackPanel>
                 <Button x:Name="StopButton" Content="Stop" Width="75" HorizontalAlignment="Right" IsEnabled="False" Click="StopButton_OnClick" />
-            </StackPanel>
+            </Grid>
+
+            <Grid>
+                <ProgressBar x:Name="WorkerProgressBar" Height="21" />
+                <TextBlock x:Name="ProgressTextBlock" HorizontalAlignment="Center"/>
+            </Grid>
+
         </StackPanel>
     </Grid>
 </Window>
