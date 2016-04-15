@@ -33,7 +33,8 @@ namespace GalleryGeneratorEngine
 
         public void StartTask()
         {
-            Logger.Info("Application started");
+            Logger.Info("Generating gallery started");
+            var start = DateTime.Now;
 
             if (!Directory.Exists(this.options.OutputDirectory))
                 Directory.CreateDirectory(this.options.OutputDirectory);
@@ -106,7 +107,8 @@ namespace GalleryGeneratorEngine
 
             this.WriteToLogList(this.ignoredFormats.Select(p => p.Key).ToList(), "Unknown formats:");
             this.WriteToLogList(this.failedFiles, "Failed files:");
-            Logger.Info("Application pending");
+            var end = DateTime.Now;
+            Logger.Info(string.Format("Gallery generated in {0}", end - start));
         }
 
         protected void AssureRelativeDirectoryExists(string relativePath)

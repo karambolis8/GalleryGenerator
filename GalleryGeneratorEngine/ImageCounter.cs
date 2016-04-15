@@ -20,15 +20,10 @@ namespace GalleryGeneratorEngine
             this.options = options;
         }
 
-        private int ProcessFiles(DirectoryInfo directoryInfo)
-        {
-            var files = directoryInfo.GetFiles();
-            return files.Count(f => Configuration.ImageExtensions.Contains(f.Extension.ToLower()));
-        }
-
         public long CountImages()
         {
             Logger.Info("Counting images started");
+            var start = DateTime.Now;
 
             long filesCount = 0;
             var dirs = new Stack<string>(20);
@@ -42,7 +37,7 @@ namespace GalleryGeneratorEngine
             {
                 string currentDir = dirs.Pop();
 
-                Logger.Info("Current directory: " + currentDir);
+                Logger.Info("Counting directory: " + currentDir);
 
                 string[] subDirs;
 
@@ -81,7 +76,17 @@ namespace GalleryGeneratorEngine
                 }
             }
 
+            var end = DateTime.Now;
+
+            Logger.Info(string.Format("Found {0} image files", filesCount));
+            Logger.Info(string.Format("Counting images comleted in {0}", end - start));
+
             return filesCount;
+        }
+        private int ProcessFiles(DirectoryInfo directoryInfo)
+        {
+            var files = directoryInfo.GetFiles();
+            return files.Count(f => Configuration.ImageExtensions.Contains(f.Extension.ToLower()));
         }
     }
 }
