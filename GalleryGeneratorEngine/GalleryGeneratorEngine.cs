@@ -52,8 +52,6 @@ namespace GalleryGeneratorEngine
 
         protected override void ProcessFiles(DirectoryInfo directoryInfo)
         {
-            ReportProcessingDirectory(directoryInfo);
-
             var files = directoryInfo.GetFiles();
 
             var images = files

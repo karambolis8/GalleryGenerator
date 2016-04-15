@@ -144,7 +144,7 @@ namespace GalleryGenerator
             WorkerProgressBar.Value = e.ProgressPercentage;
             var fi = e.UserState as FileInfo;
             if (fi != null)
-                ProgressTextBlock.Text = fi.Name;
+                ProgressTextBlock.Text = string.Format("{0}{1}{2}", fi.Directory?.Name , Path.DirectorySeparatorChar, fi.Name);
         }
 
         private bool ValidateInput()

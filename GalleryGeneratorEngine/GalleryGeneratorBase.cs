@@ -27,12 +27,6 @@ namespace GalleryGeneratorEngine
             this.failedFiles = new List<string>();
         }
 
-        public event Action InitialDirectoriesCreatedEvent;
-
-        public event Action InitialFilesCopiedEvent;
-
-        public event Action<DirectoryInfo> ProcessingDirectoryEvent;
-
         public event Action<FileInfo> ProcessingFileEvent;
 
         protected abstract void ProcessFiles(DirectoryInfo directoryInfo);
@@ -51,14 +45,12 @@ namespace GalleryGeneratorEngine
             AssureRelativeDirectoryExists(Configuration.IcoDir);
             
             Logger.Info("Created output directories");
-            ReportDirectoriesCreated();
 
             CopyGalleryFiles("css", Configuration.CssDir);
             CopyGalleryFiles("js", Configuration.JsDir);
             CopyGalleryFiles("ico", Configuration.IcoDir);
 
             Logger.Info("Copied Gallerific files");
-            ReportInitialFilesCopied();
 
             var dirs = new Stack<string>(20);
 
@@ -125,28 +117,10 @@ namespace GalleryGeneratorEngine
                 Directory.CreateDirectory(dir);
         }
 
-        protected void ReportProcessingDirectory(DirectoryInfo directoryInfo)
-        {
-            if (ProcessingDirectoryEvent != null)
-                ProcessingDirectoryEvent(directoryInfo);
-        }
-
         protected void ReportProcessingFile(FileInfo fileInfo)
         {
             if (ProcessingFileEvent != null)
                 ProcessingFileEvent(fileInfo);
-        }
-
-        private void ReportDirectoriesCreated()
-        {
-            if (InitialDirectoriesCreatedEvent != null)
-                InitialDirectoriesCreatedEvent();
-        }
-
-        private void ReportInitialFilesCopied()
-        {
-            if (InitialFilesCopiedEvent != null)
-                InitialFilesCopiedEvent();
         }
 
         private void WriteToLogList(IList<string> list, string title)
