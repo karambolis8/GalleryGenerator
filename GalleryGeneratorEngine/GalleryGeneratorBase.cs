@@ -75,12 +75,12 @@ namespace GalleryGeneratorEngine
                 }
                 catch (UnauthorizedAccessException e)
                 {
-                    Logger.Error("GalleryGeneratorBase", e);
+                    Logger.Error(this.GetType().Name, e);
                     continue;
                 }
                 catch (DirectoryNotFoundException e)
                 {
-                    Logger.Error("GalleryGeneratorBase", e);
+                    Logger.Error(this.GetType().Name, e);
                     continue;
                 }
 
@@ -94,12 +94,12 @@ namespace GalleryGeneratorEngine
                 }
                 catch (UnauthorizedAccessException e)
                 {
-                    Logger.Error("GalleryGeneratorBase", e);
+                    Logger.Error(this.GetType().Name, e);
                     //continue;
                 }
                 catch (DirectoryNotFoundException e)
                 {
-                    Logger.Error("GalleryGeneratorBase", e);
+                    Logger.Error(this.GetType().Name, e);
                     //continue;
                 }
             }
