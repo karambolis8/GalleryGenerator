@@ -99,7 +99,7 @@ namespace GalleryGenerator
         {
             var options = (UserOptions)doWorkEventArgs.Argument;
             var counter = new FileCounter(options, () => this.worker.CancellationPending, () => { doWorkEventArgs.Cancel = true; });
-            doWorkEventArgs.Result = counter.CountImages();
+            doWorkEventArgs.Result = counter.StartTask();
         }
 
         private void CountingWorkCompleted(object sender, RunWorkerCompletedEventArgs e)
