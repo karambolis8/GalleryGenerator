@@ -39,6 +39,7 @@ namespace GalleryGenerator
                 {
                     ProgressTextBlock.Text = Translations.EstimatingWorkTime;
                     WorkerProgressBar.IsIndeterminate = true;
+                    worker.WorkerSupportsCancellation = true;
                     worker.DoWork += DoCountingWork;
                     worker.RunWorkerCompleted += CountingWorkCompleted;
                     worker.WorkerReportsProgress = false;
@@ -97,7 +98,7 @@ namespace GalleryGenerator
         private void DoCountingWork(object sender, DoWorkEventArgs doWorkEventArgs)
         {
             var options = (UserOptions)doWorkEventArgs.Argument;
-            var counter = new ImageCounter(options);
+            var counter = new ImageCounter(options, () => this.worker.CancellationPending, () => { doWorkEventArgs.Cancel = true; });
             doWorkEventArgs.Result = counter.CountImages();
         }
 
@@ -106,17 +107,27 @@ namespace GalleryGenerator
             WorkerProgressBar.IsIndeterminate = false;
             worker.DoWork -= DoCountingWork;
             worker.RunWorkerCompleted -= CountingWorkCompleted;
-            
-            UserOptions options = GetUserOptionsFromUI();
-            options.WorkSize = (long)e.Result;
-            SetAndRunMainJobInWorker(options, options.WorkSize > 0);
+
+            if (e.Cancelled)
+            {
+                ProgressTextBlock.Text = Translations.WorkCancelled;
+                StopButton.IsEnabled = false;
+                RunButton.IsEnabled = true;
+                EnableInputs(true);
+            }
+            else
+            {
+                UserOptions options = GetUserOptionsFromUI();
+                options.WorkSize = (long) e.Result;
+                SetAndRunMainJobInWorker(options, options.WorkSize > 0);
+            }
         }
 
         private void DoWork(object sender, DoWorkEventArgs doWorkEventArgs)
         {
             var options = (UserOptions)doWorkEventArgs.Argument;
             
-            var generator = new GalleryGeneratorEngine.GalleryGeneratorEngine(options);
+            var generator = new GalleryGeneratorEngine.GalleryGeneratorEngine(options, () => this.worker.CancellationPending, () => { doWorkEventArgs.Cancel = true; });
 
             var senderWorker = (BackgroundWorker) sender;
             long counter = 0;
@@ -142,14 +153,22 @@ namespace GalleryGenerator
             StopButton.IsEnabled = false;
             RunButton.IsEnabled = true;
             WorkerProgressBar.IsIndeterminate = false;
-            WorkerProgressBar.Value = 100;
-            ProgressTextBlock.Text = Translations.Completed;
             
             worker.DoWork -= DoWork;
             worker.RunWorkerCompleted -= WorkerCompleted;
             worker.ProgressChanged -= ProgressChanged;
 
             EnableInputs(true);
+
+            if (e.Cancelled)
+            { 
+                ProgressTextBlock.Text = Translations.WorkCancelled;
+            }
+            else
+            {
+                ProgressTextBlock.Text = Translations.WorkCompleted;
+                WorkerProgressBar.Value = 100;
+            }
         }
 
         private void ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -199,9 +218,11 @@ namespace GalleryGenerator
 
         private void StopButton_OnClick(object sender, RoutedEventArgs e)
         {
-            if(this.worker.WorkerSupportsCancellation)
+            if (this.worker.WorkerSupportsCancellation)
+            {
                 this.worker.CancelAsync();
-            this.StopButton.IsEnabled = false;
+                this.StopButton.IsEnabled = false;
+            }
         }
     }
 }

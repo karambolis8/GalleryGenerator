@@ -2,22 +2,20 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using Common;
 using log4net;
 
 namespace GalleryGeneratorEngine
 {
-    public class ImageCounter
+    public class ImageCounter : DirectoryTreeProcessorBase
     {
+        private static readonly ILog logger = LogManager.GetLogger(typeof(ImageCounter));
+        
+        protected override ILog Logger => logger;
 
-        protected static readonly ILog Logger = LogManager.GetLogger(typeof(ImageCounter));
-
-        protected UserOptions options;
-
-        public ImageCounter(UserOptions options)
+        public ImageCounter(UserOptions options, Func<bool> cancellationPending, Action cancelWork)
+            : base(options, cancellationPending, cancelWork)
         {
-            this.options = options;
         }
 
         public long CountImages()
@@ -35,6 +33,12 @@ namespace GalleryGeneratorEngine
 
             while (dirs.Any())
             {
+                if (this.cancellationPending())
+                {
+                    this.HandleCancelWork();
+                    return 0;
+                }
+
                 string currentDir = dirs.Pop();
 
                 Logger.Info("Counting directory: " + currentDir);
@@ -83,6 +87,7 @@ namespace GalleryGeneratorEngine
 
             return filesCount;
         }
+
         private int ProcessFiles(DirectoryInfo directoryInfo)
         {
             var files = directoryInfo.GetFiles();

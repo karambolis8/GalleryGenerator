@@ -5,6 +5,7 @@ using System.Text;
 using Common;
 using System.IO;
 using Common.Resources;
+using log4net;
 
 // http://findicons.com/pack/1637/file_icons_vs_2
 
@@ -12,6 +13,8 @@ namespace GalleryGeneratorEngine
 {
     public class GalleryGeneratorEngine : GalleryGeneratorBase
     {
+        private static readonly ILog logger = LogManager.GetLogger(typeof(GalleryGeneratorEngine));
+
         private const string COPYRIGHT_YEAR = "{COPYRIGHT_YEAR}";
         private const string GALLERY = "{GALLERY}";
         private const string LIST_ITEMS = "{LIST_ITEMS}";
@@ -44,13 +47,21 @@ namespace GalleryGeneratorEngine
         private const string DOWNLOAD_ORIGINAL = "{DOWNLOAD_ORIGINAL}";
         private const string IMAGE_TITLE = "{IMAGE_TITLE}";
 
-        public GalleryGeneratorEngine(UserOptions options)
-            : base(options)
+        protected override ILog Logger => logger;
+
+        public GalleryGeneratorEngine(UserOptions options, Func<bool> cancellationPending, Action cancelWork)
+            : base(options, cancellationPending, cancelWork)
         {
         }
 
         protected override void ProcessFiles(DirectoryInfo directoryInfo)
         {
+            if (this.cancellationPending())
+            {
+                this.HandleCancelWork();
+                return;
+            }
+
             var files = directoryInfo.GetFiles();
 
             var images = files
@@ -124,6 +135,12 @@ namespace GalleryGeneratorEngine
 
             foreach (FileInfo image in images)
             {
+                if (this.cancellationPending())
+                {
+                    this.HandleCancelWork();
+                    return;
+                }
+
                 ReportProcessingFile(image);
 
                 try
@@ -144,6 +161,12 @@ namespace GalleryGeneratorEngine
 
                 if (this.options.CopyOriginalFiles)
                 {
+                    if (this.cancellationPending())
+                    {
+                        this.HandleCancelWork();
+                        return;
+                    }
+
                     string destPath = Path.Combine(this.options.OriginalImgDir, Path.Combine(nesting, image.Name));
                     File.Copy(image.FullName, destPath);
                 }
@@ -152,6 +175,12 @@ namespace GalleryGeneratorEngine
 
         private void GeneratePage(DirectoryInfo directoryInfo, IEnumerable<FileInfo> images, IEnumerable<FileInfo> otherFiles, string nesting)
         {
+            if (this.cancellationPending())
+            {
+                this.HandleCancelWork();
+                return;
+            }
+
             string pageName = directoryInfo.Name;
 
             var menu = nesting == string.Empty ? this.GenerateMenuRoot(directoryInfo) : this.GenerateMenu(directoryInfo, nesting);
@@ -178,6 +207,13 @@ namespace GalleryGeneratorEngine
 
             AssureRelativeDirectoryExists(nesting);
             string pagePath = nesting == string.Empty ? Path.Combine(this.options.OutputDirectory, this.options.GalleryName + ".html") : Path.Combine(this.options.OutputDirectory, Path.Combine(nesting, pageName + ".html"));
+
+            if (this.cancellationPending())
+            {
+                this.HandleCancelWork();
+                return;
+            }
+
             using (var sw = new StreamWriter(pagePath, false, Encoding.UTF8))
             {
                 sw.Write(pageContent);

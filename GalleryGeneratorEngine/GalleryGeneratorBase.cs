@@ -8,22 +8,18 @@ using log4net;
 
 namespace GalleryGeneratorEngine
 {
-    public abstract class GalleryGeneratorBase
+    public abstract class GalleryGeneratorBase : DirectoryTreeProcessorBase
     {
-        protected static readonly ILog Logger = LogManager.GetLogger(typeof(GalleryGeneratorBase));
-
         protected UserOptions options;
 
         protected IDictionary<string, int> ignoredFormats;
 
         protected IList<string> failedFiles;
 
-        protected GalleryGeneratorBase(UserOptions options)
+        protected GalleryGeneratorBase(UserOptions options, Func<bool> cancellationPending, Action cancelWork)
+            : base(options, cancellationPending, cancelWork)
         {
-            this.options = options;
-
             this.ignoredFormats = new Dictionary<string, int>();
-
             this.failedFiles = new List<string>();
         }
 
@@ -64,6 +60,12 @@ namespace GalleryGeneratorEngine
 
             while(dirs.Any())
             {
+                if (this.cancellationPending())
+                {
+                    this.HandleCancelWork();
+                    return;
+                }
+
                 string currentDir = dirs.Pop();
                 
                 Logger.Info("Current directory: " + currentDir);

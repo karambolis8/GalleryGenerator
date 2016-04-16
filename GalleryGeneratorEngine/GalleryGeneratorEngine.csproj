@@ -94,6 +94,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DirectoryTreeProcessorBase.cs" />
     <Compile Include="GalleryGeneratorBase.cs" />
     <Compile Include="GalleryGeneratorEngine.cs" />
     <Compile Include="ImageCounter.cs" />

@@ -61,20 +61,29 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Completed!.
-        /// </summary>
-        internal static string Completed {
-            get {
-                return ResourceManager.GetString("Completed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Estimating work time....
         /// </summary>
         internal static string EstimatingWorkTime {
             get {
                 return ResourceManager.GetString("EstimatingWorkTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Process cancelled..
+        /// </summary>
+        internal static string WorkCancelled {
+            get {
+                return ResourceManager.GetString("WorkCancelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed!.
+        /// </summary>
+        internal static string WorkCompleted {
+            get {
+                return ResourceManager.GetString("WorkCompleted", resourceCulture);
             }
         }
     }
