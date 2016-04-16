@@ -10,8 +10,6 @@ namespace GalleryGeneratorEngine
 {
     public abstract class GalleryGeneratorBase : DirectoryTreeProcessorBase
     {
-        protected UserOptions options;
-
         protected IDictionary<string, int> ignoredFormats;
 
         protected IList<string> failedFiles;
