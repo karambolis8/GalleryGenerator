@@ -7,20 +7,20 @@ using log4net;
 
 namespace GalleryGeneratorEngine
 {
-    public class ImageCounter : DirectoryTreeProcessorBase
+    public class FileCounter : DirectoryTreeProcessorBase<long>
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(ImageCounter));
+        private static readonly ILog logger = LogManager.GetLogger(typeof(FileCounter));
         
         protected override ILog Logger => logger;
 
-        public ImageCounter(UserOptions options, Func<bool> cancellationPending, Action cancelWork)
+        public FileCounter(UserOptions options, Func<bool> cancellationPending, Action cancelWork)
             : base(options, cancellationPending, cancelWork)
         {
         }
 
-        public long CountImages()
+        protected override long DoJob()
         {
-            Logger.Info("Counting images started");
+            Logger.Info("Counting files started");
             var start = DateTime.Now;
 
             long filesCount = 0;
@@ -82,7 +82,7 @@ namespace GalleryGeneratorEngine
 
             var end = DateTime.Now;
 
-            Logger.Info(string.Format("Found {0} image files", filesCount));
+            Logger.Info(string.Format("Found {0} files", filesCount));
             Logger.Info(string.Format("Counting images comleted in {0}", end - start));
 
             return filesCount;
@@ -91,7 +91,8 @@ namespace GalleryGeneratorEngine
         private int ProcessFiles(DirectoryInfo directoryInfo)
         {
             var files = directoryInfo.GetFiles();
-            return files.Count(f => Configuration.ImageExtensions.Contains(f.Extension.ToLower()));
+            return files.Count(f => Configuration.ImageExtensions.Contains(f.Extension.ToLower()) 
+            || Configuration.FileExtensions.Contains(f.Extension.ToLower()));
         }
     }
 }

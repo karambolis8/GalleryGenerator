@@ -97,7 +97,8 @@
     <Compile Include="DirectoryTreeProcessorBase.cs" />
     <Compile Include="GalleryGeneratorBase.cs" />
     <Compile Include="GalleryGeneratorEngine.cs" />
-    <Compile Include="ImageCounter.cs" />
+    <Compile Include="FileCounter.cs" />
+    <Compile Include="GeneratorStatistics.cs" />
     <Compile Include="ImageResizer.cs" />
     <Compile Include="PathUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

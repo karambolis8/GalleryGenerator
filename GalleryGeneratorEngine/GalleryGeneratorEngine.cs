@@ -230,6 +230,8 @@ namespace GalleryGeneratorEngine
             var i = 0;
             foreach (var file in otherFiles)
             {
+                this.ReportProcessingFile(file);
+
                 string icon = Configuration.GetFileIcon(file.Extension);
 
                 if (string.IsNullOrEmpty(icon))

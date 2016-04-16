@@ -98,7 +98,7 @@ namespace GalleryGenerator
         private void DoCountingWork(object sender, DoWorkEventArgs doWorkEventArgs)
         {
             var options = (UserOptions)doWorkEventArgs.Argument;
-            var counter = new ImageCounter(options, () => this.worker.CancellationPending, () => { doWorkEventArgs.Cancel = true; });
+            var counter = new FileCounter(options, () => this.worker.CancellationPending, () => { doWorkEventArgs.Cancel = true; });
             doWorkEventArgs.Result = counter.CountImages();
         }
 

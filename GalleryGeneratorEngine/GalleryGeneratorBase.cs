@@ -8,7 +8,7 @@ using log4net;
 
 namespace GalleryGeneratorEngine
 {
-    public abstract class GalleryGeneratorBase : DirectoryTreeProcessorBase
+    public abstract class GalleryGeneratorBase : DirectoryTreeProcessorBase<GeneratorStatistics>
     {
         protected IDictionary<string, int> ignoredFormats;
 
@@ -25,7 +25,7 @@ namespace GalleryGeneratorEngine
 
         protected abstract void ProcessFiles(DirectoryInfo directoryInfo);
 
-        public void StartTask()
+        protected override GeneratorStatistics DoJob()
         {
             Logger.Info("Generating gallery started");
             var start = DateTime.Now;
@@ -61,7 +61,7 @@ namespace GalleryGeneratorEngine
                 if (this.cancellationPending())
                 {
                     this.HandleCancelWork();
-                    return;
+                    return null;
                 }
 
                 string currentDir = dirs.Pop();
@@ -109,6 +109,12 @@ namespace GalleryGeneratorEngine
             this.WriteToLogList(this.failedFiles, "Failed files:");
             var end = DateTime.Now;
             Logger.Info(string.Format("Gallery generated in {0}", end - start));
+
+            return new GeneratorStatistics()
+            {
+                FailedFiles = this.failedFiles,
+                IgnoredFormats = this.ignoredFormats
+            };
         }
 
         protected void AssureRelativeDirectoryExists(string relativePath)

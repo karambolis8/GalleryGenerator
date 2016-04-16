@@ -4,13 +4,15 @@ using log4net;
 
 namespace GalleryGeneratorEngine
 {
-    public abstract class DirectoryTreeProcessorBase
+    public abstract class DirectoryTreeProcessorBase<T>
     {
         protected UserOptions options;
 
         protected Func<bool> cancellationPending;
 
         protected Action cancelWork;
+
+        protected bool cancelHandled;
 
         protected abstract ILog Logger
         {
@@ -24,10 +26,24 @@ namespace GalleryGeneratorEngine
             this.cancelWork = cancelWork;
         }
 
+        public T StartTask()
+        {
+            this.cancelHandled = false;
+
+            return this.DoJob();
+        }
+
         protected void HandleCancelWork()
         {
-            this.cancelWork();
-            this.Logger.Info("Work cancelled.");
+            if (!cancelHandled)
+            {
+                this.Logger.Info("Work cancelled.");
+                this.cancelWork();
+            }
+
+            this.cancelHandled = true;
         }
+
+        protected abstract T DoJob();
     }
 }
