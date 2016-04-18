@@ -5,9 +5,15 @@
     Icon="Resources/MainIcon.ico"
     Height="139" 
     Width="396" 
-    ResizeMode="NoResize">
+    ResizeMode="NoResize"
+    LocationChanged="MainWindow_OnLocationChanged">
+    
     <Grid>
         <StackPanel x:Name="MainStack">
+            <Menu Name="MainMenu" IsMainMenu="True">
+                <MenuItem Header="Settings" Click="MenuItem_OnClick"/>
+            </Menu>
+                    
             <StackPanel x:Name="GalleryNameStack" Orientation="Horizontal">
                 <TextBlock x:Name="GalleryNameLabel"  Text="Gallery Name" Width="100"/>
                 <TextBox x:Name="GalleryNameTextBox" HorizontalAlignment="Left" Width="290" />

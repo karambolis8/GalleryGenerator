@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Forms;
 using Common;
+using GalleryGenerator.Properties;
 using GalleryGenerator.Resources.Translations;
 using GalleryGeneratorEngine;
 using log4net;
@@ -23,6 +24,15 @@ namespace GalleryGenerator
             InitializeComponent();
 
             this.Title = string.Format("{0} v{1}", this.Title, ConfigurationManager.AppSettings["appVersion"]);
+            this.Left = Settings.Default.AppPositionLeft;
+            this.Top = Settings.Default.AppPositionTop;
+        }
+
+        private void MainWindow_OnLocationChanged(object sender, EventArgs e)
+        {
+            Settings.Default.AppPositionLeft = this.Left;
+            Settings.Default.AppPositionTop = this.Top;
+            Settings.Default.Save();
         }
 
         private void RunButton_OnClick(object sender, RoutedEventArgs _)
@@ -250,6 +260,12 @@ namespace GalleryGenerator
                 "Stop work", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             return result == System.Windows.Forms.DialogResult.Yes;
+        }
+
+        private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            var settingsWindow = new SettingsWindow();
+            settingsWindow.ShowDialog();
         }
     }
 }
