@@ -70,6 +70,15 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error {0} has ocurred! Please check log for details..
+        /// </summary>
+        internal static string ProcessInterruptedByError {
+            get {
+                return ResourceManager.GetString("ProcessInterruptedByError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Process cancelled..
         /// </summary>
         internal static string WorkCancelled {

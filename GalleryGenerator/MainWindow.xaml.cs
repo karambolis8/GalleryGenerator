@@ -115,6 +115,10 @@ namespace GalleryGenerator
                 RunButton.IsEnabled = true;
                 EnableInputs(true);
             }
+            else if (e.Error != null)
+            {
+                HandleworkerException(e);
+            }
             else
             {
                 UserOptions options = GetUserOptionsFromUI();
@@ -163,6 +167,10 @@ namespace GalleryGenerator
             if (e.Cancelled)
             { 
                 ProgressTextBlock.Text = Translations.WorkCancelled;
+            }
+            else if (e.Error != null)
+            {
+                HandleworkerException(e);
             }
             else
             {
@@ -223,6 +231,14 @@ namespace GalleryGenerator
                 this.worker.CancelAsync();
                 this.StopButton.IsEnabled = false;
             }
+        }
+
+        private void HandleworkerException(RunWorkerCompletedEventArgs eArgs)
+        {
+            ProgressTextBlock.Text = string.Format(Translations.ProcessInterruptedByError, eArgs.Error.GetType().Name);
+            StopButton.IsEnabled = false;
+            RunButton.IsEnabled = true;
+            EnableInputs(true);
         }
     }
 }
