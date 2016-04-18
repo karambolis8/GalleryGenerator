@@ -84,12 +84,12 @@ namespace GalleryGenerator
                 GalleryName = GalleryNameTextBox.Text,
                 InputDirectory = InputDirTextBox.Text,
                 OutputDirectory = OutputDirTextBox.Text,
-                PreserveMediumAspectRatio = Configuration.DefaultPreserveMediumAspectRatio,
-                CopyOriginalFiles = Configuration.DefaultCopyOriginalFiles,
-                MediumX = Configuration.DefaultMediumWidth,
-                MediumY = Configuration.DefaultMediumHeight,
-                ThumbX = Configuration.DefaultThumbWidth,
-                ThumbY = Configuration.DefaultThumbHeight
+                PreserveMediumAspectRatio = Settings.Default.PreserveMediumAspectRatio,
+                CopyOriginalFiles = Settings.Default.CopyOriginalFiles,
+                MediumX = Settings.Default.MediumImgWidth,
+                MediumY = Settings.Default.MediumImgHeight,
+                ThumbX = Settings.Default.ThumbImgWidth,
+                ThumbY = Settings.Default.ThumbImgHeight
             };
         }
 

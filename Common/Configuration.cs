@@ -21,12 +21,6 @@ namespace Common
         public static string MediumDir { get; private set; }
         public static string ThumbDir { get; private set; }
         public static string CopyrightYear { get; private set; }
-        public static int DefaultMediumWidth { get; private set; }
-        public static int DefaultMediumHeight { get; private set; }
-        public static int DefaultThumbWidth { get; private set; }
-        public static int DefaultThumbHeight { get; private set; }
-        public static bool DefaultPreserveMediumAspectRatio { get; private set; }
-        public static bool DefaultCopyOriginalFiles { get; private set; }
         
         static Configuration()
         {
@@ -40,34 +34,6 @@ namespace Common
             ThumbDir = ConfigurationManager.AppSettings["thumbDir"];
 
             CopyrightYear = ConfigurationManager.AppSettings["copyrightYear"];
-
-            bool parseBool;
-            if (Boolean.TryParse(ConfigurationManager.AppSettings["defaultPreserveMediumAspectRatio"], out parseBool))
-            {
-                DefaultPreserveMediumAspectRatio = parseBool;
-            }
-            if (Boolean.TryParse(ConfigurationManager.AppSettings["defaultCopyOriginalFiles"], out parseBool))
-            {
-                DefaultCopyOriginalFiles = parseBool;
-            }
-
-            int parse;
-            if (Int32.TryParse(ConfigurationManager.AppSettings["defaultMediumWidth"], out parse))
-            {
-                DefaultMediumWidth = parse;
-            }
-            if (Int32.TryParse(ConfigurationManager.AppSettings["defaultMediumHeight"], out parse))
-            {
-                DefaultMediumHeight = parse;
-            }
-            if (Int32.TryParse(ConfigurationManager.AppSettings["DefaultThumbWidth"], out parse))
-            {
-                DefaultThumbWidth = parse;
-            }
-            if (Int32.TryParse(ConfigurationManager.AppSettings["DefaultThumbHeight"], out parse))
-            {
-                DefaultThumbHeight = parse;
-            }
 
             string pageTemplatePath = ConfigurationManager.AppSettings["galleryPageTemplate"];
             using (var sr = new StreamReader(pageTemplatePath))
