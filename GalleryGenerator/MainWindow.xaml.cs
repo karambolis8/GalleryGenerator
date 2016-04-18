@@ -228,8 +228,11 @@ namespace GalleryGenerator
         {
             if (this.worker.WorkerSupportsCancellation)
             {
-                this.worker.CancelAsync();
-                this.StopButton.IsEnabled = false;
+                if (ConfirmBreakingProcess())
+                {
+                    this.worker.CancelAsync();
+                    this.StopButton.IsEnabled = false;
+                }
             }
         }
 
@@ -239,6 +242,14 @@ namespace GalleryGenerator
             StopButton.IsEnabled = false;
             RunButton.IsEnabled = true;
             EnableInputs(true);
+        }
+
+        private bool ConfirmBreakingProcess()
+        {
+            var result = System.Windows.Forms.MessageBox.Show("Are you sure You want to stop? Work can't be resumed.",
+                "Stop work", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            return result == System.Windows.Forms.DialogResult.Yes;
         }
     }
 }
