@@ -22,7 +22,7 @@ namespace GalleryGenerator.Resources.Translations {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Translations {
+    public class Translations {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace GalleryGenerator.Resources.Translations {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GalleryGenerator.Resources.Translations.Translations", typeof(Translations).Assembly);
@@ -51,7 +51,7 @@ namespace GalleryGenerator.Resources.Translations {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,27 +61,153 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gallery Generator.
+        /// </summary>
+        public static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browse.
+        /// </summary>
+        public static string Browse {
+            get {
+                return ResourceManager.GetString("Browse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy original files to gallery.
+        /// </summary>
+        public static string CopyOriginalFiles {
+            get {
+                return ResourceManager.GetString("CopyOriginalFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Estimating work time....
         /// </summary>
-        internal static string EstimatingWorkTime {
+        public static string EstimatingWorkTime {
             get {
                 return ResourceManager.GetString("EstimatingWorkTime", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gallery name.
+        /// </summary>
+        public static string GalleryName {
+            get {
+                return ResourceManager.GetString("GalleryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input directory.
+        /// </summary>
+        public static string InputDir {
+            get {
+                return ResourceManager.GetString("InputDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Medium images height.
+        /// </summary>
+        public static string MediumImgHeight {
+            get {
+                return ResourceManager.GetString("MediumImgHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Medium images width.
+        /// </summary>
+        public static string MediumImgWidth {
+            get {
+                return ResourceManager.GetString("MediumImgWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Output directory.
+        /// </summary>
+        public static string OutputDir {
+            get {
+                return ResourceManager.GetString("OutputDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preserve medium images aspect ratio.
+        /// </summary>
+        public static string PreserveAspectRatio {
+            get {
+                return ResourceManager.GetString("PreserveAspectRatio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error {0} has ocurred! Please check log for details..
         /// </summary>
-        internal static string ProcessInterruptedByError {
+        public static string ProcessInterruptedByError {
             get {
                 return ResourceManager.GetString("ProcessInterruptedByError", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        public static string Reset {
+            get {
+                return ResourceManager.GetString("Reset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thumbnails height.
+        /// </summary>
+        public static string ThumbImgHeight {
+            get {
+                return ResourceManager.GetString("ThumbImgHeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thumbnails width.
+        /// </summary>
+        public static string ThumbImgWidth {
+            get {
+                return ResourceManager.GetString("ThumbImgWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Process cancelled..
         /// </summary>
-        internal static string WorkCancelled {
+        public static string WorkCancelled {
             get {
                 return ResourceManager.GetString("WorkCancelled", resourceCulture);
             }
@@ -90,7 +216,7 @@ namespace GalleryGenerator.Resources.Translations {
         /// <summary>
         ///   Looks up a localized string similar to Completed!.
         /// </summary>
-        internal static string WorkCompleted {
+        public static string WorkCompleted {
             get {
                 return ResourceManager.GetString("WorkCompleted", resourceCulture);
             }

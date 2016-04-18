@@ -9,7 +9,6 @@ using GalleryGenerator.Properties;
 using GalleryGenerator.Resources.Translations;
 using GalleryGeneratorEngine;
 using log4net;
-using Configuration = Common.Configuration;
 
 namespace GalleryGenerator
 {
@@ -23,15 +22,22 @@ namespace GalleryGenerator
         {
             InitializeComponent();
 
-            this.Title = string.Format("{0} v{1}", this.Title, ConfigurationManager.AppSettings["appVersion"]);
+            this.Title = string.Format("{0} v{1}", Translations.AppName, ConfigurationManager.AppSettings["appVersion"]);
             this.Left = Settings.Default.AppPositionLeft;
             this.Top = Settings.Default.AppPositionTop;
+            this.Width = Settings.Default.AppWidth;
         }
 
         private void MainWindow_OnLocationChanged(object sender, EventArgs e)
         {
             Settings.Default.AppPositionLeft = this.Left;
             Settings.Default.AppPositionTop = this.Top;
+            Settings.Default.Save();
+        }
+
+        private void MainWindow_OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Settings.Default.AppWidth = this.Width;
             Settings.Default.Save();
         }
 
@@ -186,6 +192,7 @@ namespace GalleryGenerator
             {
                 ProgressTextBlock.Text = Translations.WorkCompleted;
                 WorkerProgressBar.Value = 100;
+                var statistics = e.Result as GeneratorStatistics;
             }
         }
 
@@ -265,6 +272,8 @@ namespace GalleryGenerator
         private void MenuItem_OnClick(object sender, RoutedEventArgs e)
         {
             var settingsWindow = new SettingsWindow();
+            settingsWindow.Top = this.Top - Math.Abs(this.Height - settingsWindow.Height)/2;
+            settingsWindow.Left = this.Left + Math.Abs(this.Width - settingsWindow.Width)/2;
             settingsWindow.ShowDialog();
         }
     }

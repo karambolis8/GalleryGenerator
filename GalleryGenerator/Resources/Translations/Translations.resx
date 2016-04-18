@@ -117,11 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppName" xml:space="preserve">
+    <value>Gallery Generator</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="CopyOriginalFiles" xml:space="preserve">
+    <value>Copy original files to gallery</value>
+  </data>
   <data name="EstimatingWorkTime" xml:space="preserve">
     <value>Estimating work time...</value>
   </data>
+  <data name="GalleryName" xml:space="preserve">
+    <value>Gallery name</value>
+  </data>
+  <data name="InputDir" xml:space="preserve">
+    <value>Input directory</value>
+  </data>
+  <data name="MediumImgHeight" xml:space="preserve">
+    <value>Medium images height</value>
+  </data>
+  <data name="MediumImgWidth" xml:space="preserve">
+    <value>Medium images width</value>
+  </data>
+  <data name="OutputDir" xml:space="preserve">
+    <value>Output directory</value>
+  </data>
+  <data name="PreserveAspectRatio" xml:space="preserve">
+    <value>Preserve medium images aspect ratio</value>
+  </data>
   <data name="ProcessInterruptedByError" xml:space="preserve">
     <value>Error {0} has ocurred! Please check log for details.</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="ThumbImgHeight" xml:space="preserve">
+    <value>Thumbnails height</value>
+  </data>
+  <data name="ThumbImgWidth" xml:space="preserve">
+    <value>Thumbnails width</value>
   </data>
   <data name="WorkCancelled" xml:space="preserve">
     <value>Process cancelled.</value>

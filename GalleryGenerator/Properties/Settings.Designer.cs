@@ -118,5 +118,17 @@ namespace GalleryGenerator.Properties {
                 this["AppPositionTop"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        public double AppWidth {
+            get {
+                return ((double)(this["AppWidth"]));
+            }
+            set {
+                this["AppWidth"] = value;
+            }
+        }
     }
 }

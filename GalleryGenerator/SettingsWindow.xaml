@@ -4,9 +4,46 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GalleryGenerator"
+        xmlns:p="clr-namespace:GalleryGenerator.Resources.Translations"
         mc:Ignorable="d"
-        Title="SettingsWindow" Height="300" Width="300">
-    <Grid>
+        ResizeMode="NoResize"
+        WindowStyle="ToolWindow"
+        Title="{x:Static p:Translations.Settings}" Height="237" Width="300">
+
+    <DockPanel LastChildFill="False">
         
-    </Grid>
+        <Grid DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="{x:Static p:Translations.MediumImgWidth}" />
+            <Label Grid.Row="1" Grid.Column="0" Content="{x:Static p:Translations.MediumImgHeight}" />
+            <Label Grid.Row="2" Grid.Column="0" Content="{x:Static p:Translations.ThumbImgWidth}" />
+            <Label Grid.Row="3" Grid.Column="0" Content="{x:Static p:Translations.ThumbImgHeight}" />
+            <Label Grid.Row="4" Grid.Column="0" Content="{x:Static p:Translations.PreserveAspectRatio}" />
+            <Label Grid.Row="5" Grid.Column="0" Content="{x:Static p:Translations.CopyOriginalFiles}" />
+
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="3" />
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="3" />
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="3" />
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="3" />
+            <TextBox Grid.Row="4" Grid.Column="1" Margin="3" />
+            <TextBox Grid.Row="5" Grid.Column="1" Margin="3" />
+        </Grid>
+
+        <DockPanel Dock="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+            <Button DockPanel.Dock="Right" Content="{x:Static p:Translations.Reset}" HorizontalAlignment="Left" MinWidth="50" Margin="3" Click="Button_Click" />
+            <Button DockPanel.Dock="Right" Content="{x:Static p:Translations.Save}" HorizontalAlignment="Right" MinWidth="50" Margin="3" />
+        </DockPanel>
+    </DockPanel>
 </Window>
