@@ -151,7 +151,7 @@
     <value>Preserve medium images aspect ratio</value>
   </data>
   <data name="ProcessInterruptedByError" xml:space="preserve">
-    <value>Error {0} has ocurred! Please check log for details.</value>
+    <value>Error {0} has ocurred! Generating Gallery failed.</value>
   </data>
   <data name="Reset" xml:space="preserve">
     <value>Reset</value>

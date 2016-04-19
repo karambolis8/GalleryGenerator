@@ -160,7 +160,7 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} has ocurred! Please check log for details..
+        ///   Looks up a localized string similar to Error {0} has ocurred! Generating Gallery failed..
         /// </summary>
         public static string ProcessInterruptedByError {
             get {

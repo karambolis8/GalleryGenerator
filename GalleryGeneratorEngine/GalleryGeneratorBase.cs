@@ -10,15 +10,18 @@ namespace GalleryGeneratorEngine
 {
     public abstract class GalleryGeneratorBase : DirectoryTreeProcessorBase<GeneratorStatistics>
     {
-        protected IDictionary<string, int> ignoredFormats;
+        protected IDictionary<string, IList<FileInfo>> ignoredFormats;
 
-        protected IList<string> failedFiles;
+        protected IList<KeyValuePair<FileInfo, Exception>> failedFiles;
+
+        protected IList<KeyValuePair<DirectoryInfo, Exception>> failedDirectories; 
 
         protected GalleryGeneratorBase(UserOptions options, Func<bool> cancellationPending, Action cancelWork)
             : base(options, cancellationPending, cancelWork)
         {
-            this.ignoredFormats = new Dictionary<string, int>();
-            this.failedFiles = new List<string>();
+            this.ignoredFormats = new Dictionary<string, IList<FileInfo>>();
+            this.failedFiles = new List<KeyValuePair<FileInfo, Exception>>();
+            this.failedDirectories = new List<KeyValuePair<DirectoryInfo, Exception>>();
         }
 
         public event Action<FileInfo> ProcessingFileEvent;
@@ -106,13 +109,16 @@ namespace GalleryGeneratorEngine
             }
 
             this.WriteToLogList(this.ignoredFormats.Select(p => p.Key).ToList(), "Unknown formats:");
-            this.WriteToLogList(this.failedFiles, "Failed files:");
+            this.WriteToLogList(this.failedFiles.Select(p => string.Format("{0}: {1}", p.Value.GetType().Name, p.Key.FullName)), "Failed files:");
+            this.WriteToLogList(this.failedDirectories.Select(p => string.Format("{0}: {1}", p.Value.GetType().Name, p.Key.FullName)), "Failed directories:");
+
             var end = DateTime.Now;
             Logger.Info(string.Format("Gallery generated in {0}", end - start));
 
             return new GeneratorStatistics()
             {
                 FailedFiles = this.failedFiles,
+                FailedDirectories = this.failedDirectories,
                 IgnoredFormats = this.ignoredFormats
             };
         }
@@ -131,7 +137,7 @@ namespace GalleryGeneratorEngine
                 ProcessingFileEvent(fileInfo);
         }
 
-        private void WriteToLogList(IList<string> list, string title)
+        private void WriteToLogList(IEnumerable<string> list, string title)
         {
             if (list.Any())
             {

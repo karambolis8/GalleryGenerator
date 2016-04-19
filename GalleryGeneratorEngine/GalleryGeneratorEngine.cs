@@ -73,17 +73,16 @@ namespace GalleryGeneratorEngine
                 .ToArray();
 
             var ignoredExts = files
-                .Select(f => f.Extension.ToLower())
                 .Where(f =>
-                        !Configuration.FileExtensions.Contains(f) &&
-                        !Configuration.ImageExtensions.Contains(f));
+                        !Configuration.FileExtensions.Contains(f.Extension.ToLower()) &&
+                        !Configuration.ImageExtensions.Contains(f.Extension.ToLower()));
 
-            foreach (var ext in ignoredExts)
+            foreach (var f in ignoredExts)
             {
-                if (this.ignoredFormats.ContainsKey(ext))
-                    this.ignoredFormats[ext] = this.ignoredFormats[ext] + 1;
-                else
-                    this.ignoredFormats.Add(ext, 1);
+                var ext = f.Extension.ToLower();
+                if (!this.ignoredFormats.ContainsKey(ext))
+                    this.ignoredFormats.Add(ext, new List<FileInfo>());
+                this.ignoredFormats[ext].Add(f);
             }
 
             string nesting = this.GetNesting(directoryInfo);
@@ -156,7 +155,7 @@ namespace GalleryGeneratorEngine
                     sb.Append(image.FullName);
                     Logger.Error(sb.ToString(), e);
 
-                    this.failedFiles.Add(image.FullName);
+                    this.failedFiles.Add(new KeyValuePair<FileInfo, Exception>(image, e));
                 }
 
                 if (this.options.CopyOriginalFiles)
@@ -214,9 +213,16 @@ namespace GalleryGeneratorEngine
                 return;
             }
 
-            using (var sw = new StreamWriter(pagePath, false, Encoding.UTF8))
+            try
             {
-                sw.Write(pageContent);
+                using (var sw = new StreamWriter(pagePath, false, Encoding.UTF8))
+                {
+                    sw.Write(pageContent);
+                }
+            }
+            catch (PathTooLongException e)
+            {
+                this.failedDirectories.Add(new KeyValuePair<DirectoryInfo,Exception>(directoryInfo, e));
             }
         }
 
