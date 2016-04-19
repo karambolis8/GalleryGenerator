@@ -29,5 +29,11 @@
     <Setting Name="AppWidth" Type="System.Double" Scope="User">
       <Value Profile="(Default)">400</Value>
     </Setting>
+    <Setting Name="SettingsWindowLeft" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">460</Value>
+    </Setting>
+    <Setting Name="SettingsWindowTop" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">375</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

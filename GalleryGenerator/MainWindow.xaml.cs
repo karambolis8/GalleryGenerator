@@ -75,6 +75,7 @@ namespace GalleryGenerator
 
         private void EnableInputs(bool enable)
         {
+            MainMenu.IsEnabled = enable;
             GalleryNameTextBox.IsEnabled = enable;
             InputDirTextBox.IsEnabled = enable;
             BrowseInputButton.IsEnabled = enable;
@@ -267,8 +268,8 @@ namespace GalleryGenerator
         private void MenuItem_OnClick(object sender, RoutedEventArgs e)
         {
             var settingsWindow = new SettingsWindow();
-            settingsWindow.Top = this.Top - Math.Abs(this.Height - settingsWindow.Height)/2;
-            settingsWindow.Left = this.Left + Math.Abs(this.Width - settingsWindow.Width)/2;
+            settingsWindow.Top = Settings.Default.SettingsWindowTop;
+            settingsWindow.Left = Settings.Default.SettingsWindowLeft;
             settingsWindow.ShowDialog();
         }
     }

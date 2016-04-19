@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using GalleryGenerator.Properties;
 
 namespace GalleryGenerator
@@ -34,6 +35,13 @@ namespace GalleryGenerator
         {
             Settings.Default.Reload();
             this.Close();
+        }
+
+        private void SettingsWindow_OnLocationChanged(object sender, EventArgs e)
+        {
+            Settings.Default.SettingsWindowLeft = this.Left;
+            Settings.Default.SettingsWindowTop = this.Top;
+            Settings.Default.Save();
         }
     }
 }
