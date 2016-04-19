@@ -97,6 +97,15 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Estimate work time.
+        /// </summary>
+        public static string EstimateWorkTime {
+            get {
+                return ResourceManager.GetString("EstimateWorkTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Estimating work time....
         /// </summary>
         public static string EstimatingWorkTime {

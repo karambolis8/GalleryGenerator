@@ -154,5 +154,17 @@ namespace GalleryGenerator.Properties {
                 this["SettingsWindowTop"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool EstimateWorkTime {
+            get {
+                return ((bool)(this["EstimateWorkTime"]));
+            }
+            set {
+                this["EstimateWorkTime"] = value;
+            }
+        }
     }
 }

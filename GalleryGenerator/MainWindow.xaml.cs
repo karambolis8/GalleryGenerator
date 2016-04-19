@@ -51,7 +51,7 @@ namespace GalleryGenerator
 
                 var options = GetUserOptionsFromUI();
                 
-                if (EstimateWorkTimeCheckBox.IsChecked.HasValue && EstimateWorkTimeCheckBox.IsChecked.Value)
+                if (Settings.Default.EstimateWorkTime)
                 {
                     ProgressTextBlock.Text = Translations.EstimatingWorkTime;
                     WorkerProgressBar.IsIndeterminate = true;
@@ -271,6 +271,11 @@ namespace GalleryGenerator
             settingsWindow.Top = Settings.Default.SettingsWindowTop;
             settingsWindow.Left = Settings.Default.SettingsWindowLeft;
             settingsWindow.ShowDialog();
+        }
+
+        private void EstimateWorkTimeCheckBox_CheckedChanged(object sender, RoutedEventArgs e)
+        {
+            Settings.Default.Save();
         }
     }
 }

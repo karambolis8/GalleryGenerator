@@ -46,7 +46,7 @@
             </Grid>
 
             <DockPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" LastChildFill="False">
-                <CheckBox x:Name="EstimateWorkTimeCheckBox" DockPanel.Dock="Left" IsChecked="True" Margin="3,5,3,5">Estimate work time</CheckBox>
+                <CheckBox x:Name="EstimateWorkTimeCheckBox" DockPanel.Dock="Left" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.EstimateWorkTime, Mode=TwoWay}" Margin="3,5,3,5" Content="{x:Static p:Translations.EstimateWorkTime}" Checked="EstimateWorkTimeCheckBox_CheckedChanged" Unchecked="EstimateWorkTimeCheckBox_CheckedChanged" />
                 <Button x:Name="StopButton" Content="Stop" Padding="5,0,5,0" DockPanel.Dock="Right" IsEnabled="False" Click="StopButton_OnClick" Margin="3"/>
                 <Button x:Name="RunButton" Content="Run" Padding="5,0,5,0" DockPanel.Dock="Right" Click="RunButton_OnClick" Margin="3" />
             </DockPanel>

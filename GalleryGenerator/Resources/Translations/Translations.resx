@@ -129,6 +129,9 @@
   <data name="CopyOriginalFiles" xml:space="preserve">
     <value>Copy original files to gallery</value>
   </data>
+  <data name="EstimateWorkTime" xml:space="preserve">
+    <value>Estimate work time</value>
+  </data>
   <data name="EstimatingWorkTime" xml:space="preserve">
     <value>Estimating work time...</value>
   </data>
