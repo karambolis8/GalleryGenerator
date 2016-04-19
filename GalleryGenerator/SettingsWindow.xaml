@@ -33,12 +33,12 @@
             <Label Grid.Row="4" Grid.Column="0" Content="{x:Static p:Translations.PreserveAspectRatio}" />
             <Label Grid.Row="5" Grid.Column="0" Content="{x:Static p:Translations.CopyOriginalFiles}" />
 
-            <TextBox Grid.Row="0" Grid.Column="1" Margin="3" />
-            <TextBox Grid.Row="1" Grid.Column="1" Margin="3" />
-            <TextBox Grid.Row="2" Grid.Column="1" Margin="3" />
-            <TextBox Grid.Row="3" Grid.Column="1" Margin="3" />
-            <TextBox Grid.Row="4" Grid.Column="1" Margin="3" />
-            <TextBox Grid.Row="5" Grid.Column="1" Margin="3" />
+            <TextBox x:Name="MediumImgWidthTextBox" Text="{Binding Source={StaticResource Settings}, Path=Default.MediumImgWidth, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" Margin="3" />
+            <TextBox x:Name="MediumImgHeightTextBox" Text="{Binding Source={StaticResource Settings}, Path=Default.MediumImgHeight, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="3" />
+            <TextBox x:Name="ThumbImgWidthTextBox" Text="{Binding Source={StaticResource Settings}, Path=Default.ThumbImgWidth, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" Margin="3" />
+            <TextBox x:Name="ThumbImgHeightTextBox" Text="{Binding Source={StaticResource Settings}, Path=Default.ThumbImgHeight, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" Margin="3" />
+            <CheckBox x:Name="PreserveAspectRatioCheckBox" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.PreserveMediumAspectRatio, Mode=TwoWay}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,7,0" />
+            <CheckBox x:Name="CopyOriginalFilesCheckBox" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.CopyOriginalFiles, Mode=TwoWay}" Grid.Row="5" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,7,0"  />
         </Grid>
 
         <DockPanel Dock="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
