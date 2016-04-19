@@ -13,16 +13,40 @@ namespace GalleryGenerator
 
         private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
-            this.MediumImgWidthTextBox.Text = (string) Settings.Default.Properties["MediumImgWidth"].DefaultValue;
-            this.MediumImgHeightTextBox.Text = (string) Settings.Default.Properties["MediumImgHeight"].DefaultValue;
-            this.ThumbImgWidthTextBox.Text = (string) Settings.Default.Properties["ThumbImgWidth"].DefaultValue;
-            this.ThumbImgHeightTextBox.Text = (string) Settings.Default.Properties["ThumbImgHeight"].DefaultValue;
+            int val;
+            bool checkbox;
 
-            string boolStr = (string)Settings.Default.Properties["PreserveMediumAspectRatio"].DefaultValue;
-            this.PreserveAspectRatioCheckBox.IsChecked = boolStr == "True";
-            boolStr = (string)Settings.Default.Properties["CopyOriginalFiles"].DefaultValue;
-            this.CopyOriginalFilesCheckBox.IsChecked = boolStr == "True";
+            this.MediumImgWidthTextBox.Text = ParseDefaultIntSetting("MediumImgWidth", out val);
+            Settings.Default.MediumImgWidth = val;
 
+            this.MediumImgHeightTextBox.Text = ParseDefaultIntSetting("MediumImgHeight", out val);
+            Settings.Default.MediumImgHeight = val;
+
+            this.ThumbImgWidthTextBox.Text = ParseDefaultIntSetting("ThumbImgWidth", out val);
+            Settings.Default.ThumbImgWidth = val;
+
+            this.ThumbImgHeightTextBox.Text = ParseDefaultIntSetting("ThumbImgHeight", out val);
+            Settings.Default.ThumbImgHeight = val;
+
+            checkbox = ParseDefaultBoolSetting("PreserveMediumAspectRatio");
+            this.PreserveAspectRatioCheckBox.IsChecked = checkbox;
+            Settings.Default.PreserveMediumAspectRatio = checkbox;
+
+            checkbox = ParseDefaultBoolSetting("CopyOriginalFiles");
+            this.CopyOriginalFilesCheckBox.IsChecked = checkbox;
+            Settings.Default.CopyOriginalFiles = checkbox;
+        }
+
+        private string ParseDefaultIntSetting(string settingKey, out int value)
+        {
+            var stringVal = (string) Settings.Default.Properties[settingKey].DefaultValue;
+            value = Int32.Parse(stringVal);
+            return stringVal;
+        }
+
+        private bool ParseDefaultBoolSetting(string settingKey)
+        {
+            return Boolean.Parse((string)Settings.Default.Properties[settingKey].DefaultValue);
         }
 
         private void SaveButton_OnClick(object sender, RoutedEventArgs e)
