@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GalleryGenerator.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GalleryGenerator.Properties" GeneratedClassName="WindowsSettings">
   <Profiles />
   <Settings>
     <Setting Name="AppPositionLeft" Type="System.Double" Scope="User">
@@ -16,6 +16,9 @@
     </Setting>
     <Setting Name="SettingsWindowTop" Type="System.Double" Scope="User">
       <Value Profile="(Default)">375</Value>
+    </Setting>
+    <Setting Name="AppLanguage" Type="System.String" Scope="User">
+      <Value Profile="(Default)">en-GB</Value>
     </Setting>
   </Settings>
 </SettingsFile>

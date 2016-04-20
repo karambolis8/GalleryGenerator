@@ -7,8 +7,6 @@ using System.IO;
 using Common.Resources;
 using log4net;
 
-// http://findicons.com/pack/1637/file_icons_vs_2
-
 namespace GalleryGeneratorEngine
 {
     public class GalleryGeneratorEngine : GalleryGeneratorBase

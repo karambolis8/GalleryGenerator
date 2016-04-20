@@ -2,9 +2,12 @@
 using System.ComponentModel;
 using System.Configuration;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
+using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Markup;
 using Common;
 using GalleryGenerator.Properties;
 using GalleryGenerator.Resources.Translations;
@@ -292,6 +295,26 @@ namespace GalleryGenerator
         private void OpenAfterFinishCheckBox_CheckedChanged(object sender, RoutedEventArgs e)
         {
             UserSettings.Default.Save();
+        }
+
+        private void EnglishsLanguageMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            PolishLanguageMenuItem.IsChecked = false;
+            SetAndStoreAppLanguage("en-GB");
+        }
+
+        private void PolishLanguageMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            EnglishsLanguageMenuItem.IsChecked = false;
+            SetAndStoreAppLanguage("pl-PL");
+        }
+
+        private void SetAndStoreAppLanguage(string cultureCode)
+        {
+            var ci = new CultureInfo(cultureCode);
+            CultureResources.ChangeCulture(ci);
+            WindowsSettings.Default.AppLanguage = cultureCode;
+            WindowsSettings.Default.Save();
         }
     }
 }

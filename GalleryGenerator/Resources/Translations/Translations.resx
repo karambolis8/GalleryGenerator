@@ -129,6 +129,9 @@
   <data name="CopyOriginalFiles" xml:space="preserve">
     <value>Copy original files to gallery</value>
   </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
   <data name="EstimateWorkTime" xml:space="preserve">
     <value>Estimate work time</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="InputDir" xml:space="preserve">
     <value>Input directory</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
   </data>
   <data name="MediumImgHeight" xml:space="preserve">
     <value>Medium images height</value>
@@ -153,6 +159,9 @@
   <data name="OutputDir" xml:space="preserve">
     <value>Output directory</value>
   </data>
+  <data name="Polish" xml:space="preserve">
+    <value>Polish</value>
+  </data>
   <data name="PreserveAspectRatio" xml:space="preserve">
     <value>Preserve medium images aspect ratio</value>
   </data>
@@ -162,11 +171,17 @@
   <data name="Reset" xml:space="preserve">
     <value>Reset</value>
   </data>
+  <data name="Run" xml:space="preserve">
+    <value>Run</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Stop</value>
   </data>
   <data name="ThumbImgHeight" xml:space="preserve">
     <value>Thumbnails height</value>

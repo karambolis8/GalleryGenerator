@@ -1,9 +1,14 @@
 ﻿<Application x:Class="GalleryGenerator.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:properties="clr-namespace:GalleryGenerator.Properties"
-    StartupUri="MainWindow.xaml">
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <properties:UserSettings x:Key="UserSettings" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResourceDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
+    <!-- http://www.iconarchive.com/show/flag-icons-by-famfamfam.1.html -->
+    <!-- http://findicons.com/pack/1637/file_icons_vs_2 -->
 </Application>
