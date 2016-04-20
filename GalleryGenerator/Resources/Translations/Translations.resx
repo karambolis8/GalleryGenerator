@@ -126,6 +126,12 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="CloseWithoutSavingChanges" xml:space="preserve">
+    <value>Are you sure you want to close without saving changes?</value>
+  </data>
+  <data name="ConfirmBreakWorker" xml:space="preserve">
+    <value>Are you sure You want to stop? Work can't be resumed.</value>
+  </data>
   <data name="CopyOriginalFiles" xml:space="preserve">
     <value>Copy original files to gallery</value>
   </data>
@@ -138,11 +144,17 @@
   <data name="EstimatingWorkTime" xml:space="preserve">
     <value>Estimating work time...</value>
   </data>
+  <data name="FillAllFields" xml:space="preserve">
+    <value>You have to fill all fields.</value>
+  </data>
   <data name="GalleryName" xml:space="preserve">
     <value>Gallery name</value>
   </data>
   <data name="InputDir" xml:space="preserve">
     <value>Input directory</value>
+  </data>
+  <data name="InputValidation" xml:space="preserve">
+    <value>Input validation</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
@@ -180,8 +192,14 @@
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="SettingsChanges" xml:space="preserve">
+    <value>Settings changes</value>
+  </data>
   <data name="Stop" xml:space="preserve">
     <value>Stop</value>
+  </data>
+  <data name="StopWork" xml:space="preserve">
+    <value>Stop work</value>
   </data>
   <data name="ThumbImgHeight" xml:space="preserve">
     <value>Thumbnails height</value>

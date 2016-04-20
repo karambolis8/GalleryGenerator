@@ -5,13 +5,14 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Windows;
-using System.Windows.Forms;
+using System.Windows.Controls;
 using Common;
 using GalleryGenerator.Properties;
 using GalleryGenerator.Resources.Translations;
 using GalleryGeneratorEngine;
 using log4net;
-using MenuItem = System.Windows.Controls.MenuItem;
+using FolderBrowserDialog = System.Windows.Forms.FolderBrowserDialog;
+using DialogResult = System.Windows.Forms.DialogResult;
 
 namespace GalleryGenerator
 {
@@ -74,7 +75,7 @@ namespace GalleryGenerator
             else
             {
                 //replace with control highlighting
-                System.Windows.MessageBox.Show("You have to fill all fields.", "Input validation", MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.OK, System.Windows.MessageBoxOptions.DefaultDesktopOnly);
+                MessageBox.Show(this, Translations.FillAllFields, Translations.InputValidation, MessageBoxButton.OK, MessageBoxImage.Warning, MessageBoxResult.OK);
             }
         }
 
@@ -274,10 +275,8 @@ namespace GalleryGenerator
 
         private bool ConfirmBreakingProcess()
         {
-            var result = System.Windows.Forms.MessageBox.Show("Are you sure You want to stop? Work can't be resumed.",
-                "Stop work", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            return result == System.Windows.Forms.DialogResult.Yes;
+            return MessageBoxResult.Yes == MessageBox.Show(this, Translations.ConfirmBreakWorker, Translations.StopWork,
+                MessageBoxButton.YesNo, MessageBoxImage.Question);
         }
 
         private void MenuItem_OnClick(object sender, RoutedEventArgs e)

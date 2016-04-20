@@ -88,6 +88,24 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to close without saving changes?.
+        /// </summary>
+        public static string CloseWithoutSavingChanges {
+            get {
+                return ResourceManager.GetString("CloseWithoutSavingChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure You want to stop? Work can&apos;t be resumed..
+        /// </summary>
+        public static string ConfirmBreakWorker {
+            get {
+                return ResourceManager.GetString("ConfirmBreakWorker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy original files to gallery.
         /// </summary>
         public static string CopyOriginalFiles {
@@ -124,6 +142,15 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have to fill all fields..
+        /// </summary>
+        public static string FillAllFields {
+            get {
+                return ResourceManager.GetString("FillAllFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gallery name.
         /// </summary>
         public static string GalleryName {
@@ -138,6 +165,15 @@ namespace GalleryGenerator.Resources.Translations {
         public static string InputDir {
             get {
                 return ResourceManager.GetString("InputDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input validation.
+        /// </summary>
+        public static string InputValidation {
+            get {
+                return ResourceManager.GetString("InputValidation", resourceCulture);
             }
         }
         
@@ -250,11 +286,29 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settings changes.
+        /// </summary>
+        public static string SettingsChanges {
+            get {
+                return ResourceManager.GetString("SettingsChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stop.
         /// </summary>
         public static string Stop {
             get {
                 return ResourceManager.GetString("Stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop work.
+        /// </summary>
+        public static string StopWork {
+            get {
+                return ResourceManager.GetString("StopWork", resourceCulture);
             }
         }
         

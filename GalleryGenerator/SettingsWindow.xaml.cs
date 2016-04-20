@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using GalleryGenerator.Properties;
+using GalleryGenerator.Resources.Translations;
 
 namespace GalleryGenerator
 {
@@ -105,8 +106,8 @@ namespace GalleryGenerator
         {
             if (this.unsavedChanges)
             {
-                var result = MessageBox.Show(this, "Are you sure you want to close without saving changes?",
-                    "Settings changes", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var result = MessageBox.Show(this, Translations.CloseWithoutSavingChanges,
+                    Translations.SettingsChanges, MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.No)
                     e.Cancel = true;
                 else

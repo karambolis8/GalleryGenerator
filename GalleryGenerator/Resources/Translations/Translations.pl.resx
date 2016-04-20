@@ -123,6 +123,12 @@
   <data name="Cancel" xml:space="preserve">
     <value>Anuluj</value>
   </data>
+  <data name="CloseWithoutSavingChanges" xml:space="preserve">
+    <value>Czy na pewno chcesz zamknąć bez zapisywania zmian?</value>
+  </data>
+  <data name="ConfirmBreakWorker" xml:space="preserve">
+    <value>Czy na pewno chcesz przerwać? Proceś nie będzie mógł być wznowiony.</value>
+  </data>
   <data name="CopyOriginalFiles" xml:space="preserve">
     <value>Kopiuj oryginalne pliki do galerii</value>
   </data>
@@ -135,11 +141,17 @@
   <data name="EstimatingWorkTime" xml:space="preserve">
     <value>Szacowanie czasu pracy</value>
   </data>
+  <data name="FillAllFields" xml:space="preserve">
+    <value>Musisz wypełnić wszystkie pola</value>
+  </data>
   <data name="GalleryName" xml:space="preserve">
     <value>Nazwa galerii</value>
   </data>
   <data name="InputDir" xml:space="preserve">
     <value>Folder wejściowy</value>
+  </data>
+  <data name="InputValidation" xml:space="preserve">
+    <value>Walidacja</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Język</value>
@@ -177,8 +189,14 @@
   <data name="Settings" xml:space="preserve">
     <value>Ustawienia</value>
   </data>
+  <data name="SettingsChanges" xml:space="preserve">
+    <value>Zmiany w ustawieniach</value>
+  </data>
   <data name="Stop" xml:space="preserve">
     <value>Stop</value>
+  </data>
+  <data name="StopWork" xml:space="preserve">
+    <value>Przerwanie procesu</value>
   </data>
   <data name="ThumbImgHeight" xml:space="preserve">
     <value>Wysokość miniaturki</value>
