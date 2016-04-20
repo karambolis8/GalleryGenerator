@@ -267,7 +267,6 @@ namespace GalleryGenerator
         {
             ProgressTextBlock.Text = string.Format(Translations.ProcessInterruptedByError, eArgs.Error.GetType().Name);
             Logger.Error("General Exception. Generating gallery failed.", eArgs.Error);
-            Logger.Info("General Exception. Generating gallery failed.");
             StopButton.IsEnabled = false;
             RunButton.IsEnabled = true;
             EnableInputs(true);

@@ -41,7 +41,7 @@ namespace GalleryGeneratorEngine
 
                 string currentDir = dirs.Pop();
 
-                Logger.Info("Counting directory: " + currentDir);
+                Logger.Debug("Counting directory: " + currentDir);
 
                 string[] subDirs;
 

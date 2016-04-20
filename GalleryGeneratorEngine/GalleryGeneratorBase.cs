@@ -69,7 +69,7 @@ namespace GalleryGeneratorEngine
 
                 string currentDir = dirs.Pop();
                 
-                Logger.Info("Current directory: " + currentDir);
+                Logger.Debug("Current directory: " + currentDir);
 
                 string[] subDirs;
 
