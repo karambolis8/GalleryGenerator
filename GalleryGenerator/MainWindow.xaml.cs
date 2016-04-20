@@ -52,7 +52,7 @@ namespace GalleryGenerator
 
                 var options = GetUserOptionsFromUI();
                 
-                if (Settings.Default.EstimateWorkTime)
+                if (UserSettings.Default.EstimateWorkTime)
                 {
                     ProgressTextBlock.Text = Translations.EstimatingWorkTime;
                     WorkerProgressBar.IsIndeterminate = true;
@@ -92,12 +92,12 @@ namespace GalleryGenerator
                 GalleryName = GalleryNameTextBox.Text,
                 InputDirectory = InputDirTextBox.Text,
                 OutputDirectory = OutputDirTextBox.Text,
-                PreserveMediumAspectRatio = Settings.Default.PreserveMediumAspectRatio,
-                CopyOriginalFiles = Settings.Default.CopyOriginalFiles,
-                MediumX = Settings.Default.MediumImgWidth,
-                MediumY = Settings.Default.MediumImgHeight,
-                ThumbX = Settings.Default.ThumbImgWidth,
-                ThumbY = Settings.Default.ThumbImgHeight
+                PreserveMediumAspectRatio = UserSettings.Default.PreserveMediumAspectRatio,
+                CopyOriginalFiles = UserSettings.Default.CopyOriginalFiles,
+                MediumX = UserSettings.Default.MediumImgWidth,
+                MediumY = UserSettings.Default.MediumImgHeight,
+                ThumbX = UserSettings.Default.ThumbImgWidth,
+                ThumbY = UserSettings.Default.ThumbImgHeight
             };
         }
 
@@ -189,7 +189,7 @@ namespace GalleryGenerator
                 WorkerProgressBar.Value = 100;
                 var statistics = e.Result as GeneratorStatistics;
 
-                if (Settings.Default.OpenAfterFinish)
+                if (UserSettings.Default.OpenAfterFinish)
                 {
                     var path = Path.Combine(this.OutputDirTextBox.Text, this.GalleryNameTextBox.Text);
 
@@ -286,12 +286,12 @@ namespace GalleryGenerator
 
         private void EstimateWorkTimeCheckBox_CheckedChanged(object sender, RoutedEventArgs e)
         {
-            Settings.Default.Save();
+            UserSettings.Default.Save();
         }
 
         private void OpenAfterFinishCheckBox_CheckedChanged(object sender, RoutedEventArgs e)
         {
-            Settings.Default.Save();
+            UserSettings.Default.Save();
         }
     }
 }

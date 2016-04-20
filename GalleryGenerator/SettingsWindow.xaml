@@ -34,18 +34,18 @@
             <Label Grid.Row="4" Grid.Column="0" Content="{x:Static p:Translations.PreserveAspectRatio}" />
             <Label Grid.Row="5" Grid.Column="0" Content="{x:Static p:Translations.CopyOriginalFiles}" />
 
-            <TextBox x:Name="MediumImgWidthTextBox" Text="{Binding Source={StaticResource Settings}, Path=Default.MediumImgWidth, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" Margin="3" />
-            <TextBox x:Name="MediumImgHeightTextBox" Text="{Binding Source={StaticResource Settings}, Path=Default.MediumImgHeight, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="3" />
-            <TextBox x:Name="ThumbImgWidthTextBox" Text="{Binding Source={StaticResource Settings}, Path=Default.ThumbImgWidth, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" Margin="3" />
-            <TextBox x:Name="ThumbImgHeightTextBox" Text="{Binding Source={StaticResource Settings}, Path=Default.ThumbImgHeight, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" Margin="3" />
-            <CheckBox x:Name="PreserveAspectRatioCheckBox" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.PreserveMediumAspectRatio, Mode=TwoWay}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,7,0" />
-            <CheckBox x:Name="CopyOriginalFilesCheckBox" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.CopyOriginalFiles, Mode=TwoWay}" Grid.Row="5" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,7,0"  />
+            <TextBox x:Name="MediumImgWidthTextBox" Text="{Binding Source={StaticResource UserSettings}, Path=Default.MediumImgWidth, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" Margin="3" TextChanged="TextBox_OnTextChanged" />
+            <TextBox x:Name="MediumImgHeightTextBox" Text="{Binding Source={StaticResource UserSettings}, Path=Default.MediumImgHeight, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="3" TextChanged="TextBox_OnTextChanged" />
+            <TextBox x:Name="ThumbImgWidthTextBox" Text="{Binding Source={StaticResource UserSettings}, Path=Default.ThumbImgWidth, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" Margin="3" TextChanged="TextBox_OnTextChanged" />
+            <TextBox x:Name="ThumbImgHeightTextBox" Text="{Binding Source={StaticResource UserSettings}, Path=Default.ThumbImgHeight, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" Margin="3" TextChanged="TextBox_OnTextChanged" />
+            <CheckBox x:Name="PreserveAspectRatioCheckBox" IsChecked="{Binding Source={StaticResource UserSettings}, Path=Default.PreserveMediumAspectRatio, Mode=TwoWay}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,7,0" Checked="CheckBox_CheckedChanged" Unchecked="CheckBox_CheckedChanged" />
+            <CheckBox x:Name="CopyOriginalFilesCheckBox" IsChecked="{Binding Source={StaticResource UserSettings}, Path=Default.CopyOriginalFiles, Mode=TwoWay}" Grid.Row="5" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,7,0"  Checked="CheckBox_CheckedChanged" Unchecked="CheckBox_CheckedChanged" />
         </Grid>
 
         <DockPanel Dock="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
             <Button x:Name="ResetButton"  DockPanel.Dock="Left" Content="{x:Static p:Translations.Reset}" HorizontalAlignment="Left" MinWidth="50" Margin="3" Click="ResetButton_Click" />
-            <Button x:Name="SaveButton"  DockPanel.Dock="Right" Content="{x:Static p:Translations.Save}" HorizontalAlignment="Right" MinWidth="50" Margin="3" Click="SaveButton_OnClick"/>
-            <Button x:Name="CancelButton"  DockPanel.Dock="Right" Content="{x:Static p:Translations.Cancel}" HorizontalAlignment="Right" MinWidth="50" Margin="3" Click="CancelButton_OnClick"/>
+            <Button x:Name="SaveButton"  DockPanel.Dock="Right" Content="{x:Static p:Translations.Save}" HorizontalAlignment="Right" MinWidth="50" Margin="3" IsEnabled="False" Click="SaveButton_OnClick"/>
+            <Button x:Name="CancelButton"  DockPanel.Dock="Right" Content="{x:Static p:Translations.Cancel}" HorizontalAlignment="Right" MinWidth="50" Margin="3" IsEnabled="False" Click="CancelButton_OnClick"/>
         </DockPanel>
     </DockPanel>
 </Window>

@@ -2,24 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GalleryGenerator.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="MediumImgWidth" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">540</Value>
-    </Setting>
-    <Setting Name="MediumImgHeight" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">763</Value>
-    </Setting>
-    <Setting Name="ThumbImgWidth" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">75</Value>
-    </Setting>
-    <Setting Name="ThumbImgHeight" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">75</Value>
-    </Setting>
-    <Setting Name="CopyOriginalFiles" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="PreserveMediumAspectRatio" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="AppPositionLeft" Type="System.Double" Scope="User">
       <Value Profile="(Default)">400</Value>
     </Setting>
@@ -34,12 +16,6 @@
     </Setting>
     <Setting Name="SettingsWindowTop" Type="System.Double" Scope="User">
       <Value Profile="(Default)">375</Value>
-    </Setting>
-    <Setting Name="EstimateWorkTime" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="OpenAfterFinish" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

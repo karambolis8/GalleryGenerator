@@ -25,78 +25,6 @@ namespace GalleryGenerator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("540")]
-        public int MediumImgWidth {
-            get {
-                return ((int)(this["MediumImgWidth"]));
-            }
-            set {
-                this["MediumImgWidth"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("763")]
-        public int MediumImgHeight {
-            get {
-                return ((int)(this["MediumImgHeight"]));
-            }
-            set {
-                this["MediumImgHeight"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("75")]
-        public int ThumbImgWidth {
-            get {
-                return ((int)(this["ThumbImgWidth"]));
-            }
-            set {
-                this["ThumbImgWidth"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("75")]
-        public int ThumbImgHeight {
-            get {
-                return ((int)(this["ThumbImgHeight"]));
-            }
-            set {
-                this["ThumbImgHeight"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool CopyOriginalFiles {
-            get {
-                return ((bool)(this["CopyOriginalFiles"]));
-            }
-            set {
-                this["CopyOriginalFiles"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool PreserveMediumAspectRatio {
-            get {
-                return ((bool)(this["PreserveMediumAspectRatio"]));
-            }
-            set {
-                this["PreserveMediumAspectRatio"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("400")]
         public double AppPositionLeft {
             get {
@@ -152,30 +80,6 @@ namespace GalleryGenerator.Properties {
             }
             set {
                 this["SettingsWindowTop"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool EstimateWorkTime {
-            get {
-                return ((bool)(this["EstimateWorkTime"]));
-            }
-            set {
-                this["EstimateWorkTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool OpenAfterFinish {
-            get {
-                return ((bool)(this["OpenAfterFinish"]));
-            }
-            set {
-                this["OpenAfterFinish"] = value;
             }
         }
     }
