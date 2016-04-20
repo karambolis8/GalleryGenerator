@@ -4,15 +4,14 @@ using System.Configuration;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
-using System.Windows.Markup;
 using Common;
 using GalleryGenerator.Properties;
 using GalleryGenerator.Resources.Translations;
 using GalleryGeneratorEngine;
 using log4net;
+using MenuItem = System.Windows.Controls.MenuItem;
 
 namespace GalleryGenerator
 {
@@ -30,6 +29,8 @@ namespace GalleryGenerator
             this.Left = WindowsSettings.Default.AppPositionLeft;
             this.Top = WindowsSettings.Default.AppPositionTop;
             this.Width = WindowsSettings.Default.AppWidth;
+
+            SetAndStoreAppLanguage(WindowsSettings.Default.AppLanguage);
         }
 
         private void MainWindow_OnLocationChanged(object sender, EventArgs e)
@@ -299,13 +300,11 @@ namespace GalleryGenerator
 
         private void EnglishsLanguageMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            PolishLanguageMenuItem.IsChecked = false;
             SetAndStoreAppLanguage("en-GB");
         }
 
         private void PolishLanguageMenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            EnglishsLanguageMenuItem.IsChecked = false;
             SetAndStoreAppLanguage("pl-PL");
         }
 
@@ -315,6 +314,17 @@ namespace GalleryGenerator
             CultureResources.ChangeCulture(ci);
             WindowsSettings.Default.AppLanguage = cultureCode;
             WindowsSettings.Default.Save();
+
+            foreach (var item in LanguageMenuItem.Items)
+            {
+                var menuItem = item as MenuItem;
+
+                if (menuItem == null)
+                    continue;
+
+                var tag = menuItem.Tag.ToString();
+                menuItem.IsChecked = tag == cultureCode;
+            }
         }
     }
 }

@@ -11,13 +11,13 @@
     <StackPanel Margin="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Menu Name="MainMenu" IsMainMenu="True" HorizontalAlignment="Stretch" VerticalAlignment="Top">
             <MenuItem Header="{Binding Path=Settings, Source={StaticResource Translations}}" Click="MenuItem_OnClick"/>
-            <MenuItem Header="{Binding Path=Language, Source={StaticResource Translations}}" >
-                <MenuItem x:Name="PolishLanguageMenuItem" Header="{Binding Path=Polish, Source={StaticResource Translations}}" IsCheckable="True" Click="PolishLanguageMenuItem_OnClick" >
+            <MenuItem x:Name="LanguageMenuItem" Header="{Binding Path=Language, Source={StaticResource Translations}}" >
+                <MenuItem x:Name="PolishLanguageMenuItem" Tag="pl-PL" Header="{Binding Path=Polish, Source={StaticResource Translations}}" IsCheckable="True" Click="PolishLanguageMenuItem_OnClick" >
                     <MenuItem.Icon>
                         <Image VerticalAlignment="Center" Source="Resources/pl-icon.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem x:Name="EnglishsLanguageMenuItem" Header="{Binding Path=English, Source={StaticResource Translations}}" IsCheckable="True" Click="EnglishsLanguageMenuItem_OnClick" >
+                <MenuItem x:Name="EnglishsLanguageMenuItem" Tag="en-GB" Header="{Binding Path=English, Source={StaticResource Translations}}" IsCheckable="True" Click="EnglishsLanguageMenuItem_OnClick" >
                     <MenuItem.Icon>
                         <Image VerticalAlignment="Center" Source="Resources/gb-icon.png" />
                     </MenuItem.Icon>
