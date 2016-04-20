@@ -61,7 +61,14 @@ div#footer {
 	padding: 20px 0 40px;
 	text-align: center;
 }
-
+div#menu {
+    position: absolute;
+    left: 10px;
+    width: 215px;
+}
+div#menu a {
+    word-wrap: break-word;
+}
 #other-files td img {
     display: block;
     clear: both;
