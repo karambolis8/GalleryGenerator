@@ -109,10 +109,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Properties\Settings.Designer.cs">
+    <Compile Include="Properties\WindowsSettings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
+      <DependentUpon>WindowsSettings.settings</DependentUpon>
     </Compile>
     <Compile Include="Resources\Translations\Translations.Designer.cs">
       <DependentUpon>Translations.resx</DependentUpon>
@@ -174,9 +174,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
+    <None Include="Properties\WindowsSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <LastGenOutput>WindowsSettings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Properties\UserSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

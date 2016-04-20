@@ -4,7 +4,7 @@
     xmlns:properties="clr-namespace:GalleryGenerator.Properties"
     StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <properties:Settings x:Key="Settings" />
+        <properties:WindowsSettings x:Key="Settings" />
         <properties:UserSettings x:Key="UserSettings" />
     </Application.Resources>
 </Application>

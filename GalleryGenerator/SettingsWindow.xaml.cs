@@ -73,9 +73,9 @@ namespace GalleryGenerator
 
         private void SettingsWindow_OnLocationChanged(object sender, EventArgs e)
         {
-            Settings.Default.SettingsWindowLeft = this.Left;
-            Settings.Default.SettingsWindowTop = this.Top;
-            Settings.Default.Save();
+            WindowsSettings.Default.SettingsWindowLeft = this.Left;
+            WindowsSettings.Default.SettingsWindowTop = this.Top;
+            WindowsSettings.Default.Save();
         }
 
         private void TextBox_OnTextChanged(object sender, TextChangedEventArgs e)

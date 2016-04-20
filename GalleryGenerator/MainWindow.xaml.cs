@@ -24,22 +24,22 @@ namespace GalleryGenerator
             InitializeComponent();
 
             this.Title = string.Format("{0} v{1}", Translations.AppName, ConfigurationManager.AppSettings["appVersion"]);
-            this.Left = Settings.Default.AppPositionLeft;
-            this.Top = Settings.Default.AppPositionTop;
-            this.Width = Settings.Default.AppWidth;
+            this.Left = WindowsSettings.Default.AppPositionLeft;
+            this.Top = WindowsSettings.Default.AppPositionTop;
+            this.Width = WindowsSettings.Default.AppWidth;
         }
 
         private void MainWindow_OnLocationChanged(object sender, EventArgs e)
         {
-            Settings.Default.AppPositionLeft = this.Left;
-            Settings.Default.AppPositionTop = this.Top;
-            Settings.Default.Save();
+            WindowsSettings.Default.AppPositionLeft = this.Left;
+            WindowsSettings.Default.AppPositionTop = this.Top;
+            WindowsSettings.Default.Save();
         }
 
         private void MainWindow_OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            Settings.Default.AppWidth = this.Width;
-            Settings.Default.Save();
+            WindowsSettings.Default.AppWidth = this.Width;
+            WindowsSettings.Default.Save();
         }
 
         private void RunButton_OnClick(object sender, RoutedEventArgs _)
@@ -279,8 +279,8 @@ namespace GalleryGenerator
         private void MenuItem_OnClick(object sender, RoutedEventArgs e)
         {
             var settingsWindow = new SettingsWindow();
-            settingsWindow.Top = Settings.Default.SettingsWindowTop;
-            settingsWindow.Left = Settings.Default.SettingsWindowLeft;
+            settingsWindow.Top = WindowsSettings.Default.SettingsWindowTop;
+            settingsWindow.Left = WindowsSettings.Default.SettingsWindowLeft;
             settingsWindow.ShowDialog();
         }
 
