@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using GalleryGenerator.Properties;
@@ -59,12 +60,14 @@ namespace GalleryGenerator
         private void SaveButton_OnClick(object sender, RoutedEventArgs e)
         {
             UserSettings.Default.Save();
+            this.ReactOnChanges(false);
             this.Close();
         }
 
         private void CancelButton_OnClick(object sender, RoutedEventArgs e)
         {
             UserSettings.Default.Reload();
+            this.ReactOnChanges(false);
             this.Close();
         }
 
@@ -96,6 +99,19 @@ namespace GalleryGenerator
             this.unsavedChanges = changes;
             this.SaveButton.IsEnabled = changes;
             this.CancelButton.IsEnabled = changes;
+        }
+
+        private void SettingsWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            if (this.unsavedChanges)
+            {
+                var result = MessageBox.Show(this, "Are you sure you want to close without saving changes?",
+                    "Settings changes", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.No)
+                    e.Cancel = true;
+                else
+                    UserSettings.Default.Reload();
+            }
         }
     }
 }

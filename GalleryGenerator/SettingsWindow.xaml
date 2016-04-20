@@ -9,6 +9,7 @@
         ResizeMode="NoResize"
         WindowStyle="ToolWindow"
         LocationChanged="SettingsWindow_OnLocationChanged"
+        Closing="SettingsWindow_OnClosing"
         Title="{x:Static p:Translations.Settings}" Height="240" Width="280">
 
     <DockPanel LastChildFill="False">
