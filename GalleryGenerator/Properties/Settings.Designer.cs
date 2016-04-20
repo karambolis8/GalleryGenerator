@@ -121,7 +121,7 @@ namespace GalleryGenerator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        [global::System.Configuration.DefaultSettingValueAttribute("420")]
         public double AppWidth {
             get {
                 return ((double)(this["AppWidth"]));
@@ -164,6 +164,18 @@ namespace GalleryGenerator.Properties {
             }
             set {
                 this["EstimateWorkTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OpenAfterFinish {
+            get {
+                return ((bool)(this["OpenAfterFinish"]));
+            }
+            set {
+                this["OpenAfterFinish"] = value;
             }
         }
     }

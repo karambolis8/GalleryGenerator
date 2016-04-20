@@ -151,6 +151,15 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open gallery after completed..
+        /// </summary>
+        public static string OpenAfterFinish {
+            get {
+                return ResourceManager.GetString("OpenAfterFinish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Output directory.
         /// </summary>
         public static string OutputDir {

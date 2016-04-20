@@ -4,7 +4,7 @@
     xmlns:p="clr-namespace:GalleryGenerator.Resources.Translations"
     Icon="Resources/MainIcon.ico"
     MaxHeight="190" MinHeight="190" Height="190"
-    Width="400" MinWidth="400"
+    Width="420" MinWidth="420"
     ResizeMode="CanResize"
     LocationChanged="MainWindow_OnLocationChanged"
     SizeChanged="MainWindow_OnSizeChanged">
@@ -47,6 +47,8 @@
 
             <DockPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" LastChildFill="False">
                 <CheckBox x:Name="EstimateWorkTimeCheckBox" DockPanel.Dock="Left" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.EstimateWorkTime, Mode=TwoWay}" Margin="3,5,3,5" Content="{x:Static p:Translations.EstimateWorkTime}" Checked="EstimateWorkTimeCheckBox_CheckedChanged" Unchecked="EstimateWorkTimeCheckBox_CheckedChanged" />
+                <CheckBox x:Name="OpenAfterFinishCheckBox" DockPanel.Dock="Left" IsChecked="{Binding Source={StaticResource Settings}, Path=Default.OpenAfterFinish, Mode=TwoWay}" Margin="3,5,3,5" Content="{x:Static p:Translations.OpenAfterFinish}" Checked="OpenAfterFinishCheckBox_CheckedChanged" Unchecked="OpenAfterFinishCheckBox_CheckedChanged" />
+
                 <Button x:Name="StopButton" Content="Stop" Padding="5,0,5,0" DockPanel.Dock="Right" IsEnabled="False" Click="StopButton_OnClick" Margin="3"/>
                 <Button x:Name="RunButton" Content="Run" Padding="5,0,5,0" DockPanel.Dock="Right" Click="RunButton_OnClick" Margin="3" />
             </DockPanel>

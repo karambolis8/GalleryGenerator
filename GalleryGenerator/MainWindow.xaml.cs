@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Forms;
@@ -187,6 +188,16 @@ namespace GalleryGenerator
                 ProgressTextBlock.Text = Translations.WorkCompleted;
                 WorkerProgressBar.Value = 100;
                 var statistics = e.Result as GeneratorStatistics;
+
+                if (Settings.Default.OpenAfterFinish)
+                {
+                    var path = Path.Combine(this.OutputDirTextBox.Text, this.GalleryNameTextBox.Text);
+
+                    var explorerWindowProcess = new Process();
+                    explorerWindowProcess.StartInfo.FileName = "explorer.exe";
+                    explorerWindowProcess.StartInfo.Arguments = string.Format("/select,\"{0}.html\"", path);
+                    explorerWindowProcess.Start();
+                }
             }
         }
 
@@ -274,6 +285,11 @@ namespace GalleryGenerator
         }
 
         private void EstimateWorkTimeCheckBox_CheckedChanged(object sender, RoutedEventArgs e)
+        {
+            Settings.Default.Save();
+        }
+
+        private void OpenAfterFinishCheckBox_CheckedChanged(object sender, RoutedEventArgs e)
         {
             Settings.Default.Save();
         }

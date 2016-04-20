@@ -147,6 +147,9 @@
   <data name="MediumImgWidth" xml:space="preserve">
     <value>Medium images width</value>
   </data>
+  <data name="OpenAfterFinish" xml:space="preserve">
+    <value>Open gallery after completed.</value>
+  </data>
   <data name="OutputDir" xml:space="preserve">
     <value>Output directory</value>
   </data>
