@@ -1,6 +1,6 @@
 ﻿using GalleryGenerator.Properties;
 
-namespace GalleryGenerator
+namespace GalleryGenerator.Helpers
 {
     public static class UserSettingsHelper
     {

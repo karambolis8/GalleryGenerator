@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Common;
+using Common.DataObjects;
 using log4net;
 
-namespace GalleryGeneratorEngine
+namespace GalleryGeneratorEngine.DirectoryProcessors
 {
     public class FileCounter : DirectoryTreeProcessorBase<long>
     {

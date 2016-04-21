@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using Common;
-using System.IO;
-using log4net;
+using Common.DataObjects;
+using Common.Helpers;
 
-namespace GalleryGeneratorEngine
+namespace GalleryGeneratorEngine.DirectoryProcessors
 {
     public abstract class GalleryGeneratorBase : DirectoryTreeProcessorBase<GeneratorStatistics>
     {

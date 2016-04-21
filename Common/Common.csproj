@@ -89,7 +89,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration.cs" />
+    <Compile Include="Helpers\Configuration.cs" />
+    <Compile Include="DataObjects\GeneratorStatistics.cs" />
     <Compile Include="Resources\Templates.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,7 +101,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Templates.pl.resx</DependentUpon>
     </Compile>
-    <Compile Include="UserOptions.cs" />
+    <Compile Include="DataObjects\UserOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +126,7 @@
       <LastGenOutput>Templates.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

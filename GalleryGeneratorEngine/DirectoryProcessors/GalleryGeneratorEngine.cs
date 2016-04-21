@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using Common;
-using System.IO;
+using Common.DataObjects;
+using Common.Helpers;
 using Common.Resources;
+using GalleryGeneratorEngine.Helpers;
 using log4net;
 
-namespace GalleryGeneratorEngine
+namespace GalleryGeneratorEngine.DirectoryProcessors
 {
     public class GalleryGeneratorEngine : GalleryGeneratorBase
     {

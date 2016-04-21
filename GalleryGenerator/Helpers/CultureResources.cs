@@ -4,7 +4,7 @@ using GalleryGenerator.Resources.Translations;
 
 // http://www.codeproject.com/Articles/22967/WPF-Runtime-Localization
 
-namespace GalleryGenerator
+namespace GalleryGenerator.Helpers
 {
     public class CultureResources
     {

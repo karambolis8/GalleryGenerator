@@ -1,8 +1,8 @@
 ﻿using System;
-using Common;
+using Common.DataObjects;
 using log4net;
 
-namespace GalleryGeneratorEngine
+namespace GalleryGeneratorEngine.DirectoryProcessors
 {
     public abstract class DirectoryTreeProcessorBase<T>
     {

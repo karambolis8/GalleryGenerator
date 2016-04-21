@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:cultures="clr-namespace:GalleryGenerator"
-                    xmlns:properties="clr-namespace:GalleryGenerator.Properties">
-    <ObjectDataProvider x:Key="Translations" ObjectType="{x:Type cultures:CultureResources}" MethodName="GetResourceInstance"/>
+                    xmlns:properties="clr-namespace:GalleryGenerator.Properties"
+                    xmlns:helpers="clr-namespace:GalleryGenerator.Helpers">
+    <ObjectDataProvider x:Key="Translations" ObjectType="{x:Type helpers:CultureResources}" MethodName="GetResourceInstance"/>
     <properties:UserSettings x:Key="UserSettings" />
 </ResourceDictionary>

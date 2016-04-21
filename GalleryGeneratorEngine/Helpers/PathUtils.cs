@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace GalleryGeneratorEngine
+namespace GalleryGeneratorEngine.Helpers
 {
     public static class PathUtils
     {

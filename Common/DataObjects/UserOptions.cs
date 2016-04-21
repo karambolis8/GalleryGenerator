@@ -1,5 +1,5 @@
 ﻿
-namespace Common
+namespace Common.DataObjects
 {
     public class UserOptions
     {
