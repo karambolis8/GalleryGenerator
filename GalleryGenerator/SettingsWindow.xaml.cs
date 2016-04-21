@@ -43,6 +43,12 @@ namespace GalleryGenerator
             this.CopyOriginalFilesCheckBox.IsChecked = checkbox;
             UserSettings.Default.CopyOriginalFiles = checkbox;
 
+            this.ImagesExtensionsTextBox.Text = GetDefaultStringSetting("ImageExtensions");
+            UserSettings.Default.ImageExtensions = GetDefaultStringSetting("ImageExtensions");
+
+            this.OtherFilesExtensionsTextBox.Text = GetDefaultStringSetting("FileExtensions");
+            UserSettings.Default.FileExtensions = GetDefaultStringSetting("FileExtensions");
+
             this.ReactOnChanges(true);
         }
 
@@ -56,6 +62,11 @@ namespace GalleryGenerator
         private bool ParseDefaultBoolSetting(string settingKey)
         {
             return Boolean.Parse((string)UserSettings.Default.Properties[settingKey].DefaultValue);
+        }
+
+        private string GetDefaultStringSetting(string settingKey)
+        {
+            return UserSettings.Default.Properties[settingKey].DefaultValue.ToString();
         }
 
         private void SaveButton_OnClick(object sender, RoutedEventArgs e)

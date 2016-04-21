@@ -144,11 +144,17 @@
   <data name="EstimatingWorkTime" xml:space="preserve">
     <value>Estimating work time...</value>
   </data>
+  <data name="FileExtensions" xml:space="preserve">
+    <value>File extensions</value>
+  </data>
   <data name="FillAllFields" xml:space="preserve">
     <value>You have to fill all fields.</value>
   </data>
   <data name="GalleryName" xml:space="preserve">
     <value>Gallery name</value>
+  </data>
+  <data name="Images" xml:space="preserve">
+    <value>Images</value>
   </data>
   <data name="InputDir" xml:space="preserve">
     <value>Input directory</value>
@@ -167,6 +173,9 @@
   </data>
   <data name="OpenAfterFinish" xml:space="preserve">
     <value>Open gallery after completed.</value>
+  </data>
+  <data name="OtherFiles" xml:space="preserve">
+    <value>Other files</value>
   </data>
   <data name="OutputDir" xml:space="preserve">
     <value>Output directory</value>

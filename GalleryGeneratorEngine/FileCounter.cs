@@ -91,8 +91,8 @@ namespace GalleryGeneratorEngine
         private int ProcessFiles(DirectoryInfo directoryInfo)
         {
             var files = directoryInfo.GetFiles();
-            return files.Count(f => Configuration.ImageExtensions.Contains(f.Extension.ToLower()) 
-            || Configuration.FileExtensions.Contains(f.Extension.ToLower()));
+            return files.Count(f => this.options.ImageExtensions.Contains(f.Extension.ToLower()) 
+            || this.options.FileExtensions.Contains(f.Extension.ToLower()));
         }
     }
 }

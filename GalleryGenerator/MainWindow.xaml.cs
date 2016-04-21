@@ -102,7 +102,9 @@ namespace GalleryGenerator
                 MediumX = UserSettings.Default.MediumImgWidth,
                 MediumY = UserSettings.Default.MediumImgHeight,
                 ThumbX = UserSettings.Default.ThumbImgWidth,
-                ThumbY = UserSettings.Default.ThumbImgHeight
+                ThumbY = UserSettings.Default.ThumbImgHeight,
+                ImageExtensions = UserSettingsHelper.ImageExtenstions,
+                FileExtensions = UserSettingsHelper.FileExtenstions
             };
         }
 

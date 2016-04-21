@@ -118,5 +118,30 @@ namespace GalleryGenerator.Properties {
                 this["OpenAfterFinish"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(".jpg|.jpeg|.bmp|.png|.tiff|.tif|.gif")]
+        public string ImageExtensions {
+            get {
+                return ((string)(this["ImageExtensions"]));
+            }
+            set {
+                this["ImageExtensions"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(".pdf|.html|.htm|.txt|.rtf|.odt|.ods|.doc|.docx|.xls|.xlsx|.avi|.dwg|.mov|.mp3|.mp" +
+            "4|.mpeg|.rar|.rtf|.ttf|.txt|.wav|.wmv|.zip|.7z")]
+        public string FileExtensions {
+            get {
+                return ((string)(this["FileExtensions"]));
+            }
+            set {
+                this["FileExtensions"] = value;
+            }
+        }
     }
 }

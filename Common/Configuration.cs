@@ -6,8 +6,8 @@ namespace Common
 {
     public static class Configuration
     {
-        public static string[] ImageExtensions { get; private set; }
         public static string[] FileExtensions { get; private set; }
+
         public static string PageFormat { get; private set; }
         public static string ImageFormat { get; private set; }
         public static string GalleryTemplate { get; private set; }
@@ -24,9 +24,6 @@ namespace Common
         
         static Configuration()
         {
-            ImageExtensions = ConfigurationManager.AppSettings["imageExtensions"].Split('|');
-            FileExtensions = ConfigurationManager.AppSettings["fileExtensions"].Split('|');
-
             CssDir = ConfigurationManager.AppSettings["cssDir"];
             JsDir = ConfigurationManager.AppSettings["jsDir"];
             IcoDir = ConfigurationManager.AppSettings["icoDir"];

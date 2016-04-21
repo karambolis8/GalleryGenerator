@@ -142,6 +142,15 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File extensions.
+        /// </summary>
+        public static string FileExtensions {
+            get {
+                return ResourceManager.GetString("FileExtensions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have to fill all fields..
         /// </summary>
         public static string FillAllFields {
@@ -156,6 +165,15 @@ namespace GalleryGenerator.Resources.Translations {
         public static string GalleryName {
             get {
                 return ResourceManager.GetString("GalleryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Images.
+        /// </summary>
+        public static string Images {
+            get {
+                return ResourceManager.GetString("Images", resourceCulture);
             }
         }
         
@@ -210,6 +228,15 @@ namespace GalleryGenerator.Resources.Translations {
         public static string OpenAfterFinish {
             get {
                 return ResourceManager.GetString("OpenAfterFinish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other files.
+        /// </summary>
+        public static string OtherFiles {
+            get {
+                return ResourceManager.GetString("OtherFiles", resourceCulture);
             }
         }
         

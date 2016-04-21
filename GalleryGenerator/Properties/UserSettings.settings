@@ -26,5 +26,11 @@
     <Setting Name="OpenAfterFinish" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="ImageExtensions" Type="System.String" Scope="User">
+      <Value Profile="(Default)">.jpg|.jpeg|.bmp|.png|.tiff|.tif|.gif</Value>
+    </Setting>
+    <Setting Name="FileExtensions" Type="System.String" Scope="User">
+      <Value Profile="(Default)">.pdf|.html|.htm|.txt|.rtf|.odt|.ods|.doc|.docx|.xls|.xlsx|.avi|.dwg|.mov|.mp3|.mp4|.mpeg|.rar|.rtf|.ttf|.txt|.wav|.wmv|.zip|.7z</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -63,7 +63,7 @@ namespace GalleryGeneratorEngine
             var files = directoryInfo.GetFiles();
 
             var images = files
-                .Where(f => Configuration.ImageExtensions.Contains(f.Extension.ToLower()))
+                .Where(f => this.options.ImageExtensions.Contains(f.Extension.ToLower()))
                 .ToArray();
 
             var otherFiles = files
@@ -72,8 +72,8 @@ namespace GalleryGeneratorEngine
 
             var ignoredExts = files
                 .Where(f =>
-                        !Configuration.FileExtensions.Contains(f.Extension.ToLower()) &&
-                        !Configuration.ImageExtensions.Contains(f.Extension.ToLower()));
+                        !this.options.FileExtensions.Contains(f.Extension.ToLower()) &&
+                        !this.options.ImageExtensions.Contains(f.Extension.ToLower()));
 
             foreach (var f in ignoredExts)
             {
@@ -244,7 +244,6 @@ namespace GalleryGeneratorEngine
                 }
 
                 icon = Path.Combine(icoWithNesting, icon);
-
 
                 var row = new StringBuilder(Configuration.FilesTableRowTemplate)
                     .Replace(FILE_IMG_LINK, icon.GetBrowserPath())
