@@ -64,9 +64,9 @@
         </TabControl>
 
         <DockPanel Dock="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
-            <Button x:Name="ResetButton"  DockPanel.Dock="Left" Content="{Binding Path=Reset, Source={StaticResource Translations}}" HorizontalAlignment="Left" MinWidth="50" Margin="3" Click="ResetButton_Click" />
-            <Button x:Name="SaveButton"  DockPanel.Dock="Right" Content="{Binding Path=Save, Source={StaticResource Translations}}" HorizontalAlignment="Right" MinWidth="50" Margin="3" IsEnabled="False" Click="SaveButton_OnClick"/>
-            <Button x:Name="CancelButton"  DockPanel.Dock="Right" Content="{Binding Path=Cancel, Source={StaticResource Translations}}" HorizontalAlignment="Right" MinWidth="50" Margin="3" IsEnabled="False" Click="CancelButton_OnClick"/>
+            <Button x:Name="ResetButton" DockPanel.Dock="Left" Content="{Binding Path=Reset, Source={StaticResource Translations}}" HorizontalAlignment="Left" MinWidth="50" Margin="3" Click="ResetButton_Click" />
+            <Button x:Name="SaveButton" DockPanel.Dock="Right" Content="{Binding Path=Save, Source={StaticResource Translations}}" HorizontalAlignment="Right" MinWidth="50" Margin="3" IsEnabled="False" Click="SaveButton_OnClick"/>
+            <Button x:Name="CancelButton" DockPanel.Dock="Right" Content="{Binding Path=Cancel, Source={StaticResource Translations}}" HorizontalAlignment="Right" MinWidth="50" Margin="3" IsEnabled="False" Click="CancelButton_OnClick"/>
         </DockPanel>
     </DockPanel>
 </Window>
