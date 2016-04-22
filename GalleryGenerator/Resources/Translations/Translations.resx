@@ -216,6 +216,9 @@
   <data name="ThumbImgWidth" xml:space="preserve">
     <value>Thumbnails width</value>
   </data>
+  <data name="ThumbsGridSize" xml:space="preserve">
+    <value>Thumbs grid size</value>
+  </data>
   <data name="WorkCancelled" xml:space="preserve">
     <value>Process cancelled.</value>
   </data>

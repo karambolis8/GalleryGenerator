@@ -8,7 +8,7 @@
         WindowStyle="ToolWindow"
         LocationChanged="SettingsWindow_OnLocationChanged"
         Closing="SettingsWindow_OnClosing"
-        Title="{Binding Path=Settings, Source={StaticResource Translations}}" Height="260" Width="270">
+        Title="{Binding Path=Settings, Source={StaticResource Translations}}" Height="290" Width="270">
 
     <DockPanel LastChildFill="False">
 
@@ -26,21 +26,29 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <Label Grid.Row="0" Grid.Column="0" Content="{Binding Path=MediumImgWidth, Source={StaticResource Translations}}" />
-                    <Label Grid.Row="1" Grid.Column="0" Content="{Binding Path=MediumImgHeight, Source={StaticResource Translations}}" />
-                    <Label Grid.Row="2" Grid.Column="0" Content="{Binding Path=ThumbImgWidth, Source={StaticResource Translations}}" />
-                    <Label Grid.Row="3" Grid.Column="0" Content="{Binding Path=ThumbImgHeight, Source={StaticResource Translations}}" />
-                    <Label Grid.Row="4" Grid.Column="0" Content="{Binding Path=PreserveAspectRatio, Source={StaticResource Translations}}" />
-                    <Label Grid.Row="5" Grid.Column="0" Content="{Binding Path=CopyOriginalFiles, Source={StaticResource Translations}}" />
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="MediumImgWidthTextBox" Text="{Binding Source={StaticResource UserSettings}, Path=Default.MediumImgWidth, Mode=TwoWay}" Margin="3" TextChanged="TextBox_OnTextChanged" />
 
-                    <TextBox x:Name="MediumImgWidthTextBox" Text="{Binding Source={StaticResource UserSettings}, Path=Default.MediumImgWidth, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" Margin="3" TextChanged="TextBox_OnTextChanged" />
-                    <TextBox x:Name="MediumImgHeightTextBox" Text="{Binding Source={StaticResource UserSettings}, Path=Default.MediumImgHeight, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="3" TextChanged="TextBox_OnTextChanged" />
-                    <TextBox x:Name="ThumbImgWidthTextBox" Text="{Binding Source={StaticResource UserSettings}, Path=Default.ThumbImgWidth, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" Margin="3" TextChanged="TextBox_OnTextChanged" />
-                    <TextBox x:Name="ThumbImgHeightTextBox" Text="{Binding Source={StaticResource UserSettings}, Path=Default.ThumbImgHeight, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" Margin="3" TextChanged="TextBox_OnTextChanged" />
-                    <CheckBox x:Name="PreserveAspectRatioCheckBox" IsChecked="{Binding Source={StaticResource UserSettings}, Path=Default.PreserveMediumAspectRatio, Mode=TwoWay}" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,7,0" Checked="CheckBox_CheckedChanged" Unchecked="CheckBox_CheckedChanged" />
-                    <CheckBox x:Name="CopyOriginalFilesCheckBox" IsChecked="{Binding Source={StaticResource UserSettings}, Path=Default.CopyOriginalFiles, Mode=TwoWay}" Grid.Row="5" Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,7,0"  Checked="CheckBox_CheckedChanged" Unchecked="CheckBox_CheckedChanged" IsEnabled="False" />
+                    <Label Grid.Row="1" Grid.Column="0" Content="{Binding Path=MediumImgHeight, Source={StaticResource Translations}}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="MediumImgHeightTextBox" Text="{Binding Source={StaticResource UserSettings}, Path=Default.MediumImgHeight, Mode=TwoWay}" Margin="3" TextChanged="TextBox_OnTextChanged" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="{Binding Path=ThumbImgWidth, Source={StaticResource Translations}}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="ThumbImgWidthTextBox" Text="{Binding Source={StaticResource UserSettings}, Path=Default.ThumbImgWidth, Mode=TwoWay}" Margin="3" TextChanged="TextBox_OnTextChanged" />
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="{Binding Path=ThumbImgHeight, Source={StaticResource Translations}}" />
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="ThumbImgHeightTextBox" Text="{Binding Source={StaticResource UserSettings}, Path=Default.ThumbImgHeight, Mode=TwoWay}" Margin="3" TextChanged="TextBox_OnTextChanged" />
+
+                    <Label Grid.Row="4" Grid.Column="0" Content="{Binding Path=ThumbsGridSize, Source={StaticResource Translations}}" />
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="ThumbsGridSizeTextBox" Text="{Binding Source={StaticResource UserSettings}, Path=Default.ThumbGridSize, Mode=TwoWay}" Margin="3" TextChanged="TextBox_OnTextChanged" />
+                    
+                    <Label Grid.Row="5" Grid.Column="0" Content="{Binding Path=PreserveAspectRatio, Source={StaticResource Translations}}" />
+                    <CheckBox Grid.Row="5" Grid.Column="1" x:Name="PreserveAspectRatioCheckBox" IsChecked="{Binding Source={StaticResource UserSettings}, Path=Default.PreserveMediumAspectRatio, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,7,0" Checked="CheckBox_CheckedChanged" Unchecked="CheckBox_CheckedChanged" />
+
+                    <Label Grid.Row="6" Grid.Column="0" Content="{Binding Path=CopyOriginalFiles, Source={StaticResource Translations}}" />
+                    <CheckBox Grid.Row="6" Grid.Column="1" x:Name="CopyOriginalFilesCheckBox" IsChecked="{Binding Source={StaticResource UserSettings}, Path=Default.CopyOriginalFiles, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,7,0"  Checked="CheckBox_CheckedChanged" Unchecked="CheckBox_CheckedChanged" IsEnabled="False" />
                 </Grid>
             </TabItem>
             <TabItem Header="{Binding Path=FileExtensions, Source={StaticResource Translations}}" >
@@ -50,8 +58,8 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="82" />
-                        <RowDefinition Height="82" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <Label Grid.Column="0" Grid.Row="0" Content="{Binding Path=Images, Source={StaticResource Translations}}" />

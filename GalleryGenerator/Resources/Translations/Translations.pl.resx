@@ -213,6 +213,9 @@
   <data name="ThumbImgWidth" xml:space="preserve">
     <value>Szerokość miniaturki</value>
   </data>
+  <data name="ThumbsGridSize" xml:space="preserve">
+    <value>Wielkość taleblki miniatur</value>
+  </data>
   <data name="WorkCancelled" xml:space="preserve">
     <value>Proces przerwany</value>
   </data>

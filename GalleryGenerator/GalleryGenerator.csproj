@@ -76,7 +76,8 @@
     <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>MainIcon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
@@ -337,7 +338,6 @@
     <Resource Include="Resources\pl-icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="MainIcon.ico" />
     <Resource Include="Resources\MainIcon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

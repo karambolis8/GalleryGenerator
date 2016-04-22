@@ -35,6 +35,9 @@ namespace GalleryGenerator.Windows
             this.ThumbImgHeightTextBox.Text = ParseDefaultIntSetting("ThumbImgHeight", out val);
             UserSettings.Default.ThumbImgHeight = val;
 
+            this.ThumbsGridSizeTextBox.Text = ParseDefaultIntSetting("ThumbGridSize", out val);
+            UserSettings.Default.ThumbGridSize = val;
+
             checkbox = ParseDefaultBoolSetting("PreserveMediumAspectRatio");
             this.PreserveAspectRatioCheckBox.IsChecked = checkbox;
             UserSettings.Default.PreserveMediumAspectRatio = checkbox;

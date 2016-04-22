@@ -358,6 +358,15 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thumbs grid size.
+        /// </summary>
+        public static string ThumbsGridSize {
+            get {
+                return ResourceManager.GetString("ThumbsGridSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Process cancelled..
         /// </summary>
         public static string WorkCancelled {

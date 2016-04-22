@@ -57,6 +57,8 @@ namespace Common.DataObjects
         /// </summary>
         public string GalleryName { get; set; }
 
+        public int ThumbsGridSize { get; set; }
+
         public long WorkSize { get; set; }
     }
 }

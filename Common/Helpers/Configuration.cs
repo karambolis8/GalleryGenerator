@@ -5,8 +5,6 @@ namespace Common.Helpers
 {
     public static class Configuration
     {
-        public static string[] FileExtensions { get; private set; }
-
         public static string PageFormat { get; private set; }
         public static string ImageFormat { get; private set; }
         public static string GalleryTemplate { get; private set; }

@@ -47,6 +47,8 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
         private const string DOWNLOAD_ORIGINAL = "{DOWNLOAD_ORIGINAL}";
         private const string IMAGE_TITLE = "{IMAGE_TITLE}";
 
+        private const string THUMBS_GRID_SIZE = "{THUMBS_GRID_SIZE}";
+
         protected override ILog Logger => logger;
 
         public GalleryGeneratorEngine(UserOptions options, Func<bool> cancellationPending, Action cancelWork)
@@ -69,7 +71,7 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
                 .ToArray();
 
             var otherFiles = files
-                .Where(f => Configuration.FileExtensions.Contains(f.Extension.ToLower()))
+                .Where(f => this.options.FileExtensions.Contains(f.Extension.ToLower()))
                 .ToArray();
 
             var ignoredExts = files
@@ -196,6 +198,7 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
             pageContent = pageFormatSb
                 .Replace(COPYRIGHT_YEAR, Configuration.CopyrightYear)
                 .Replace(GALLERY_NAME, this.options.GalleryName)
+                .Replace(THUMBS_GRID_SIZE, this.options.ThumbsGridSize.ToString())
                 .Replace(PAGE_NAME, pageName)
                 .Replace(GALLERY, gallery)
                 .Replace(CSS_DIRECTORY, cssPath)

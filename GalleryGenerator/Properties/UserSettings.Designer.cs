@@ -143,5 +143,17 @@ namespace GalleryGenerator.Properties {
                 this["FileExtensions"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("18")]
+        public int ThumbGridSize {
+            get {
+                return ((int)(this["ThumbGridSize"]));
+            }
+            set {
+                this["ThumbGridSize"] = value;
+            }
+        }
     }
 }

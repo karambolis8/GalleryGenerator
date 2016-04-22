@@ -104,6 +104,7 @@ namespace GalleryGenerator.Windows
                 MediumY = UserSettings.Default.MediumImgHeight,
                 ThumbX = UserSettings.Default.ThumbImgWidth,
                 ThumbY = UserSettings.Default.ThumbImgHeight,
+                ThumbsGridSize = UserSettings.Default.ThumbGridSize,
                 ImageExtensions = UserSettingsHelper.ImageExtenstions,
                 FileExtensions = UserSettingsHelper.FileExtenstions
             };
