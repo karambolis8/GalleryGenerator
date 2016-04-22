@@ -132,6 +132,9 @@
   <data name="CopyOriginalFiles" xml:space="preserve">
     <value>Kopiuj oryginalne pliki do galerii</value>
   </data>
+  <data name="Directory" xml:space="preserve">
+    <value>Folder</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>Angielski</value>
   </data>

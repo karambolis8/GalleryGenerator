@@ -115,6 +115,15 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Directory.
+        /// </summary>
+        public static string Directory {
+            get {
+                return ResourceManager.GetString("Directory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English.
         /// </summary>
         public static string English {
@@ -151,7 +160,7 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Extensions.
+        ///   Looks up a localized string similar to Extension.
         /// </summary>
         public static string Extension {
             get {

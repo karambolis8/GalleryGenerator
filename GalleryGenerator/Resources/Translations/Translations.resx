@@ -135,6 +135,9 @@
   <data name="CopyOriginalFiles" xml:space="preserve">
     <value>Copy original files to gallery</value>
   </data>
+  <data name="Directory" xml:space="preserve">
+    <value>Directory</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
   </data>
@@ -148,7 +151,7 @@
     <value>Estimating work time...</value>
   </data>
   <data name="Extension" xml:space="preserve">
-    <value>Extensions</value>
+    <value>Extension</value>
   </data>
   <data name="FailedDirectories" xml:space="preserve">
     <value>Failed directories</value>
