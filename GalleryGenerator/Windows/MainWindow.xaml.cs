@@ -6,18 +6,16 @@ using System.Globalization;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using Common;
 using Common.DataObjects;
 using GalleryGenerator.Helpers;
 using GalleryGenerator.Properties;
 using GalleryGenerator.Resources.Translations;
-using GalleryGeneratorEngine;
 using GalleryGeneratorEngine.DirectoryProcessors;
 using log4net;
 using FolderBrowserDialog = System.Windows.Forms.FolderBrowserDialog;
 using DialogResult = System.Windows.Forms.DialogResult;
 
-namespace GalleryGenerator
+namespace GalleryGenerator.Windows
 {
     public partial class MainWindow : Window
     {
@@ -285,7 +283,7 @@ namespace GalleryGenerator
 
         private void MenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            var settingsWindow = new SettingsWindow();
+            var settingsWindow = new Windows.SettingsWindow();
             settingsWindow.Top = WindowsSettings.Default.SettingsWindowTop;
             settingsWindow.Left = WindowsSettings.Default.SettingsWindowLeft;
             settingsWindow.ShowDialog();

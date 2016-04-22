@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using GalleryGenerator.Properties;
 using GalleryGenerator.Resources.Translations;
 
-namespace GalleryGenerator
+namespace GalleryGenerator.Windows
 {
     public partial class SettingsWindow : Window
     {
