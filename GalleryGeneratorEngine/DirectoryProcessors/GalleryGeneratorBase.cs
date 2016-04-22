@@ -14,7 +14,13 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
 
         protected IList<KeyValuePair<FileInfo, Exception>> failedFiles;
 
-        protected IList<KeyValuePair<DirectoryInfo, Exception>> failedDirectories; 
+        protected IList<KeyValuePair<DirectoryInfo, Exception>> failedDirectories;
+
+        protected long totalFilesCount;
+
+        protected long imagesCount;
+
+        protected long otherFilesCount;
 
         protected GalleryGeneratorBase(UserOptions options, Func<bool> cancellationPending, Action cancelWork)
             : base(options, cancellationPending, cancelWork)
@@ -22,6 +28,9 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
             this.ignoredFormats = new Dictionary<string, IList<FileInfo>>();
             this.failedFiles = new List<KeyValuePair<FileInfo, Exception>>();
             this.failedDirectories = new List<KeyValuePair<DirectoryInfo, Exception>>();
+            this.totalFilesCount = 0;
+            this.imagesCount = 0;
+            this.otherFilesCount = 0;
         }
 
         public event Action<FileInfo> ProcessingFileEvent;
@@ -119,7 +128,10 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
             {
                 FailedFiles = this.failedFiles,
                 FailedDirectories = this.failedDirectories,
-                IgnoredFormats = this.ignoredFormats
+                IgnoredFormats = this.ignoredFormats,
+                FilesCount =  this.totalFilesCount,
+                ImagesCount = this.imagesCount,
+                OtherFilesCount = this.otherFilesCount
             };
         }
 

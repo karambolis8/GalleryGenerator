@@ -23,9 +23,9 @@ namespace GalleryGenerator.Windows
             this.FileCountLabel.Content = this.statistics.FilesCount;
             this.ImageCountLabel.Content = this.statistics.ImagesCount;
             this.OtherFilesCountLabel.Content = this.statistics.OtherFilesCount;
-            this.FailedDirectoriesCount.Content = this.statistics.FailedDirectories.Count;
-            this.FailedImagesCount.Content = this.statistics.FailedFiles.Count;
-            this.UnknownFormatsCount.Content = this.statistics.IgnoredFormats.Count;
+            this.FailedDirectoriesCountLabel.Content = this.statistics.FailedDirectories.Count;
+            this.FailedImagesCountLabel.Content = this.statistics.FailedFiles.Count;
+            this.UnknownFormatsCountLabel.Content = this.statistics.IgnoredFormats.Count;
         }
 
         private void SummaryWindow_OnLocationChanged(object sender, EventArgs e)

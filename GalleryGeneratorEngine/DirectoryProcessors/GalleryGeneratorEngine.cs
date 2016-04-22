@@ -76,8 +76,13 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
 
             var ignoredExts = files
                 .Where(f =>
-                        !this.options.FileExtensions.Contains(f.Extension.ToLower()) &&
-                        !this.options.ImageExtensions.Contains(f.Extension.ToLower()));
+                    !this.options.FileExtensions.Contains(f.Extension.ToLower()) &&
+                    !this.options.ImageExtensions.Contains(f.Extension.ToLower()))
+                .ToList();
+
+            this.imagesCount += images.Length;
+            this.otherFilesCount = otherFiles.Length;
+            this.totalFilesCount += images.Length + otherFiles.Length + ignoredExts.Count;
 
             foreach (var f in ignoredExts)
             {

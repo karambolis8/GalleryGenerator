@@ -40,13 +40,13 @@
                         <Label x:Name="OtherFilesCountLabel" Grid.Row="2" Grid.Column="1" />
 
                         <Label Grid.Row="3" Grid.Column="0" Content="Ilość nieznanych formatów" />
-                        <Label x:Name="UnknownFormatsCount" Grid.Row="3" Grid.Column="1" />
+                        <Label x:Name="UnknownFormatsCountLabel" Grid.Row="3" Grid.Column="1" />
 
                         <Label Grid.Row="4" Grid.Column="0" Content="Ilość błędnych obrazków" />
-                        <Label x:Name="FailedImagesCount" Grid.Row="4" Grid.Column="1" />
+                        <Label x:Name="FailedImagesCountLabel" Grid.Row="4" Grid.Column="1" />
 
                         <Label Grid.Row="5" Grid.Column="0" Content="Ilość błędnych katalogów" />
-                        <Label x:Name="FailedDirectoriesCount" Grid.Row="5" Grid.Column="1" />
+                        <Label x:Name="FailedDirectoriesCountLabel" Grid.Row="5" Grid.Column="1" />
                     </Grid>
                 </Grid>
             </TabItem>
