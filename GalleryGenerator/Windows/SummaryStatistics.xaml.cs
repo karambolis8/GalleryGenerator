@@ -2,44 +2,20 @@
 using System.ComponentModel;
 using System.Windows;
 using Common.DataObjects;
+using GalleryGenerator.ViewModels;
 
 namespace GalleryGenerator.Windows
 {
     public partial class SummaryStatistics : Window
     {
-        private readonly GeneratorStatistics statistics;
+        private StatisticsViewModel statisticsViewModel;
 
         public SummaryStatistics(GeneratorStatistics statistics)
         {
             InitializeComponent();
 
-            this.statistics = statistics;
-
-            FillStatistics();
-        }
-
-        private void FillStatistics()
-        {
-            this.FileCountLabel.Content = this.statistics.FilesCount;
-            this.ImageCountLabel.Content = this.statistics.ImagesCount;
-            this.OtherFilesCountLabel.Content = this.statistics.OtherFilesCount;
-            this.FailedDirectoriesCountLabel.Content = this.statistics.FailedDirectories.Count;
-            this.FailedImagesCountLabel.Content = this.statistics.FailedFiles.Count;
-            this.UnknownFormatsCountLabel.Content = this.statistics.IgnoredFormats.Count;
-            this.TimespanLabel.Content = FormatWorkingTime();
-        }
-
-        private string FormatWorkingTime()
-        {
-            var time = this.statistics.TimeSpan;
-
-            if (time.Hours > 0)
-                return string.Format("{0}:{1}:{2}h", time.Hours, time.Minutes, time.Seconds);
-
-            if(time.Minutes > 0)
-                return string.Format("{0}:{1}m", time.Minutes, time.Seconds);
-
-            return string.Format("{0}s", time.Seconds);
+            this.statisticsViewModel = new StatisticsViewModel(statistics);
+            this.DataContext = this.statisticsViewModel;
         }
 
         private void SummaryWindow_OnLocationChanged(object sender, EventArgs e)

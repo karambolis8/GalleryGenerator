@@ -32,25 +32,25 @@
                         </Grid.RowDefinitions>
 
                         <Label Grid.Row="0" Grid.Column="0" Content="{Binding Path=FilesCount, Source={StaticResource Translations}}" />
-                        <Label x:Name="FileCountLabel" Grid.Row="0" Grid.Column="1" />
+                        <Label x:Name="FileCountLabel" Grid.Row="0" Grid.Column="1" Content="{Binding FilesCount}" />
 
                         <Label Grid.Row="1" Grid.Column="0" Content="{Binding Path=ImagesCount, Source={StaticResource Translations}}" />
-                        <Label x:Name="ImageCountLabel" Grid.Row="1" Grid.Column="1" />
+                        <Label x:Name="ImageCountLabel" Grid.Row="1" Grid.Column="1" Content="{Binding ImagesCount}" />
 
                         <Label Grid.Row="2" Grid.Column="0" Content="{Binding Path=OtherFilesCount, Source={StaticResource Translations}}" />
-                        <Label x:Name="OtherFilesCountLabel" Grid.Row="2" Grid.Column="1" />
+                        <Label x:Name="OtherFilesCountLabel" Grid.Row="2" Grid.Column="1" Content="{Binding OtherFilesCount}" />
 
                         <Label Grid.Row="3" Grid.Column="0" Content="{Binding Path=UnknownFormatsCount, Source={StaticResource Translations}}" />
-                        <Label x:Name="UnknownFormatsCountLabel" Grid.Row="3" Grid.Column="1" />
+                        <Label x:Name="UnknownFormatsCountLabel" Grid.Row="3" Grid.Column="1" Content="{Binding UnknownFormatsCount}" />
 
                         <Label Grid.Row="4" Grid.Column="0" Content="{Binding Path=FailedImagesCount, Source={StaticResource Translations}}" />
-                        <Label x:Name="FailedImagesCountLabel" Grid.Row="4" Grid.Column="1" />
+                        <Label x:Name="FailedImagesCountLabel" Grid.Row="4" Grid.Column="1" Content="{Binding FailedImagesCount}" />
 
                         <Label Grid.Row="5" Grid.Column="0" Content="{Binding Path=FailedDirectoriesCount, Source={StaticResource Translations}}" />
-                        <Label x:Name="FailedDirectoriesCountLabel" Grid.Row="5" Grid.Column="1" />
+                        <Label x:Name="FailedDirectoriesCountLabel" Grid.Row="5" Grid.Column="1" Content="{Binding FailedDirectoriesCount}" />
 
                         <Label Grid.Row="6" Grid.Column="0" Content="{Binding Path=WorkingTime, Source={StaticResource Translations}}" />
-                        <Label x:Name="TimespanLabel" Grid.Row="6" Grid.Column="1" />
+                        <Label x:Name="TimespanLabel" Grid.Row="6" Grid.Column="1" Content="{Binding WorkingTime}" />
                     </Grid>
                 </Grid>
             </TabItem>
@@ -60,6 +60,9 @@
                     <Grid.RowDefinitions>
                         <RowDefinition SharedSizeGroup="x" />
                     </Grid.RowDefinitions>
+                    <DataGrid ItemsSource="{Binding FailedImages}">
+                        
+                    </DataGrid>
                 </Grid>
             </TabItem>
             
@@ -68,6 +71,9 @@
                     <Grid.RowDefinitions>
                         <RowDefinition SharedSizeGroup="x" />
                     </Grid.RowDefinitions>
+                    <DataGrid ItemsSource="{Binding FailedDirectories}">
+
+                    </DataGrid>
                 </Grid>
             </TabItem>
             
@@ -76,6 +82,9 @@
                     <Grid.RowDefinitions>
                         <RowDefinition SharedSizeGroup="x" />
                     </Grid.RowDefinitions>
+                    <DataGrid ItemsSource="{Binding UnknownFormats}">
+
+                    </DataGrid>
                 </Grid>
             </TabItem>
         </TabControl>
