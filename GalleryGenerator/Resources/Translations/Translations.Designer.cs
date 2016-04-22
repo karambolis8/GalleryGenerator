@@ -142,6 +142,24 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed directories.
+        /// </summary>
+        public static string FailedDirectories {
+            get {
+                return ResourceManager.GetString("FailedDirectories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed files.
+        /// </summary>
+        public static string FailedFiles {
+            get {
+                return ResourceManager.GetString("FailedFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File extensions.
         /// </summary>
         public static string FileExtensions {
@@ -219,6 +237,15 @@ namespace GalleryGenerator.Resources.Translations {
         public static string MediumImgWidth {
             get {
                 return ResourceManager.GetString("MediumImgWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
             }
         }
         
@@ -322,6 +349,15 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Skipped extensions.
+        /// </summary>
+        public static string SkippedExtensions {
+            get {
+                return ResourceManager.GetString("SkippedExtensions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stop.
         /// </summary>
         public static string Stop {
@@ -336,6 +372,24 @@ namespace GalleryGenerator.Resources.Translations {
         public static string StopWork {
             get {
                 return ResourceManager.GetString("StopWork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summary.
+        /// </summary>
+        public static string Summary {
+            get {
+                return ResourceManager.GetString("Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gallery summary.
+        /// </summary>
+        public static string SummaryWindow {
+            get {
+                return ResourceManager.GetString("SummaryWindow", resourceCulture);
             }
         }
         

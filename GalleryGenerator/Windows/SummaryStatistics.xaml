@@ -1,0 +1,83 @@
+﻿<Window x:Class="GalleryGenerator.Windows.SummaryStatistics"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        ResizeMode="CanResize"
+        WindowStyle="ToolWindow"
+        LocationChanged="SummaryWindow_OnLocationChanged"
+        Closing="SummaryWindow_OnClosing"
+        Title="{Binding Path=SummaryWindow, Source={StaticResource Translations}}" Height="315" Width="300">
+    <DockPanel LastChildFill="False">
+        <TabControl Grid.IsSharedSizeScope="True"  DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabItem x:Name="SummaryTabItem" Header="{Binding Path=Summary, Source={StaticResource Translations}}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition SharedSizeGroup="x" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        
+                        <Label Grid.Row="0" Grid.Column="0" Content="Ilość plików" />
+                        <Label x:Name="FileCountLabel" Grid.Row="0" Grid.Column="1" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="Ilość obrazków" />
+                        <Label x:Name="ImageCountLabel" Grid.Row="1" Grid.Column="1" />
+                        
+                        <Label Grid.Row="2" Grid.Column="0" Content="Ilość innych plików" />
+                        <Label x:Name="OtherFilesCountLabel" Grid.Row="2" Grid.Column="1" />
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="Ilość nieznanych formatów" />
+                        <Label x:Name="UnknownFormatsCount" Grid.Row="3" Grid.Column="1" />
+
+                        <Label Grid.Row="4" Grid.Column="0" Content="Ilość błędnych obrazków" />
+                        <Label x:Name="FailedImagesCount" Grid.Row="4" Grid.Column="1" />
+
+                        <Label Grid.Row="5" Grid.Column="0" Content="Ilość błędnych katalogów" />
+                        <Label x:Name="FailedDirectoriesCount" Grid.Row="5" Grid.Column="1" />
+                    </Grid>
+                </Grid>
+            </TabItem>
+            
+            <TabItem x:Name="FailedFilesTabItem" Header="{Binding Path=FailedFiles, Source={StaticResource Translations}}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition SharedSizeGroup="x" />
+                    </Grid.RowDefinitions>
+                </Grid>
+            </TabItem>
+            
+            <TabItem x:Name="FailedDirectoriesTabItem" Header="{Binding Path=FailedDirectories, Source={StaticResource Translations}}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition SharedSizeGroup="x" />
+                    </Grid.RowDefinitions>
+                </Grid>
+            </TabItem>
+            
+            <TabItem x:Name="SkippedExtensions" Header="{Binding Path=SkippedExtensions, Source={StaticResource Translations}}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition SharedSizeGroup="x" />
+                    </Grid.RowDefinitions>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        
+        <DockPanel Dock="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+            <Button x:Name="OKButton" DockPanel.Dock="Right" Content="{Binding Path=OK, Source={StaticResource Translations}}" HorizontalAlignment="Right" MinWidth="50" Margin="3" Click="OKButton_OnClickButton_OnClick"/>
+        </DockPanel>
+    </DockPanel>
+</Window>

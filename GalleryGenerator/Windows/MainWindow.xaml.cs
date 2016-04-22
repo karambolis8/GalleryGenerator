@@ -168,7 +168,7 @@ namespace GalleryGenerator.Windows
                 senderWorker.ReportProgress((int)(p*100), file);
                 counter++;
             };
-
+            
             doWorkEventArgs.Result = generator.StartTask();
         }
 
@@ -198,6 +198,8 @@ namespace GalleryGenerator.Windows
                 WorkerProgressBar.Value = 100;
                 var statistics = e.Result as GeneratorStatistics;
 
+                OpenGeneratorSummary(statistics);
+
                 if (UserSettings.Default.OpenAfterFinish)
                 {
                     var path = Path.Combine(this.OutputDirTextBox.Text, this.GalleryNameTextBox.Text);
@@ -208,6 +210,13 @@ namespace GalleryGenerator.Windows
                     explorerWindowProcess.Start();
                 }
             }
+        }
+
+        private void OpenGeneratorSummary(GeneratorStatistics statistics)
+        {
+            var summaryWindow = new SummaryStatistics(statistics);
+#warning set size and location
+            summaryWindow.ShowDialog();
         }
 
         private void ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -284,7 +293,7 @@ namespace GalleryGenerator.Windows
 
         private void MenuItem_OnClick(object sender, RoutedEventArgs e)
         {
-            var settingsWindow = new Windows.SettingsWindow();
+            var settingsWindow = new SettingsWindow();
             settingsWindow.Top = WindowsSettings.Default.SettingsWindowTop;
             settingsWindow.Left = WindowsSettings.Default.SettingsWindowLeft;
             settingsWindow.ShowDialog();

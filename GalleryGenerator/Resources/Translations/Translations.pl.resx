@@ -141,6 +141,12 @@
   <data name="EstimatingWorkTime" xml:space="preserve">
     <value>Szacowanie czasu pracy</value>
   </data>
+  <data name="FailedDirectories" xml:space="preserve">
+    <value>Błędne katalogi</value>
+  </data>
+  <data name="FailedFiles" xml:space="preserve">
+    <value>Błędne pliki</value>
+  </data>
   <data name="FileExtensions" xml:space="preserve">
     <value>Rozszerzenia</value>
   </data>
@@ -167,6 +173,9 @@
   </data>
   <data name="MediumImgWidth" xml:space="preserve">
     <value>Szerokość podglądu</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="OpenAfterFinish" xml:space="preserve">
     <value>Otwórz galerię jak skończysz</value>
@@ -201,11 +210,20 @@
   <data name="SettingsChanges" xml:space="preserve">
     <value>Zmiany w ustawieniach</value>
   </data>
+  <data name="SkippedExtensions" xml:space="preserve">
+    <value>Pominięte rozszerzenia</value>
+  </data>
   <data name="Stop" xml:space="preserve">
     <value>Stop</value>
   </data>
   <data name="StopWork" xml:space="preserve">
     <value>Przerwanie procesu</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Podsumowanie</value>
+  </data>
+  <data name="SummaryWindow" xml:space="preserve">
+    <value>Podsumowanie</value>
   </data>
   <data name="ThumbImgHeight" xml:space="preserve">
     <value>Wysokość miniaturki</value>
