@@ -147,11 +147,20 @@
   <data name="FailedDirectories" xml:space="preserve">
     <value>Failed directories</value>
   </data>
+  <data name="FailedDirectoriesCount" xml:space="preserve">
+    <value>Failed directories count</value>
+  </data>
   <data name="FailedFiles" xml:space="preserve">
     <value>Failed files</value>
   </data>
+  <data name="FailedImagesCount" xml:space="preserve">
+    <value>Failed images count</value>
+  </data>
   <data name="FileExtensions" xml:space="preserve">
     <value>File extensions</value>
+  </data>
+  <data name="FilesCount" xml:space="preserve">
+    <value>Files count</value>
   </data>
   <data name="FillAllFields" xml:space="preserve">
     <value>You have to fill all fields.</value>
@@ -161,6 +170,9 @@
   </data>
   <data name="Images" xml:space="preserve">
     <value>Images</value>
+  </data>
+  <data name="ImagesCount" xml:space="preserve">
+    <value>Images count</value>
   </data>
   <data name="InputDir" xml:space="preserve">
     <value>Input directory</value>
@@ -185,6 +197,9 @@
   </data>
   <data name="OtherFiles" xml:space="preserve">
     <value>Other files</value>
+  </data>
+  <data name="OtherFilesCount" xml:space="preserve">
+    <value>Other files count</value>
   </data>
   <data name="OutputDir" xml:space="preserve">
     <value>Output directory</value>
@@ -237,10 +252,16 @@
   <data name="ThumbsGridSize" xml:space="preserve">
     <value>Thumbs grid size</value>
   </data>
+  <data name="UnknownFormatsCount" xml:space="preserve">
+    <value>Unknown extensions count</value>
+  </data>
   <data name="WorkCancelled" xml:space="preserve">
     <value>Process cancelled.</value>
   </data>
   <data name="WorkCompleted" xml:space="preserve">
     <value>Completed!</value>
+  </data>
+  <data name="WorkingTime" xml:space="preserve">
+    <value>Work time</value>
   </data>
 </root>

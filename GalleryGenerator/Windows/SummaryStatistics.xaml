@@ -30,26 +30,26 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        
-                        <Label Grid.Row="0" Grid.Column="0" Content="Ilość plików" />
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="{Binding Path=FilesCount, Source={StaticResource Translations}}" />
                         <Label x:Name="FileCountLabel" Grid.Row="0" Grid.Column="1" />
 
-                        <Label Grid.Row="1" Grid.Column="0" Content="Ilość obrazków" />
+                        <Label Grid.Row="1" Grid.Column="0" Content="{Binding Path=ImagesCount, Source={StaticResource Translations}}" />
                         <Label x:Name="ImageCountLabel" Grid.Row="1" Grid.Column="1" />
-                        
-                        <Label Grid.Row="2" Grid.Column="0" Content="Ilość innych plików" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="{Binding Path=OtherFilesCount, Source={StaticResource Translations}}" />
                         <Label x:Name="OtherFilesCountLabel" Grid.Row="2" Grid.Column="1" />
 
-                        <Label Grid.Row="3" Grid.Column="0" Content="Ilość nieznanych formatów" />
+                        <Label Grid.Row="3" Grid.Column="0" Content="{Binding Path=UnknownFormatsCount, Source={StaticResource Translations}}" />
                         <Label x:Name="UnknownFormatsCountLabel" Grid.Row="3" Grid.Column="1" />
 
-                        <Label Grid.Row="4" Grid.Column="0" Content="Ilość błędnych obrazków" />
+                        <Label Grid.Row="4" Grid.Column="0" Content="{Binding Path=FailedImagesCount, Source={StaticResource Translations}}" />
                         <Label x:Name="FailedImagesCountLabel" Grid.Row="4" Grid.Column="1" />
 
-                        <Label Grid.Row="5" Grid.Column="0" Content="Ilość błędnych katalogów" />
+                        <Label Grid.Row="5" Grid.Column="0" Content="{Binding Path=FailedDirectoriesCount, Source={StaticResource Translations}}" />
                         <Label x:Name="FailedDirectoriesCountLabel" Grid.Row="5" Grid.Column="1" />
 
-                        <Label Grid.Row="6" Grid.Column="0" Content="Czas pracy" />
+                        <Label Grid.Row="6" Grid.Column="0" Content="{Binding Path=WorkingTime, Source={StaticResource Translations}}" />
                         <Label x:Name="TimespanLabel" Grid.Row="6" Grid.Column="1" />
                     </Grid>
                 </Grid>

@@ -144,11 +144,20 @@
   <data name="FailedDirectories" xml:space="preserve">
     <value>Błędne katalogi</value>
   </data>
+  <data name="FailedDirectoriesCount" xml:space="preserve">
+    <value>Ilość błędnych katalogów</value>
+  </data>
   <data name="FailedFiles" xml:space="preserve">
     <value>Błędne pliki</value>
   </data>
+  <data name="FailedImagesCount" xml:space="preserve">
+    <value>Ilość błędnych obrazków</value>
+  </data>
   <data name="FileExtensions" xml:space="preserve">
     <value>Rozszerzenia</value>
+  </data>
+  <data name="FilesCount" xml:space="preserve">
+    <value>Ilość plików</value>
   </data>
   <data name="FillAllFields" xml:space="preserve">
     <value>Musisz wypełnić wszystkie pola</value>
@@ -158,6 +167,9 @@
   </data>
   <data name="Images" xml:space="preserve">
     <value>Obrazki</value>
+  </data>
+  <data name="ImagesCount" xml:space="preserve">
+    <value>Ilość obrazków</value>
   </data>
   <data name="InputDir" xml:space="preserve">
     <value>Folder wejściowy</value>
@@ -182,6 +194,9 @@
   </data>
   <data name="OtherFiles" xml:space="preserve">
     <value>Inne pliki</value>
+  </data>
+  <data name="OtherFilesCount" xml:space="preserve">
+    <value>Ilość innych plików</value>
   </data>
   <data name="OutputDir" xml:space="preserve">
     <value>Folder docelowy</value>
@@ -234,10 +249,16 @@
   <data name="ThumbsGridSize" xml:space="preserve">
     <value>Wielkość tabelki miniatur</value>
   </data>
+  <data name="UnknownFormatsCount" xml:space="preserve">
+    <value>Ilość nieznanych rozszerzeń</value>
+  </data>
   <data name="WorkCancelled" xml:space="preserve">
     <value>Proces przerwany</value>
   </data>
   <data name="WorkCompleted" xml:space="preserve">
     <value>Koniec!</value>
+  </data>
+  <data name="WorkingTime" xml:space="preserve">
+    <value>Czas pracy</value>
   </data>
 </root>

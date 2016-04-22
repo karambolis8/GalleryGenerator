@@ -151,6 +151,15 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed directories count.
+        /// </summary>
+        public static string FailedDirectoriesCount {
+            get {
+                return ResourceManager.GetString("FailedDirectoriesCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed files.
         /// </summary>
         public static string FailedFiles {
@@ -160,11 +169,29 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed images count.
+        /// </summary>
+        public static string FailedImagesCount {
+            get {
+                return ResourceManager.GetString("FailedImagesCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File extensions.
         /// </summary>
         public static string FileExtensions {
             get {
                 return ResourceManager.GetString("FileExtensions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Files count.
+        /// </summary>
+        public static string FilesCount {
+            get {
+                return ResourceManager.GetString("FilesCount", resourceCulture);
             }
         }
         
@@ -192,6 +219,15 @@ namespace GalleryGenerator.Resources.Translations {
         public static string Images {
             get {
                 return ResourceManager.GetString("Images", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Images count.
+        /// </summary>
+        public static string ImagesCount {
+            get {
+                return ResourceManager.GetString("ImagesCount", resourceCulture);
             }
         }
         
@@ -264,6 +300,15 @@ namespace GalleryGenerator.Resources.Translations {
         public static string OtherFiles {
             get {
                 return ResourceManager.GetString("OtherFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other files count.
+        /// </summary>
+        public static string OtherFilesCount {
+            get {
+                return ResourceManager.GetString("OtherFilesCount", resourceCulture);
             }
         }
         
@@ -421,6 +466,15 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unknown extensions count.
+        /// </summary>
+        public static string UnknownFormatsCount {
+            get {
+                return ResourceManager.GetString("UnknownFormatsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Process cancelled..
         /// </summary>
         public static string WorkCancelled {
@@ -435,6 +489,15 @@ namespace GalleryGenerator.Resources.Translations {
         public static string WorkCompleted {
             get {
                 return ResourceManager.GetString("WorkCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Work time.
+        /// </summary>
+        public static string WorkingTime {
+            get {
+                return ResourceManager.GetString("WorkingTime", resourceCulture);
             }
         }
     }
