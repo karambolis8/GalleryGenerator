@@ -124,6 +124,15 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Estimate work time.
         /// </summary>
         public static string EstimateWorkTime {
@@ -138,6 +147,15 @@ namespace GalleryGenerator.Resources.Translations {
         public static string EstimatingWorkTime {
             get {
                 return ResourceManager.GetString("EstimatingWorkTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extensions.
+        /// </summary>
+        public static string Extension {
+            get {
+                return ResourceManager.GetString("Extension", resourceCulture);
             }
         }
         
@@ -178,6 +196,15 @@ namespace GalleryGenerator.Resources.Translations {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File.
+        /// </summary>
+        public static string File {
+            get {
+                return ResourceManager.GetString("File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File extensions.
         /// </summary>
         public static string FileExtensions {
@@ -210,6 +237,15 @@ namespace GalleryGenerator.Resources.Translations {
         public static string GalleryName {
             get {
                 return ResourceManager.GetString("GalleryName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image.
+        /// </summary>
+        public static string Image {
+            get {
+                return ResourceManager.GetString("Image", resourceCulture);
             }
         }
         

@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Browse" xml:space="preserve">
     <value>Przeglądaj</value>
@@ -135,11 +135,17 @@
   <data name="English" xml:space="preserve">
     <value>Angielski</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Błąd</value>
+  </data>
   <data name="EstimateWorkTime" xml:space="preserve">
     <value>Oszacuj czas pracy</value>
   </data>
   <data name="EstimatingWorkTime" xml:space="preserve">
     <value>Szacowanie czasu pracy</value>
+  </data>
+  <data name="Extension" xml:space="preserve">
+    <value>Rozszerzenie</value>
   </data>
   <data name="FailedDirectories" xml:space="preserve">
     <value>Błędne katalogi</value>
@@ -153,6 +159,9 @@
   <data name="FailedImagesCount" xml:space="preserve">
     <value>Ilość błędnych obrazków</value>
   </data>
+  <data name="File" xml:space="preserve">
+    <value>Plik</value>
+  </data>
   <data name="FileExtensions" xml:space="preserve">
     <value>Rozszerzenia</value>
   </data>
@@ -164,6 +173,9 @@
   </data>
   <data name="GalleryName" xml:space="preserve">
     <value>Nazwa galerii</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Obrazek</value>
   </data>
   <data name="Images" xml:space="preserve">
     <value>Obrazki</value>

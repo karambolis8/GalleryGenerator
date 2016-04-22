@@ -9,9 +9,17 @@ namespace GalleryGenerator.ViewModels
     {
         private GeneratorStatistics _statisticsData;
 
+        private List<KeyValuePair<string, FileInfo>> unknownExtensions; 
+
         public StatisticsViewModel(GeneratorStatistics statisticsData)
         {
             this._statisticsData = statisticsData;
+            
+            this.unknownExtensions = new List<KeyValuePair<string, FileInfo>>();
+
+            foreach (var pair in statisticsData.IgnoredFormats)
+                foreach(var file in pair.Value)
+                    this.unknownExtensions.Add(new KeyValuePair<string, FileInfo>(pair.Key, file));
         }
 
         public string WorkingTime
@@ -47,6 +55,6 @@ namespace GalleryGenerator.ViewModels
 
         public IList<KeyValuePair<DirectoryInfo, Exception>> FailedDirectories => this._statisticsData.FailedDirectories;
 
-        public IDictionary<string, IList<FileInfo>> UnknownFormats => this._statisticsData.IgnoredFormats;
+        public List<KeyValuePair<string, FileInfo>> UnknownFormats => this.unknownExtensions;
     }
 }

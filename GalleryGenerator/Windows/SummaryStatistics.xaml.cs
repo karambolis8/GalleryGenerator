@@ -35,7 +35,9 @@ namespace GalleryGenerator.Windows
 
         private void SummaryWindow_OnClosing(object sender, CancelEventArgs e)
         {
-            // ask if one want to add unknown extensions if occurs
+            // ask if one want to add unknown extensions if present 
+            //if so, redirect on closed to settings page, extensions tab, 
+            //and prefill selected extensions - by constructor
         }
 
         private void OKButton_OnClickButton_OnClick(object sender, RoutedEventArgs e)

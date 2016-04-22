@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppName" xml:space="preserve">
     <value>Gallery Generator</value>
@@ -138,11 +138,17 @@
   <data name="English" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
   <data name="EstimateWorkTime" xml:space="preserve">
     <value>Estimate work time</value>
   </data>
   <data name="EstimatingWorkTime" xml:space="preserve">
     <value>Estimating work time...</value>
+  </data>
+  <data name="Extension" xml:space="preserve">
+    <value>Extensions</value>
   </data>
   <data name="FailedDirectories" xml:space="preserve">
     <value>Failed directories</value>
@@ -156,6 +162,9 @@
   <data name="FailedImagesCount" xml:space="preserve">
     <value>Failed images count</value>
   </data>
+  <data name="File" xml:space="preserve">
+    <value>File</value>
+  </data>
   <data name="FileExtensions" xml:space="preserve">
     <value>File extensions</value>
   </data>
@@ -167,6 +176,9 @@
   </data>
   <data name="GalleryName" xml:space="preserve">
     <value>Gallery name</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Image</value>
   </data>
   <data name="Images" xml:space="preserve">
     <value>Images</value>

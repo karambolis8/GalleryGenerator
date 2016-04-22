@@ -61,8 +61,23 @@
                     <Grid.RowDefinitions>
                         <RowDefinition SharedSizeGroup="x" />
                     </Grid.RowDefinitions>
-                    <DataGrid ItemsSource="{Binding FailedImages}">
-                        
+                    <DataGrid ItemsSource="{Binding FailedImages}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="{Binding Path=Image, Source={StaticResource Translations}}" IsReadOnly="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding Path=Key.Name}"></Label>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{Binding Path=Error, Source={StaticResource Translations}}" IsReadOnly="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding Path=Value.Message}"></Label>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
@@ -83,8 +98,23 @@
                     <Grid.RowDefinitions>
                         <RowDefinition SharedSizeGroup="x" />
                     </Grid.RowDefinitions>
-                    <DataGrid ItemsSource="{Binding UnknownFormats}">
-
+                    <DataGrid ItemsSource="{Binding UnknownFormats}" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="{Binding Path=Extension, Source={StaticResource Translations}}" IsReadOnly="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding Path=Key}"></Label>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="{Binding Path=File, Source={StaticResource Translations}}" IsReadOnly="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding Path=Value.Name}"></Label>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
