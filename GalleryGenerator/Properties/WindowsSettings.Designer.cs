@@ -94,5 +94,53 @@ namespace GalleryGenerator.Properties {
                 this["AppLanguage"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        public double SummaryWindowLeft {
+            get {
+                return ((double)(this["SummaryWindowLeft"]));
+            }
+            set {
+                this["SummaryWindowLeft"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        public double SummaryWindowTop {
+            get {
+                return ((double)(this["SummaryWindowTop"]));
+            }
+            set {
+                this["SummaryWindowTop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("300")]
+        public double SummaryWindowWidth {
+            get {
+                return ((double)(this["SummaryWindowWidth"]));
+            }
+            set {
+                this["SummaryWindowWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("315")]
+        public double SummaryWindowHeight {
+            get {
+                return ((double)(this["SummaryWindowHeight"]));
+            }
+            set {
+                this["SummaryWindowHeight"] = value;
+            }
+        }
     }
 }

@@ -222,7 +222,10 @@ namespace GalleryGenerator.Windows
         private void OpenGeneratorSummary(GeneratorStatistics statistics)
         {
             var summaryWindow = new SummaryStatistics(statistics);
-#warning set size and location
+            summaryWindow.Top = WindowsSettings.Default.SummaryWindowTop;
+            summaryWindow.Left = WindowsSettings.Default.SummaryWindowLeft;
+            summaryWindow.Width = WindowsSettings.Default.SummaryWindowWidth;
+            summaryWindow.Height = WindowsSettings.Default.SummaryWindowHeight;
             summaryWindow.ShowDialog();
         }
 

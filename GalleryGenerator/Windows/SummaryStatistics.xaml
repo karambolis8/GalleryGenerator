@@ -8,6 +8,7 @@
         WindowStyle="ToolWindow"
         LocationChanged="SummaryWindow_OnLocationChanged"
         Closing="SummaryWindow_OnClosing"
+         SizeChanged="SummaryWindow_OnSizeChanged"
         Title="{Binding Path=SummaryWindow, Source={StaticResource Translations}}" Height="315" Width="300">
     <DockPanel LastChildFill="False">
         <TabControl Grid.IsSharedSizeScope="True"  DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
