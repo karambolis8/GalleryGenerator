@@ -28,6 +28,7 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         
                         <Label Grid.Row="0" Grid.Column="0" Content="Ilość plików" />
@@ -47,6 +48,9 @@
 
                         <Label Grid.Row="5" Grid.Column="0" Content="Ilość błędnych katalogów" />
                         <Label x:Name="FailedDirectoriesCountLabel" Grid.Row="5" Grid.Column="1" />
+
+                        <Label Grid.Row="6" Grid.Column="0" Content="Czas pracy" />
+                        <Label x:Name="TimespanLabel" Grid.Row="6" Grid.Column="1" />
                     </Grid>
                 </Grid>
             </TabItem>

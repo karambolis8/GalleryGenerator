@@ -17,5 +17,7 @@ namespace Common.DataObjects
         public long ImagesCount { get; set; }
 
         public long OtherFilesCount { get; set; }
+
+        public TimeSpan TimeSpan { get; set; }
     }
 }

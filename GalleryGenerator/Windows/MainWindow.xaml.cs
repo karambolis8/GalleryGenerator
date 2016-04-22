@@ -156,6 +156,8 @@ namespace GalleryGenerator.Windows
 
         private void DoWork(object sender, DoWorkEventArgs doWorkEventArgs)
         {
+            var start = DateTime.Now;
+
             var options = (UserOptions)doWorkEventArgs.Argument;
             
             var generator = new GalleryGeneratorEngine.DirectoryProcessors.GalleryGeneratorEngine(options, () => this.worker.CancellationPending, () => { doWorkEventArgs.Cancel = true; });
@@ -168,8 +170,13 @@ namespace GalleryGenerator.Windows
                 senderWorker.ReportProgress((int)(p*100), file);
                 counter++;
             };
-            
-            doWorkEventArgs.Result = generator.StartTask();
+
+            var result = generator.StartTask();
+
+            var end = DateTime.Now;
+            result.TimeSpan = end - start;
+
+            doWorkEventArgs.Result = result;
         }
 
         private void WorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
