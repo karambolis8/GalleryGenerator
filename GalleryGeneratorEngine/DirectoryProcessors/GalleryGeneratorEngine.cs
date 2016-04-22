@@ -81,7 +81,7 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
                 .ToList();
 
             this.imagesCount += images.Length;
-            this.otherFilesCount = otherFiles.Length;
+            this.otherFilesCount += otherFiles.Length;
             this.totalFilesCount += images.Length + otherFiles.Length + ignoredExts.Count;
 
             foreach (var f in ignoredExts)
