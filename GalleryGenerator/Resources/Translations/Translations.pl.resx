@@ -214,7 +214,7 @@
     <value>Szerokość miniaturki</value>
   </data>
   <data name="ThumbsGridSize" xml:space="preserve">
-    <value>Wielkość taleblki miniatur</value>
+    <value>Wielkość tabelki miniatur</value>
   </data>
   <data name="WorkCancelled" xml:space="preserve">
     <value>Proces przerwany</value>
