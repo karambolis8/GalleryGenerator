@@ -9,11 +9,6 @@ namespace Common.DataObjects
         public bool CopyOriginalFiles { get; set; }
 
         /// <summary>
-        /// Output base directory for original files. If CopyOriginalFiles == false should be ignored
-        /// </summary>
-        public string OriginalImgDir { get; set; }
-
-        /// <summary>
         /// Defines width of small thumbnails
         /// </summary>
         public int ThumbX { get; set; }

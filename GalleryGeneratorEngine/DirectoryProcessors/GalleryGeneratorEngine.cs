@@ -136,6 +136,7 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
 
         private void GenerateThumbnails(IEnumerable<FileInfo> images, string nesting)
         {
+            string originalWithNesting = Path.Combine(this.options.OutputDirectory, Path.Combine(Configuration.OriginalDir, nesting));
             string mediumWithNesting = Path.Combine(this.options.OutputDirectory, Path.Combine(Configuration.MediumDir, nesting));
             string thumbWithNesting = Path.Combine(this.options.OutputDirectory, Path.Combine(Configuration.ThumbDir, nesting));
 
@@ -173,7 +174,7 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
                         return;
                     }
 
-                    string destPath = Path.Combine(this.options.OriginalImgDir, Path.Combine(nesting, image.Name));
+                    string destPath = Path.Combine(originalWithNesting, image.Name);
                     File.Copy(image.FullName, destPath);
                 }
             }
@@ -278,13 +279,14 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
         private string GenerateGallery(IEnumerable<FileInfo> images, string nesting)
         {
             string reverseNesting = this.GetReverseNesting(nesting);
+            string originalWithNesting = Path.Combine(reverseNesting, Path.Combine(Configuration.OriginalDir, nesting));
             string mediumWithNesting = Path.Combine(reverseNesting, Path.Combine(Configuration.MediumDir, nesting));
             string thumbWithNesting = Path.Combine(reverseNesting, Path.Combine(Configuration.ThumbDir, nesting));
 
             var galleryItems = new StringBuilder();
             foreach (var image in images)
             {
-                galleryItems.AppendLine(GenerateItem(image, mediumWithNesting, thumbWithNesting));
+                galleryItems.AppendLine(GenerateItem(image, originalWithNesting, mediumWithNesting, thumbWithNesting));
             }
 
             return Configuration.GalleryTemplate.Replace(LIST_ITEMS, galleryItems.ToString());
@@ -411,12 +413,12 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
             return sb.ToString();
         }
 
-        private string GenerateItem(FileInfo image, string mediumDirWithNesting, string thumbDirWithNesting)
+        private string GenerateItem(FileInfo image, string originalDirWithNesting, string mediumDirWithNesting, string thumbDirWithNesting)
         {
 
             string originalPath;
             if(this.options.CopyOriginalFiles)
-                originalPath = Path.Combine(this.options.OriginalImgDir, image.Name).GetBrowserPath();
+                originalPath = Path.Combine(originalDirWithNesting, image.Name).GetBrowserPath();
             else
                 originalPath = image.FullName.GetAbsoluteBrowserPath();
 

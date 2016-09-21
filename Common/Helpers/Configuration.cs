@@ -15,6 +15,7 @@ namespace Common.Helpers
         public static string CssDir { get; private set; }
         public static string JsDir { get; private set; }
         public static string IcoDir { get; private set; }
+        public static string OriginalDir { get; private set; }
         public static string MediumDir { get; private set; }
         public static string ThumbDir { get; private set; }
         public static string CopyrightYear { get; private set; }
@@ -24,6 +25,7 @@ namespace Common.Helpers
             CssDir = ConfigurationManager.AppSettings["cssDir"];
             JsDir = ConfigurationManager.AppSettings["jsDir"];
             IcoDir = ConfigurationManager.AppSettings["icoDir"];
+            OriginalDir = ConfigurationManager.AppSettings["originalDir"];
             MediumDir = ConfigurationManager.AppSettings["mediumDir"];
             ThumbDir = ConfigurationManager.AppSettings["thumbDir"];
 

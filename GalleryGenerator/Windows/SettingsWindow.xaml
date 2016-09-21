@@ -52,7 +52,7 @@
                         <CheckBox Grid.Row="5" Grid.Column="1" x:Name="PreserveAspectRatioCheckBox" IsChecked="{Binding Source={StaticResource UserSettings}, Path=Default.PreserveMediumAspectRatio, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,7,0" Checked="CheckBox_CheckedChanged" Unchecked="CheckBox_CheckedChanged" />
 
                         <Label Grid.Row="6" Grid.Column="0" Content="{Binding Path=CopyOriginalFiles, Source={StaticResource Translations}}" />
-                        <CheckBox Grid.Row="6" Grid.Column="1" x:Name="CopyOriginalFilesCheckBox" IsChecked="{Binding Source={StaticResource UserSettings}, Path=Default.CopyOriginalFiles, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,7,0"  Checked="CheckBox_CheckedChanged" Unchecked="CheckBox_CheckedChanged" IsEnabled="False" />
+                        <CheckBox Grid.Row="6" Grid.Column="1" x:Name="CopyOriginalFilesCheckBox" IsChecked="{Binding Source={StaticResource UserSettings}, Path=Default.CopyOriginalFiles, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,7,0"  Checked="CheckBox_CheckedChanged" Unchecked="CheckBox_CheckedChanged"/>
                     </Grid>
                 </Grid>
             </TabItem>

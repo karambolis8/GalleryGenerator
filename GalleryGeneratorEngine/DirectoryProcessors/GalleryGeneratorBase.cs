@@ -45,6 +45,8 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
             if (!Directory.Exists(this.options.OutputDirectory))
                 Directory.CreateDirectory(this.options.OutputDirectory);
 
+            if(this.options.CopyOriginalFiles)
+                AssureRelativeDirectoryExists(Configuration.OriginalDir);
             AssureRelativeDirectoryExists(Configuration.MediumDir);
             AssureRelativeDirectoryExists(Configuration.ThumbDir);
             AssureRelativeDirectoryExists(Configuration.CssDir);
