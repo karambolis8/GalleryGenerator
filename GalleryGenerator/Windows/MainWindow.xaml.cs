@@ -226,6 +226,7 @@ namespace GalleryGenerator.Windows
             summaryWindow.Left = WindowsSettings.Default.SummaryWindowLeft;
             summaryWindow.Width = WindowsSettings.Default.SummaryWindowWidth;
             summaryWindow.Height = WindowsSettings.Default.SummaryWindowHeight;
+            summaryWindow.Owner = this;
             summaryWindow.ShowDialog();
         }
 
@@ -306,6 +307,7 @@ namespace GalleryGenerator.Windows
             var settingsWindow = new SettingsWindow();
             settingsWindow.Top = WindowsSettings.Default.SettingsWindowTop;
             settingsWindow.Left = WindowsSettings.Default.SettingsWindowLeft;
+            settingsWindow.Owner = this;
             settingsWindow.ShowDialog();
         }
 
