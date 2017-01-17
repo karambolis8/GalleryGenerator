@@ -174,6 +174,9 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
                         return;
                     }
 
+                    if (!Directory.Exists(originalWithNesting))
+                        Directory.CreateDirectory(originalWithNesting);
+
                     string destPath = Path.Combine(originalWithNesting, image.Name);
                     File.Copy(image.FullName, destPath);
                 }
