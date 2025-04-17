@@ -47,19 +47,16 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
 
             if(this.options.CopyOriginalFiles)
                 AssureRelativeDirectoryExists(Configuration.OriginalDir);
-            AssureRelativeDirectoryExists(Configuration.MediumDir);
             AssureRelativeDirectoryExists(Configuration.ThumbDir);
-            AssureRelativeDirectoryExists(Configuration.CssDir);
-            AssureRelativeDirectoryExists(Configuration.JsDir);
-            AssureRelativeDirectoryExists(Configuration.IcoDir);
+            AssureRelativeDirectoryExists("js");
+            AssureRelativeDirectoryExists("ico");
             
             Logger.Info("Created output directories");
 
-            CopyGalleryFiles("css", Configuration.CssDir);
-            CopyGalleryFiles("js", Configuration.JsDir);
-            CopyGalleryFiles("ico", Configuration.IcoDir);
+            CopyGalleryFiles(Configuration.GalleryLibraryDir, "js", true);
+            CopyGalleryFiles(Configuration.IcoDir, "ico");
 
-            Logger.Info("Copied Gallerific files");
+            Logger.Info("Copied JS files");
 
             var dirs = new Stack<string>(20);
 
@@ -167,14 +164,20 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
             }
         }
 
-        private void CopyGalleryFiles(string inputDir, string outputDir)
+        private void CopyGalleryFiles(string inputDir, string outputDir, bool recursive = false)
         {
             var appDir = Directory.GetCurrentDirectory();
-            var inputInfo = new DirectoryInfo(Path.Combine(appDir, Path.Combine("Gallerific", inputDir)));
+            var inputInfo = new DirectoryInfo(Path.Combine(appDir, inputDir));
 
             foreach (var fileInfo in inputInfo.GetFiles())
             {
                 File.Copy(fileInfo.FullName, Path.Combine(this.options.OutputDirectory, Path.Combine(outputDir, fileInfo.Name)), true);
+            }
+
+            foreach(var dirInfo in inputInfo.GetDirectories())
+            {
+                AssureRelativeDirectoryExists(Path.Combine(outputDir, dirInfo.Name));
+                CopyGalleryFiles(Path.Combine(inputDir, dirInfo.Name), Path.Combine(outputDir, dirInfo.Name), true);
             }
         }
     }

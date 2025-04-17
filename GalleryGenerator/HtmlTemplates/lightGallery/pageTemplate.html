@@ -1,0 +1,92 @@
+﻿<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>{GALLERY_NAME} - {PAGE_NAME}</title>
+
+	<link type="text/css"
+		  rel="stylesheet"
+		  href="{JS_DIRECTORY}/css/lightgallery.css" />
+	<link type="text/css"
+		  rel="stylesheet"
+		  href="{JS_DIRECTORY}/css/lg-zoom.css" />
+	<link type="text/css"
+		  rel="stylesheet"
+		  href="{JS_DIRECTORY}/css/lg-thumbnail.css" />
+
+	<style>
+		/* Style the button that is used to open and close the collapsible content */
+		.collapsible {
+			background-color: #eee;
+			color: #444;
+			cursor: pointer;
+			padding: 18px;
+			width: 100%;
+			border: none;
+			text-align: left;
+			outline: none;
+			font-size: 15px;
+			margin-bottom: 0;
+		}
+
+			/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+			.active, .collapsible:hover {
+				background-color: #ccc;
+			}
+
+		/* Style the collapsible content. Note: hidden by default */
+        .content {
+            margin-top: 0;
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+	</style>
+</head>
+	
+<body>
+	<script src="{JS_DIRECTORY}/lightgallery.umd.js"></script>
+	<script src="{JS_DIRECTORY}/plugins/thumbnail/lg-thumbnail.umd.js"></script>
+	<script src="{JS_DIRECTORY}/plugins/zoom/lg-zoom.umd.js"></script>
+
+	<div id="page">
+		<div id="container">
+			{MENU}
+			<h1>{PAGE_NAME}</h1>
+			<div id="gallery">
+				{GALLERY}
+			</div>
+			{FILES_TABLE}
+		</div>
+	</div>
+
+	<div id="footer">&copy; {COPYRIGHT_YEAR} Adam Gudynowski</div>
+
+	<script type="text/javascript">
+		lightGallery(document.getElementById("gallery"), {
+			plugins: [lgZoom, lgThumbnail],
+			speed: 500,
+			licenseKey: "0000-0000-000-0000",
+			animateThumb: true,
+			zoomFromOrigin: false,
+			allowMediaOverlap: true,
+			toggleThumb: true,
+        });
+
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+	</script>
+</body>
+</html>

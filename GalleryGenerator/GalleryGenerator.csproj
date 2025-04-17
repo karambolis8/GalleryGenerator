@@ -193,6 +193,18 @@
       <DependentUpon>UserSettings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="HtmlTemplates\lightGallery\galleryTemplate.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HtmlTemplates\lightGallery\pageTemplate.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HtmlTemplates\lightGallery\rootMenuItemTemplate.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HtmlTemplates\lightGallery\siblingMenuItemTemplate.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -208,6 +220,15 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="GalleryResources\lightGallery\fonts\lg.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\fonts\lg.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\fonts\lg.woff2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -224,139 +245,283 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Gallerific\css\basic.css">
+    <Content Include="GalleryResources\ico\avi.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\css\caption.png">
+    <Content Include="GalleryResources\ico\bmp.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\css\galleriffic-2.css">
+    <Content Include="GalleryResources\ico\default.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\css\loader.gif">
+    <Content Include="GalleryResources\ico\doc.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\css\loaderWhite.gif">
+    <Content Include="GalleryResources\ico\docx.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\css\nextPageArrow.gif">
+    <Content Include="GalleryResources\ico\dwg.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\css\nextPageArrowWhite.gif">
+    <Content Include="GalleryResources\ico\html.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\css\prevPageArrow.gif">
+    <Content Include="GalleryResources\ico\img.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\css\prevPageArrowWhite.gif">
+    <Content Include="GalleryResources\ico\jpg.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\avi.png">
+    <Content Include="GalleryResources\ico\mov.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\bmp.png">
+    <Content Include="GalleryResources\ico\mp3.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\default.png">
+    <Content Include="GalleryResources\ico\mp4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\doc.png">
+    <Content Include="GalleryResources\ico\mpeg.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\docx.png">
+    <Content Include="GalleryResources\ico\pdf.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\dwg.png">
+    <Content Include="GalleryResources\ico\png.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\html.png">
+    <Content Include="GalleryResources\ico\psd.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\img.png">
+    <Content Include="GalleryResources\ico\rar.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\jpg.png">
+    <Content Include="GalleryResources\ico\rtf.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\mov.png">
+    <Content Include="GalleryResources\ico\tiff.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\mp3.png">
+    <Content Include="GalleryResources\ico\ttf.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\mp4.png">
+    <Content Include="GalleryResources\ico\txt.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\mpeg.png">
+    <Content Include="GalleryResources\ico\wav.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\pdf.png">
+    <Content Include="GalleryResources\ico\wmv.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\png.png">
+    <Content Include="GalleryResources\ico\xls.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\psd.png">
+    <Content Include="GalleryResources\ico\xlsx.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\rar.png">
+    <Content Include="GalleryResources\ico\zip.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\rtf.png">
+    <Content Include="HtmlTemplates\Gallerific\filesTableRowTemplate.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\tiff.png">
+    <Content Include="HtmlTemplates\Gallerific\filesTableTemplate.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\ttf.png">
+    <Content Include="HtmlTemplates\Gallerific\galleryTemplate.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\txt.png">
+    <Content Include="HtmlTemplates\Gallerific\imageTemplate.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\wav.png">
+    <Content Include="HtmlTemplates\Gallerific\pageTemplate.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\wmv.png">
+    <Content Include="HtmlTemplates\Gallerific\rootMenuItemTemplate.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\xls.png">
+    <Content Include="HtmlTemplates\Gallerific\siblingMenuItemTemplate.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\xlsx.png">
+    <Content Include="GalleryResources\lightGallery\css\lg-autoplay.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\ico\zip.png">
+    <Content Include="GalleryResources\lightGallery\css\lg-comments.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\js\jquery-1.3.2.js">
+    <Content Include="GalleryResources\lightGallery\css\lg-fullscreen.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\js\jquery.galleriffic.js">
+    <Content Include="GalleryResources\lightGallery\css\lg-medium-zoom.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Gallerific\js\jquery.opacityrollover.js">
+    <Content Include="GalleryResources\lightGallery\css\lg-pager.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="HtmlTemplates\filesTableRowTemplate.html">
+    <Content Include="GalleryResources\lightGallery\css\lg-relative-caption.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="HtmlTemplates\filesTableTemplate.html">
+    <Content Include="GalleryResources\lightGallery\css\lg-rotate.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="HtmlTemplates\galleryTemplate.html">
+    <Content Include="GalleryResources\lightGallery\css\lg-share.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="HtmlTemplates\imageTemplate.html">
+    <Content Include="GalleryResources\lightGallery\css\lg-thumbnail.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="HtmlTemplates\pageTemplate.html">
+    <Content Include="GalleryResources\lightGallery\css\lg-transitions.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="HtmlTemplates\rootMenuItemTemplate.html">
+    <Content Include="GalleryResources\lightGallery\css\lg-video.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="HtmlTemplates\siblingMenuItemTemplate.html">
+    <Content Include="GalleryResources\lightGallery\css\lg-zoom.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\css\lightgallery-bundle.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\css\lightgallery-bundle.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\css\lightgallery-core.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\css\lightgallery.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\fonts\lg.svg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\images\loading.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\lightgallery.es5.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\lightgallery.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\lightgallery.umd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\autoplay\lg-autoplay.es5.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\autoplay\lg-autoplay.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\autoplay\lg-autoplay.umd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\comment\lg-comment.es5.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\comment\lg-comment.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\comment\lg-comment.umd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\fullscreen\lg-fullscreen.es5.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\fullscreen\lg-fullscreen.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\fullscreen\lg-fullscreen.umd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\hash\lg-hash.es5.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\hash\lg-hash.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\hash\lg-hash.umd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\mediumZoom\lg-medium-zoom.es5.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\mediumZoom\lg-medium-zoom.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\mediumZoom\lg-medium-zoom.umd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\pager\lg-pager.es5.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\pager\lg-pager.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\pager\lg-pager.umd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\relativeCaption\lg-relative-caption.es5.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\relativeCaption\lg-relative-caption.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\relativeCaption\lg-relative-caption.umd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\rotate\lg-rotate.es5.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\rotate\lg-rotate.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\rotate\lg-rotate.umd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\share\lg-share.es5.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\share\lg-share.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\share\lg-share.umd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\thumbnail\lg-thumbnail.es5.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\thumbnail\lg-thumbnail.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\thumbnail\lg-thumbnail.umd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\video\lg-video.es5.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\video\lg-video.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\video\lg-video.umd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\vimeoThumbnail\lg-vimeo-thumbnail.es5.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\vimeoThumbnail\lg-vimeo-thumbnail.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\vimeoThumbnail\lg-vimeo-thumbnail.umd.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\zoom\lg-zoom.es5.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\zoom\lg-zoom.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GalleryResources\lightGallery\plugins\zoom\lg-zoom.umd.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Resource Include="MainIcon.ico" />
@@ -392,6 +557,7 @@
       <Name>GalleryGeneratorEngine</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

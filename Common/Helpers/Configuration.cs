@@ -12,8 +12,7 @@ namespace Common.Helpers
         public static string SiblingMenuTemplate { get; private set; }
         public static string FilesTableTemplate { get; private set; }
         public static string FilesTableRowTemplate { get; private set; }
-        public static string CssDir { get; private set; }
-        public static string JsDir { get; private set; }
+        public static string GalleryLibraryDir { get; private set; }
         public static string IcoDir { get; private set; }
         public static string OriginalDir { get; private set; }
         public static string MediumDir { get; private set; }
@@ -22,8 +21,7 @@ namespace Common.Helpers
         
         static Configuration()
         {
-            CssDir = ConfigurationManager.AppSettings["cssDir"];
-            JsDir = ConfigurationManager.AppSettings["jsDir"];
+            GalleryLibraryDir = ConfigurationManager.AppSettings["galleryLibraryDir"];
             IcoDir = ConfigurationManager.AppSettings["icoDir"];
             OriginalDir = ConfigurationManager.AppSettings["originalDir"];
             MediumDir = ConfigurationManager.AppSettings["mediumDir"];
@@ -35,14 +33,14 @@ namespace Common.Helpers
             using (var sr = new StreamReader(pageTemplatePath))
             {
                 PageFormat = sr.ReadToEnd();
-            } 
-            
-            string itemTemplatePath = ConfigurationManager.AppSettings["galleryItemTemplate"];
-            using (var sr = new StreamReader(itemTemplatePath))
-            {
-                ImageFormat = sr.ReadToEnd();
-            } 
-            
+            }
+
+            //string itemTemplatePath = ConfigurationManager.AppSettings["galleryItemTemplate"];
+            //using (var sr = new StreamReader(itemTemplatePath))
+            //{
+            //    ImageFormat = sr.ReadToEnd();
+            //} 
+
             string rootMenuTemplatePath = ConfigurationManager.AppSettings["rootMenuTemplate"];
             using (var sr = new StreamReader(rootMenuTemplatePath))
             {
@@ -61,17 +59,17 @@ namespace Common.Helpers
                 GalleryTemplate = sr.ReadToEnd();
             }
 
-            string filesTableTemplatePath = ConfigurationManager.AppSettings["filesTableTemplate"];
-            using (var sr = new StreamReader(filesTableTemplatePath))
-            {
-                FilesTableTemplate = sr.ReadToEnd();
-            }
+            //string filesTableTemplatePath = ConfigurationManager.AppSettings["filesTableTemplate"];
+            //using (var sr = new StreamReader(filesTableTemplatePath))
+            //{
+            //    FilesTableTemplate = sr.ReadToEnd();
+            //}
 
-            string filesTableRowTemplatePath = ConfigurationManager.AppSettings["filesTableRowTemplate"];
-            using (var sr = new StreamReader(filesTableRowTemplatePath))
-            {
-                FilesTableRowTemplate = sr.ReadToEnd();
-            }
+            //string filesTableRowTemplatePath = ConfigurationManager.AppSettings["filesTableRowTemplate"];
+            //using (var sr = new StreamReader(filesTableRowTemplatePath))
+            //{
+            //    FilesTableRowTemplate = sr.ReadToEnd();
+            //}
         }
 
         public static string GetFileIcon(string extension)

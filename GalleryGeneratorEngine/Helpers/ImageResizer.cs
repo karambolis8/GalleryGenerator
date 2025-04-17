@@ -15,16 +15,7 @@ namespace GalleryGeneratorEngine.Helpers
             if (preserveAspectRatio)
             {
                 decimal ratio = ((decimal) bmp.Height)/bmp.Width;
-                var newHeight = (int) (maxWidth*ratio);
-
-                if (newHeight > maxHeight)
-                {
-                    maxWidth = (int) (maxHeight/ratio);
-                }
-                else
-                {
-                    maxHeight = newHeight;
-                }
+                maxWidth = (int) (maxHeight / ratio);
             }
 
             var dest = new Bitmap(maxWidth, maxHeight);

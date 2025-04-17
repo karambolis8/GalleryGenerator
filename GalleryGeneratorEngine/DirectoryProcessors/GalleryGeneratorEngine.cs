@@ -137,7 +137,6 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
         private void GenerateThumbnails(IEnumerable<FileInfo> images, string nesting)
         {
             string originalWithNesting = Path.Combine(this.options.OutputDirectory, Path.Combine(Configuration.OriginalDir, nesting));
-            string mediumWithNesting = Path.Combine(this.options.OutputDirectory, Path.Combine(Configuration.MediumDir, nesting));
             string thumbWithNesting = Path.Combine(this.options.OutputDirectory, Path.Combine(Configuration.ThumbDir, nesting));
 
             foreach (FileInfo image in images)
@@ -152,9 +151,7 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
 
                 try
                 {
-                    image.ResizeImage(this.options.MediumX, this.options.MediumY, mediumWithNesting,
-                        this.options.PreserveMediumAspectRatio);
-                    image.ResizeImage(this.options.ThumbX, this.options.ThumbY, thumbWithNesting);
+                    image.ResizeImage(this.options.ThumbX, this.options.ThumbY, thumbWithNesting, true);
                 }
                 catch (Exception e)
                 {
@@ -195,25 +192,23 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
 
             var menu = nesting == string.Empty ? this.GenerateMenuRoot(directoryInfo) : this.GenerateMenu(directoryInfo, nesting);
             string gallery = images.Any() ? this.GenerateGallery(images, nesting) : string.Empty;
-            var filesTable = otherFiles.Any() ? this.GenerateFilesTable(otherFiles, nesting) : string.Empty;
+            //var filesTable = otherFiles.Any() ? this.GenerateFilesTable(otherFiles, nesting) : string.Empty;
 
             string pageContent = string.Empty;
 
             string reverseNesting = this.GetReverseNesting(nesting);
-            string cssPath = Path.Combine(reverseNesting, Configuration.CssDir).GetBrowserPath();
-            string jsPath = Path.Combine(reverseNesting, Configuration.JsDir).GetBrowserPath();
+            string cssPath = Path.Combine(reverseNesting, "js").GetBrowserPath();
+            string jsPath = Path.Combine(reverseNesting, "js").GetBrowserPath();
 
             var pageFormatSb = new StringBuilder(Configuration.PageFormat);
             pageContent = pageFormatSb
                 .Replace(COPYRIGHT_YEAR, Configuration.CopyrightYear)
                 .Replace(GALLERY_NAME, this.options.GalleryName)
-                .Replace(THUMBS_GRID_SIZE, this.options.ThumbsGridSize.ToString())
                 .Replace(PAGE_NAME, pageName)
                 .Replace(GALLERY, gallery)
-                .Replace(CSS_DIRECTORY, cssPath)
                 .Replace(JS_DIRECTORY, jsPath)
                 .Replace(MENU, menu)
-                .Replace(FILES_TABLE, filesTable)
+                //.Replace(FILES_TABLE, filesTable)
                 .ToString();
 
             AssureRelativeDirectoryExists(nesting);
@@ -283,16 +278,15 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
         {
             string reverseNesting = this.GetReverseNesting(nesting);
             string originalWithNesting = Path.Combine(reverseNesting, Path.Combine(Configuration.OriginalDir, nesting));
-            string mediumWithNesting = Path.Combine(reverseNesting, Path.Combine(Configuration.MediumDir, nesting));
             string thumbWithNesting = Path.Combine(reverseNesting, Path.Combine(Configuration.ThumbDir, nesting));
 
             var galleryItems = new StringBuilder();
             foreach (var image in images)
             {
-                galleryItems.AppendLine(GenerateItem(image, originalWithNesting, mediumWithNesting, thumbWithNesting));
+                galleryItems.AppendLine(GenerateItem(image, originalWithNesting, thumbWithNesting));
             }
 
-            return Configuration.GalleryTemplate.Replace(LIST_ITEMS, galleryItems.ToString());
+            return galleryItems.ToString();
         }
 
         private string GenerateMenu(DirectoryInfo directoryInfo, string nesting)
@@ -416,7 +410,7 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
             return sb.ToString();
         }
 
-        private string GenerateItem(FileInfo image, string originalDirWithNesting, string mediumDirWithNesting, string thumbDirWithNesting)
+        private string GenerateItem(FileInfo image, string originalDirWithNesting, string thumbDirWithNesting)
         {
 
             string originalPath;
@@ -425,16 +419,12 @@ namespace GalleryGeneratorEngine.DirectoryProcessors
             else
                 originalPath = image.FullName.GetAbsoluteBrowserPath();
 
-            string mediumThumPath = Path.Combine(mediumDirWithNesting, image.JpgFileName()).GetBrowserPath();
             string smallThumPath = Path.Combine(thumbDirWithNesting, image.JpgFileName()).GetBrowserPath();
 
-            var imageFormatSb = new StringBuilder(Configuration.ImageFormat);
+            var imageFormatSb = new StringBuilder(Configuration.GalleryTemplate);
             return imageFormatSb
                 .Replace(THUMBNAIL_PATH, smallThumPath)
-                .Replace(MEDIUM_PATH, mediumThumPath)
                 .Replace(ORIGINAL_PATH, originalPath)
-                .Replace(DOWNLOAD_ORIGINAL, Templates.DownloadOriginal)
-                .Replace(IMAGE_TITLE, image.Name)
                 .ToString();
         }
     }
